@@ -81,3 +81,13 @@ const Connection string = "Connection"
 // ContentDisposition HTTP response header is a header indicating if the content is expected to be displayed inline in the browser,
 // that is, as a Web page or as part of a Web page, or as an attachment, that is downloaded and saved locally.
 const ContentDisposition string = "Content-Disposition"
+
+// ContentEncoding HTTP header is used to compress the media-type.
+const ContentEncoding string = "Content-Encoding"
+
+// ContentLanguage HTTP header is used to describe the language(s) intended for the audience, so that it allows a user to
+// differentiate according to the users' own preferred language.
+const ContentLanguage string = "Content-Language"
+
+// ContentLength HTTP header indicates the size of the entity-body, in bytes, sent to the recipient.
+const ContentLength string = "Content-Length"
