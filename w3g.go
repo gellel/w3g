@@ -91,3 +91,16 @@ const ContentLanguage string = "Content-Language"
 
 // ContentLength HTTP header indicates the size of the entity-body, in bytes, sent to the recipient.
 const ContentLength string = "Content-Length"
+
+// ContentLocation header indicates an alternate location for the returned data.
+const ContentLocation string = "Content-Location"
+
+// ContentRange response HTTP header indicates where in a full body message a partial message belongs.
+const ContentRange string = "Content-Range"
+
+// ContentSecurityPolicy response header allows web site administrators to control resources the user agent
+// is allowed to load for a given page.
+const ContentSecurityPolicy string = "Content-Security-Policy"
+
+// ContentSecurityPolicyReportOnly response header allows web developers to experiment with policies by monitoring (but not enforcing) their effects.
+const ContentSecurityPolicyReportOnly string = "Content-Security-Policy-Report-Only"
