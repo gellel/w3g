@@ -16,3 +16,17 @@ const AcceptCharset string = "Accept-Charset"
 // AcceptEncoding request HTTP header advertises which content encoding,
 // usually a compression algorithm, the client is able to understand.
 const AcceptEncoding string = "Accept-Encoding"
+
+// AcceptLanguage request HTTP header advertises which languages the client is able to understand,
+// and which locale variant is preferred.
+const AcceptLanguage string = "Accept-Language"
+
+// AcceptPatch response HTTP header advertises which media-type the server is able to understand.
+const AcceptPatch string = "Accept-Patch"
+
+// AcceptRanges response HTTP header is a marker used by the server to advertise its support of partial requests.
+const AcceptRanges string = "Accept-Ranges"
+
+// AccessControlAllowCredentials response header tells browsers whether to expose the response to frontend JavaScript code
+// when the request's credentials mode is include.
+const AccessControlAllowCredentials string = "Access-Control-Allow-Credentials"
