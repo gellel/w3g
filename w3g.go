@@ -104,3 +104,22 @@ const ContentSecurityPolicy string = "Content-Security-Policy"
 
 // ContentSecurityPolicyReportOnly response header allows web developers to experiment with policies by monitoring (but not enforcing) their effects.
 const ContentSecurityPolicyReportOnly string = "Content-Security-Policy-Report-Only"
+
+// ContentType HTTP header is used to indicate the media type of the resource.
+const ContentType string = "Content-Type"
+
+// Cookie HTTP request header contains stored HTTP cookies previously sent by the server with the Set-Cookie header.
+const Cookie string = "Cookie"
+
+// Cookie2 HTTP request header used to advise the server that the user agent understands "new-style" cookies.
+const Cookie2 string = "Cookie2"
+
+// CrossOriginResourcePolicy HTTP response header conveys a desire that the browser blocks no-cors cross-origin/cross-site requests to the given resource.
+const CrossOriginResourcePolicy string = "Cross-Origin-Resource-Policy"
+
+// DNT HTTP request header indicates the user's tracking preference.
+const DNT string = "DNT"
+
+// DPR HTTP header is a Client Hints headers which represents the client device pixel ratio (DPR), which is the the number of
+// physical device pixels corresponding to every CSS pixel.
+const DPR string = "DPR"
