@@ -56,3 +56,85 @@ const AccessControlRequestHeaders string = "Access-Control-Request-Headers"
 // AccessControlRequestMethod request HTTP header is used by browsers when issuing a preflight request, to let the server know which
 // HTTP method will be used when the actual request is made.
 const AccessControlRequestMethod string = "Access-Control-Request-Method"
+
+// Age HTTP header contains the time in seconds the object has been in a proxy cache.
+const Age string = "Age"
+
+// Allow HTTP header lists the set of methods supported by a resource.
+const Allow string = "Allow"
+
+// AltSvc HTTP response header is used to advertise alternative services through which the same resource can be reached.
+const AltSvc string = "Alt-Svc"
+
+// Authorization HTTP request header contains the credentials to authenticate a user agent with a server.
+const Authorization string = "Authorization"
+
+// CacheControl HTTP header holds directives (instructions) for caching in both requests and responses.
+const CacheControl string = "Cache-Control"
+
+// ClearSiteData HTTP header clears browsing data (cookies, storage, cache) associated with the requesting website
+const ClearSiteData string = "Clear-Site-Data"
+
+// Connection HTTP header controls whether or not the network connection stays open after the current transaction finishes.
+const Connection string = "Connection"
+
+// ContentDisposition HTTP response header is a header indicating if the content is expected to be displayed inline in the browser,
+// that is, as a Web page or as part of a Web page, or as an attachment, that is downloaded and saved locally.
+const ContentDisposition string = "Content-Disposition"
+
+// ContentEncoding HTTP header is used to compress the media-type.
+const ContentEncoding string = "Content-Encoding"
+
+// ContentLanguage HTTP header is used to describe the language(s) intended for the audience, so that it allows a user to
+// differentiate according to the users' own preferred language.
+const ContentLanguage string = "Content-Language"
+
+// ContentLength HTTP header indicates the size of the entity-body, in bytes, sent to the recipient.
+const ContentLength string = "Content-Length"
+
+// ContentLocation header indicates an alternate location for the returned data.
+const ContentLocation string = "Content-Location"
+
+// ContentRange response HTTP header indicates where in a full body message a partial message belongs.
+const ContentRange string = "Content-Range"
+
+// ContentSecurityPolicy response header allows web site administrators to control resources the user agent
+// is allowed to load for a given page.
+const ContentSecurityPolicy string = "Content-Security-Policy"
+
+// ContentSecurityPolicyReportOnly response header allows web developers to experiment with policies by monitoring (but not enforcing) their effects.
+const ContentSecurityPolicyReportOnly string = "Content-Security-Policy-Report-Only"
+
+// ContentType HTTP header is used to indicate the media type of the resource.
+const ContentType string = "Content-Type"
+
+// Cookie HTTP request header contains stored HTTP cookies previously sent by the server with the Set-Cookie header.
+const Cookie string = "Cookie"
+
+// Cookie2 HTTP request header used to advise the server that the user agent understands "new-style" cookies.
+const Cookie2 string = "Cookie2"
+
+// CrossOriginResourcePolicy HTTP response header conveys a desire that the browser blocks no-cors cross-origin/cross-site requests to the given resource.
+const CrossOriginResourcePolicy string = "Cross-Origin-Resource-Policy"
+
+// DNT HTTP request header indicates the user's tracking preference.
+const DNT string = "DNT"
+
+// DPR HTTP header is a Client Hints headers which represents the client device pixel ratio (DPR), which is the the number of
+// physical device pixels corresponding to every CSS pixel.
+const DPR string = "DPR"
+
+// Date HTTP header contains the date and time at which the message was originated.
+const Date string = "Date"
+
+// DeviceMemory HTTP header is a Device Memory API header that works like Client Hints header which represents the approximate amount of RAM client device has.
+const DeviceMemory string = "Device-Memory"
+
+// Digest response HTTP header provides a digest of the requested resource.
+const Digest string = "Digest"
+
+// ETag HTTP response header is an identifier for a specific version of a resource.
+const ETag string = "ETag"
+
+// EarlyData HTTP header is set by an intermediate to indicate that the request has been conveyed in TLS early data.
+const EarlyData string = "Early-Data"
