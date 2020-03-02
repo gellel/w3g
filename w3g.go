@@ -56,3 +56,15 @@ const AccessControlRequestHeaders string = "Access-Control-Request-Headers"
 // AccessControlRequestMethod request HTTP header is used by browsers when issuing a preflight request, to let the server know which
 // HTTP method will be used when the actual request is made.
 const AccessControlRequestMethod string = "Access-Control-Request-Method"
+
+// Age HTTP header contains the time in seconds the object has been in a proxy cache.
+const Age string = "Age"
+
+// Allow HTTP header lists the set of methods supported by a resource.
+const Allow string = "Allow"
+
+// AltSvc HTTP response header is used to advertise alternative services through which the same resource can be reached.
+const AltSvc string = "Alt-Svc"
+
+// Authorization HTTP request header contains the credentials to authenticate a user agent with a server.
+const Authorization string = "Authorization"
