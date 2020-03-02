@@ -123,3 +123,18 @@ const DNT string = "DNT"
 // DPR HTTP header is a Client Hints headers which represents the client device pixel ratio (DPR), which is the the number of
 // physical device pixels corresponding to every CSS pixel.
 const DPR string = "DPR"
+
+// Date HTTP header contains the date and time at which the message was originated.
+const Date string = "Date"
+
+// DeviceMemory HTTP header is a Device Memory API header that works like Client Hints header which represents the approximate amount of RAM client device has.
+const DeviceMemory string = "Device-Memory"
+
+// Digest response HTTP header provides a digest of the requested resource.
+const Digest string = "Digest"
+
+// ETag HTTP response header is an identifier for a specific version of a resource.
+const ETag string = "ETag"
+
+// EarlyData HTTP header is set by an intermediate to indicate that the request has been conveyed in TLS early data.
+const EarlyData string = "Early-Data"
