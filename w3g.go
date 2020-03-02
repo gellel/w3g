@@ -68,3 +68,16 @@ const AltSvc string = "Alt-Svc"
 
 // Authorization HTTP request header contains the credentials to authenticate a user agent with a server.
 const Authorization string = "Authorization"
+
+// CacheControl HTTP header holds directives (instructions) for caching in both requests and responses.
+const CacheControl string = "Cache-Control"
+
+// ClearSiteData HTTP header clears browsing data (cookies, storage, cache) associated with the requesting website
+const ClearSiteData string = "Clear-Site-Data"
+
+// Connection HTTP header controls whether or not the network connection stays open after the current transaction finishes.
+const Connection string = "Connection"
+
+// ContentDisposition HTTP response header is a header indicating if the content is expected to be displayed inline in the browser,
+// that is, as a Web page or as part of a Web page, or as an attachment, that is downloaded and saved locally.
+const ContentDisposition string = "Content-Disposition"

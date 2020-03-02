@@ -1,5 +1,12 @@
 package w3g_test
 
-import "testing"
+import (
+	"fmt"
+	"testing"
 
-func Test(t *testing.T) {}
+	"github.com/gellel/w3g"
+)
+
+func Test(t *testing.T) {
+	fmt.Println(w3g.Accept)
+}
