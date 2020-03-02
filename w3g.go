@@ -39,8 +39,20 @@ const AccessControlAllowHeaders string = "Access-Control-Allow-Headers"
 // the resource in response to a preflight request.
 const AccessControlAllowMethod string = "Access-Control-Allow-Method"
 
-// AccessControlAllowOrigin response header indicates whether the response can be shared with requesting code from the given origin.
+// AccessControlAllowOrigin response HTTP header indicates whether the response can be shared with requesting code from the given origin.
 const AccessControlAllowOrigin string = "Access-Control-Allow-Origin"
 
-// AccessControlExposeHeaders response header indicates which headers can be exposed as part of the response by listing their names.
+// AccessControlExposeHeaders response HTTP header indicates which headers can be exposed as part of the response by listing their names.
 const AccessControlExposeHeaders string = "Access-Control-Expose-Headers"
+
+// AccessControlMaxAge response HTTP header indicates how long the results of a preflight request
+// (that is the information contained in the Access-Control-Allow-Methods and Access-Control-Allow-Headers headers) can be cached.
+const AccessControlMaxAge string = "Access-Control-Max-Age"
+
+// AccessControlRequestHeaders request HTTP header is used by browsers when issuing a preflight request, to let the server know which
+// HTTP headers the client might send when the actual request is made.
+const AccessControlRequestHeaders string = "Access-Control-Request-Headers"
+
+// AccessControlRequestMethod request HTTP header is used by browsers when issuing a preflight request, to let the server know which
+// HTTP method will be used when the actual request is made.
+const AccessControlRequestMethod string = "Access-Control-Request-Method"
