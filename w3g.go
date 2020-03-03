@@ -168,3 +168,6 @@ const IfModifiedSince string = "If-Modified-Since"
 
 // IfNoneMatch HTTP request header makes the request conditional.
 const IfNoneMatch string = "If-None-Match"
+
+// SetCookie HTTP response header is used to send cookies from the server to the user agent, so the user agent can send them back to the server later.
+const SetCookie string = "Set-Cookie"
