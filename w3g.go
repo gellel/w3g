@@ -196,8 +196,11 @@ const Origin string = "Origin"
 // Pragma HTTP header is an implementation-specific header that is used for backwards compatibility with HTTP/1.0.
 const Pragma string = "Pragma"
 
-// ProxyAuthenticate response header defines the authentication method that should be used to gain access to a resource behind a proxy server.
+// ProxyAuthenticate response HTTP header defines the authentication method that should be used to gain access to a resource behind a proxy server.
 const ProxyAuthenticate string = "Proxy-Authenticate"
+
+// ProxyAuthorization request HTTP header contains the credentials to authenticate a user agent to a proxy server.
+const ProxyAuthorization string = "Proxy-Authorization"
 
 // SetCookie HTTP response header is used to send cookies from the server to the user agent, so the user agent can send them back to the server later.
 const SetCookie string = "Set-Cookie"
