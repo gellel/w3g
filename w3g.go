@@ -256,3 +256,30 @@ const SourceMap string = "SourceMap"
 
 // StrictTransportSecurity response HTTP header lets a web site tell browsers that it should only be accessed using HTTPS, instead of using HTTP.
 const StrictTransportSecurity string = "Strict-Transport-Security"
+
+// TE request HTTP header specifies the transfer encodings the user agent is willing to accept.
+const TE string = "TE"
+
+// TimingAllowOrigin response HTTP header specifies origins that are allowed to see values of attributes retrieved via features of the Resource Timing API.
+const TimingAllowOrigin string = "Timing-Allow-Origin"
+
+// Tk response HTTP header indicates the tracking status that applied to the corresponding request.
+const Tk string = "Tk"
+
+// Trailer response HTTP header allows the sender to include additional fields at the end of chunked messages.
+const Trailer string = "Trailer"
+
+// TransferEncoding response HTTP header specifies the form of encoding used to safely transfer the payload body to the user.
+const TransferEncoding string = "Transfer-Encoding"
+
+// UpgradeInsecureRequests request HTTP header sends a signal to the server expressing the client’s preference for an encrypted and authenticated response.
+const UpgradeInsecureRequests string = "Upgrade-Insecure-Requests"
+
+// UserAgent request HTTP header is a characteristic string that lets servers and network peers identify the application, operating system, vendor, and/or version of the requesting user agent.
+const UserAgent string = "User-Agent"
+
+// Vary response HTTP header determines how to match future request headers to decide whether a cached response can be used rather than requesting a fresh one from the origin server.
+const Vary string = "Vary"
+
+// Via HTTP header is added by proxies, both forward and reverse proxies.
+const Via string = "Via"
