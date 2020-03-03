@@ -229,5 +229,11 @@ const SecFetchDest string = "Sec-Fetch-Dest"
 // SecFetchMode HTTP header indicates the request's mode.
 const SecFetchMode string = "Sec-Fetch-Mode"
 
+// SecFetchSite HTTP header indicates the relationship between a request initiator's origin and the origin of the resource.
+const SecFetchSite string = "Sec-Fetch-Site"
+
+// SecFetchUser HTTP header indicates whether or not a navigation request was triggered by a user activation.
+const SecFetchUser string = "Sec-Fetch-User"
+
 // SetCookie HTTP response header is used to send cookies from the server to the user agent, so the user agent can send them back to the server later.
 const SetCookie string = "Set-Cookie"
