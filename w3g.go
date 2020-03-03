@@ -292,3 +292,15 @@ const WantDigest string = "Want-Digest"
 
 // Warning HTTP header contains information about possible problems with the status of the message.
 const Warning string = "Warning"
+
+// XContentTypeOptions response HTTP header is a marker used by the server to indicate that the MIME types advertised in the Content-Type headers should not be changed.
+const XContentTypeOptions string = " X-Content-Type-Options"
+
+// XDNSPrefetchControl response HTTP header controls DNS prefetching.
+const XDNSPrefetchControl string = "X-DNS-Prefetch-Control"
+
+// XForwardedFor HTTP header is a standard header for identifying the originating IP address of a client connecting to a web server through an HTTP proxy or a load balancer.
+const XForwardedFor string = "X-Forwarded-For"
+
+// X-Forwarded-Host HTTP header is a standard header for identifying the original host requested by the client.
+const XForwardedHost string = "X-Forwarded-Host"
