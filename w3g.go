@@ -235,5 +235,24 @@ const SecFetchSite string = "Sec-Fetch-Site"
 // SecFetchUser HTTP header indicates whether or not a navigation request was triggered by a user activation.
 const SecFetchUser string = "Sec-Fetch-User"
 
+// SecWebSocketAccept WS header is used in the websocket opening handshake.
+const SecWebSocketAccept string = "Sec-WebSocket-Accept"
+
+// Server response HTTP header contains information about the software used by the origin server to handle the request.
+const Server string = "Server"
+
+// ServerTiming response HTTP header communicates one or more metrics and descriptions for a given request-response cycle.
+const ServerTiming string = "Server-Timing"
+
 // SetCookie HTTP response header is used to send cookies from the server to the user agent, so the user agent can send them back to the server later.
 const SetCookie string = "Set-Cookie"
+
+// SetCookie2 HTTP response header used to send cookies from the server to the user agent.
+const SetCookie2 string = "Set-Cookie2"
+
+// SourceMap HTTP response header links generated code to a source map, enabling the browser to reconstruct the original source and present
+// the reconstructed original in the debugger.
+const SourceMap string = "SourceMap"
+
+// StrictTransportSecurity response HTTP header lets a web site tell browsers that it should only be accessed using HTTPS, instead of using HTTP.
+const StrictTransportSecurity string = "Strict-Transport-Security"
