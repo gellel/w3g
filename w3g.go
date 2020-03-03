@@ -304,3 +304,12 @@ const XForwardedFor string = "X-Forwarded-For"
 
 // XForwardedHost HTTP header is a standard header for identifying the original host requested by the client.
 const XForwardedHost string = "X-Forwarded-Host"
+
+// XForwardedProto HTTP header is a standard header for identifying the protocol that a client used to connect to your proxy or load balancer.
+const XForwardedProto string = "X-Forwarded-Proto"
+
+// XFrameOptions response HTTP header can be used to indicate whether or not a browser should be allowed to render a page in a <frame>, <iframe>, <embed> or <object>.
+const XFrameOptions string = "X-Frame-Options"
+
+// XXSSProtection response HTTP header is a feature of Internet Explorer, Chrome and Safari that stops pages from loading when they detect reflected cross-site scripting.
+const XXSSProtection string = "X-XSS-Protection"
