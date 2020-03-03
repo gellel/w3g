@@ -138,3 +138,14 @@ const ETag string = "ETag"
 
 // EarlyData HTTP header is set by an intermediate to indicate that the request has been conveyed in TLS early data.
 const EarlyData string = "Early-Data"
+
+// Expect HTTP request header indicates expectations that need to be fulfilled by the server in order to properly handle the request.
+const Expect string = "Expect"
+
+// ExpectCT HTTP header allows sites to opt in to reporting and/or enforcement of Certificate Transparency requirements.
+const ExpectCT string = "Expect-CT"
+
+// Expires HTTP header contains the date/time after which the response is considered stale.
+const Expires string = "Expires"
+
+
