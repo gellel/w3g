@@ -202,5 +202,23 @@ const ProxyAuthenticate string = "Proxy-Authenticate"
 // ProxyAuthorization request HTTP header contains the credentials to authenticate a user agent to a proxy server.
 const ProxyAuthorization string = "Proxy-Authorization"
 
+// PublicKeyPins response HTTP header associates a specific cryptographic public key with a certain web server.
+const PublicKeyPins string = "Public-Key-Pins"
+
+// PublicKeyPinsReportOnly response HTTP header sends reports of pinning violation to the report-uri specified in the header.
+const PublicKeyPinsReportOnly string = "Public-Key-Pins-Report-Only"
+
+// Range HTTP request header indicates the part of a document that the server should return.
+const Range string = "Range"
+
+// Referer request HTTP header contains the address of the previous web page from which a link to the currently requested page was followed.
+const Referer string = "Referer"
+
+// ReferrerPolicy HTTP header controls how much referrer information should be included with requests.
+const ReferrerPolicy string = "Referrer-Policy"
+
+// RetryAfter response HTTP header indicates how long the user agent should wait before making a follow-up request.
+const RetryAfter string = "Retry-After"
+
 // SetCookie HTTP response header is used to send cookies from the server to the user agent, so the user agent can send them back to the server later.
 const SetCookie string = "Set-Cookie"
