@@ -169,5 +169,147 @@ const IfModifiedSince string = "If-Modified-Since"
 // IfNoneMatch HTTP request header makes the request conditional.
 const IfNoneMatch string = "If-None-Match"
 
+// IfRange HTTP request header makes a range request conditional.
+const IfRange string = "If-Range"
+
+// IfUnmodifiedSince request HTTP header makes the request conditional.
+const IfUnmodifiedSince string = "If-Unmodified-Since"
+
+// KeepAlive HTTP header allows the sender to hint about how the connection may be used to set a timeout and a maximum amount of requests.
+const KeepAlive string = "Keep-Alive"
+
+// LargeAllocation response HTTP header tells the browser that the page being loaded is going to want to perform a large allocation.
+const LargeAllocation string = "Large-Allocation"
+
+// LastModified response HTTP header contains the date and time at which the origin server believes the resource was last modified.
+const LastModified string = "Last-Modified"
+
+// Link HTTP header field provides a means for serialising one or more links in HTTP headers.
+const Link string = "Link"
+
+// Location response HTTP header indicates the URL to redirect a page to.
+const Location string = "Location"
+
+// Origin request HTTP header indicates where a fetch originates from.
+const Origin string = "Origin"
+
+// Pragma HTTP header is an implementation-specific header that is used for backwards compatibility with HTTP/1.0.
+const Pragma string = "Pragma"
+
+// ProxyAuthenticate response HTTP header defines the authentication method that should be used to gain access to a resource behind a proxy server.
+const ProxyAuthenticate string = "Proxy-Authenticate"
+
+// ProxyAuthorization request HTTP header contains the credentials to authenticate a user agent to a proxy server.
+const ProxyAuthorization string = "Proxy-Authorization"
+
+// PublicKeyPins response HTTP header associates a specific cryptographic public key with a certain web server.
+const PublicKeyPins string = "Public-Key-Pins"
+
+// PublicKeyPinsReportOnly response HTTP header sends reports of pinning violation to the report-uri specified in the header.
+const PublicKeyPinsReportOnly string = "Public-Key-Pins-Report-Only"
+
+// Range HTTP request header indicates the part of a document that the server should return.
+const Range string = "Range"
+
+// Referer request HTTP header contains the address of the previous web page from which a link to the currently requested page was followed.
+const Referer string = "Referer"
+
+// ReferrerPolicy HTTP header controls how much referrer information should be included with requests.
+const ReferrerPolicy string = "Referrer-Policy"
+
+// RetryAfter response HTTP header indicates how long the user agent should wait before making a follow-up request.
+const RetryAfter string = "Retry-After"
+
+// SaveData HTTP header field is a boolean which, in requests, indicates the client's preference for reduced data usage.
+const SaveData string = "Save-Data"
+
+// SecFetchDest HTTP header indicates the request's destination.
+const SecFetchDest string = "Sec-Fetch-Dest"
+
+// SecFetchMode HTTP header indicates the request's mode.
+const SecFetchMode string = "Sec-Fetch-Mode"
+
+// SecFetchSite HTTP header indicates the relationship between a request initiator's origin and the origin of the resource.
+const SecFetchSite string = "Sec-Fetch-Site"
+
+// SecFetchUser HTTP header indicates whether or not a navigation request was triggered by a user activation.
+const SecFetchUser string = "Sec-Fetch-User"
+
+// SecWebSocketAccept WS header is used in the websocket opening handshake.
+const SecWebSocketAccept string = "Sec-WebSocket-Accept"
+
+// Server response HTTP header contains information about the software used by the origin server to handle the request.
+const Server string = "Server"
+
+// ServerTiming response HTTP header communicates one or more metrics and descriptions for a given request-response cycle.
+const ServerTiming string = "Server-Timing"
+
 // SetCookie HTTP response header is used to send cookies from the server to the user agent, so the user agent can send them back to the server later.
 const SetCookie string = "Set-Cookie"
+
+// SetCookie2 HTTP response header used to send cookies from the server to the user agent.
+const SetCookie2 string = "Set-Cookie2"
+
+// SourceMap HTTP response header links generated code to a source map, enabling the browser to reconstruct the original source and present
+// the reconstructed original in the debugger.
+const SourceMap string = "SourceMap"
+
+// StrictTransportSecurity response HTTP header lets a web site tell browsers that it should only be accessed using HTTPS, instead of using HTTP.
+const StrictTransportSecurity string = "Strict-Transport-Security"
+
+// TE request HTTP header specifies the transfer encodings the user agent is willing to accept.
+const TE string = "TE"
+
+// TimingAllowOrigin response HTTP header specifies origins that are allowed to see values of attributes retrieved via features of the Resource Timing API.
+const TimingAllowOrigin string = "Timing-Allow-Origin"
+
+// Tk response HTTP header indicates the tracking status that applied to the corresponding request.
+const Tk string = "Tk"
+
+// Trailer response HTTP header allows the sender to include additional fields at the end of chunked messages.
+const Trailer string = "Trailer"
+
+// TransferEncoding response HTTP header specifies the form of encoding used to safely transfer the payload body to the user.
+const TransferEncoding string = "Transfer-Encoding"
+
+// UpgradeInsecureRequests request HTTP header sends a signal to the server expressing the client’s preference for an encrypted and authenticated response.
+const UpgradeInsecureRequests string = "Upgrade-Insecure-Requests"
+
+// UserAgent request HTTP header is a characteristic string that lets servers and network peers identify the application, operating system, vendor, and/or version of the requesting user agent.
+const UserAgent string = "User-Agent"
+
+// Vary response HTTP header determines how to match future request headers to decide whether a cached response can be used rather than requesting a fresh one from the origin server.
+const Vary string = "Vary"
+
+// Via HTTP header is added by proxies, both forward and reverse proxies.
+const Via string = "Via"
+
+// WWWAuthenticate response HTTP header defines the authentication method that should be used to gain access to a resource.
+const WWWAuthenticate string = "WWW-Authenticate"
+
+// WantDigest HTTP header is used to ask the responder to provide a digest of the requested resource.
+const WantDigest string = "Want-Digest"
+
+// Warning HTTP header contains information about possible problems with the status of the message.
+const Warning string = "Warning"
+
+// XContentTypeOptions response HTTP header is a marker used by the server to indicate that the MIME types advertised in the Content-Type headers should not be changed.
+const XContentTypeOptions string = " X-Content-Type-Options"
+
+// XDNSPrefetchControl response HTTP header controls DNS prefetching.
+const XDNSPrefetchControl string = "X-DNS-Prefetch-Control"
+
+// XForwardedFor HTTP header is a standard header for identifying the originating IP address of a client connecting to a web server through an HTTP proxy or a load balancer.
+const XForwardedFor string = "X-Forwarded-For"
+
+// XForwardedHost HTTP header is a standard header for identifying the original host requested by the client.
+const XForwardedHost string = "X-Forwarded-Host"
+
+// XForwardedProto HTTP header is a standard header for identifying the protocol that a client used to connect to your proxy or load balancer.
+const XForwardedProto string = "X-Forwarded-Proto"
+
+// XFrameOptions response HTTP header can be used to indicate whether or not a browser should be allowed to render a page in a <frame>, <iframe>, <embed> or <object>.
+const XFrameOptions string = "X-Frame-Options"
+
+// XXSSProtection response HTTP header is a feature of Internet Explorer, Chrome and Safari that stops pages from loading when they detect reflected cross-site scripting.
+const XXSSProtection string = "X-XSS-Protection"
