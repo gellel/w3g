@@ -178,5 +178,14 @@ const IfUnmodifiedSince string = "If-Unmodified-Since"
 // KeepAlive HTTP header allows the sender to hint about how the connection may be used to set a timeout and a maximum amount of requests.
 const KeepAlive string = "Keep-Alive"
 
+// LargeAllocation response HTTP header tells the browser that the page being loaded is going to want to perform a large allocation.
+const LargeAllocation string = "Large-Allocation"
+
+// LastModified response HTTP header contains the date and time at which the origin server believes the resource was last modified.
+const LastModified string = "Last-Modified"
+
+// Link entity-header field provides a means for serialising one or more links in HTTP headers.
+const Link string = "Link"
+
 // SetCookie HTTP response header is used to send cookies from the server to the user agent, so the user agent can send them back to the server later.
 const SetCookie string = "Set-Cookie"
