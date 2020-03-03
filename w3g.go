@@ -2,6 +2,7 @@ package w3g
 
 import (
 	"fmt"
+	"reflect"
 	"strings"
 )
 
@@ -86,6 +87,9 @@ const Connection string = "Connection"
 // ContentDisposition HTTP response header is a header indicating if the content is expected to be displayed inline in the browser,
 // that is, as a Web page or as part of a Web page, or as an attachment, that is downloaded and saved locally.
 const ContentDisposition string = "Content-Disposition"
+
+// ContentDPR HTTP header is a header that indicates the ratio between physical pixels over CSS pixels of the selected image.
+const ContentDPR string = "Content-DPR"
 
 // ContentEncoding HTTP header is used to compress the media-type.
 const ContentEncoding string = "Content-Encoding"
@@ -286,6 +290,9 @@ const UserAgent string = "User-Agent"
 // Vary response HTTP header determines how to match future request headers to decide whether a cached response can be used rather than requesting a fresh one from the origin server.
 const Vary string = "Vary"
 
+// ViewportWidth response HTTP header is a HTTP header that indicates the layout viewport width in CSS pixels.
+const ViewportWidth string = "Viewport-Width"
+
 // Via HTTP header is added by proxies, both forward and reverse proxies.
 const Via string = "Via"
 
@@ -297,6 +304,9 @@ const WantDigest string = "Want-Digest"
 
 // Warning HTTP header contains information about possible problems with the status of the message.
 const Warning string = "Warning"
+
+// Width request HTTP header is a number that indicates the desired resource width in physical pixels.
+const Width string = "Width"
 
 // XContentTypeOptions response HTTP header is a marker used by the server to indicate that the MIME types advertised in the Content-Type headers should not be changed.
 const XContentTypeOptions string = " X-Content-Type-Options"
@@ -340,16 +350,15 @@ func (a AcceptHTTPHeader) Value() string {
 		mimeSubType = a.MIMESubType
 	}
 	substrings[1] = (mimeSubType)
-	s = strings.Join(substrings, "/")
+	s = (strings.Join(substrings, "/"))
 	if qOK {
-		s = fmt.Sprintf("%s;q=%1.1f", s, a.Q)
+		s = (fmt.Sprintf("%s;q=%1.1f", s, a.Q))
 	}
 	return s
 }
 
-// NewAcceptHeader creates a new Accept HTTP request header as a formatted HTTP header value string.
-func NewAcceptHeader(h ...AcceptHTTPHeader) string {
-	var header AcceptHTTPHeader
+func newHTTPHeaderValue(h ...interface{ Value() string }) string {
+	var header interface{ Value() string }
 	var i int
 	var substrings []string = (make([]string, len(h)))
 	var s string
@@ -358,4 +367,55 @@ func NewAcceptHeader(h ...AcceptHTTPHeader) string {
 	}
 	s = strings.Join(substrings, ",")
 	return s
+}
+
+// NewAcceptHeader creates a new Accept HTTP request header as a formatted HTTP header value string.
+func NewAcceptHeader(h ...AcceptHTTPHeader) string {
+	var i int
+	var s = make([]interface{ Value() string }, len(h))
+	var v interface{ Value() string }
+	for i, v = range h {
+		(s[i]) = v
+	}
+	return (newHTTPHeaderValue(s...))
+}
+
+// AcceptCHHTTPHeader is a struct to prepare a Accept-CH HTTP response header.
+type AcceptCHHTTPHeader struct {
+	AcceptCH         bool `json:"accept_ch"`
+	AcceptCHLifetime bool `json:"accept_ch_lifetime"`
+	ContentDPR       bool `json:"content_dpr"`
+	DeviceMemory     bool `json:"device_memory"`
+	DPR              bool `json:"dpr"`
+	EarlyData        bool `json:"early_data"`
+	SaveData         bool `json:"save_data"`
+	ViewportWidth    bool `json:"viewport_width"`
+	Width            bool `json:"width"`
+}
+
+// Value returns a string representation of a Accept-CH HTTP request header value.
+func (a AcceptCHHTTPHeader) Value() string {
+	var substrings []string = (make([]string, 0))
+	var substring string
+	var s string
+	var r reflect.Value = reflect.ValueOf(a)
+	for _, substring = range []string{AcceptCH, AcceptCHLifetime, ContentDPR, DPR, EarlyData, SaveData, ViewportWidth, Width} {
+		var f reflect.Value = (r.FieldByName(substring))
+		if f.IsValid() && f.Bool() {
+			substrings = (append(substrings, substring))
+		}
+	}
+	s = (strings.Join(substrings, ","))
+	return s
+}
+
+// NewAcceptCHHeader creates a new Accept-CH HTTP response header as a formatted HTTP header value string.
+func NewAcceptCHHeader(h ...AcceptCHHTTPHeader) string {
+	var i int
+	var s = make([]interface{ Value() string }, len(h))
+	var v interface{ Value() string }
+	for i, v = range h {
+		(s[i]) = v
+	}
+	return (newHTTPHeaderValue(s...))
 }
