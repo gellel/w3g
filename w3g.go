@@ -184,8 +184,17 @@ const LargeAllocation string = "Large-Allocation"
 // LastModified response HTTP header contains the date and time at which the origin server believes the resource was last modified.
 const LastModified string = "Last-Modified"
 
-// Link entity-header field provides a means for serialising one or more links in HTTP headers.
+// Link HTTP header field provides a means for serialising one or more links in HTTP headers.
 const Link string = "Link"
+
+// Location response HTTP header indicates the URL to redirect a page to.
+const Location string = "Location"
+
+// Origin request HTTP header indicates where a fetch originates from.
+const Origin string = "Origin"
+
+// Pragma HTTP header is an implementation-specific header that is used for backwards compatibility with HTTP/1.0.
+const Pragma string = "Pragma"
 
 // SetCookie HTTP response header is used to send cookies from the server to the user agent, so the user agent can send them back to the server later.
 const SetCookie string = "Set-Cookie"
