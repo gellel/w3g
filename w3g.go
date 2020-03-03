@@ -283,3 +283,12 @@ const Vary string = "Vary"
 
 // Via HTTP header is added by proxies, both forward and reverse proxies.
 const Via string = "Via"
+
+// WWWAuthenticate response HTTP header defines the authentication method that should be used to gain access to a resource.
+const WWWAuthenticate string = "WWW-Authenticate"
+
+// WantDigest HTTP header is used to ask the responder to provide a digest of the requested resource.
+const WantDigest string = "Want-Digest"
+
+// Warning HTTP header contains information about possible problems with the status of the message.
+const Warning string = "Warning"
