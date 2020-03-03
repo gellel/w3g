@@ -151,5 +151,20 @@ const Expires string = "Expires"
 // FeaturePolicy HTTP header provides a mechanism to allow and deny the use of browser features in its own frame.
 const FeaturePolicy string = "Feature-Policy"
 
-// The Forwarded header contains information from the client-facing side of proxy servers that is altered or lost when a proxy is involved in the path of the request.
+// Forwarded HTTP header contains information from the client-facing side of proxy servers that is altered or lost when a proxy is involved in the path of the request.
 const Forwarded string = "Forwarded"
+
+// From HTTP request header contains an Internet email address for a human user who controls the requesting user agent.
+const From string = "From"
+
+// Host HTTP request header specifies the domain name of the server (for virtual hosting), and (optionally) the TCP port number on which the server is listening.
+const Host string = "Host"
+
+// IfMatch HTTP request header makes the request conditional.
+const IfMatch string = "If-Match"
+
+// IfModifiedSince request HTTP header makes the request conditional.
+const IfModifiedSince string = "If-Modified-Since"
+
+// IfNoneMatch HTTP request header makes the request conditional.
+const IfNoneMatch string = "If-None-Match"
