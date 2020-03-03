@@ -148,4 +148,8 @@ const ExpectCT string = "Expect-CT"
 // Expires HTTP header contains the date/time after which the response is considered stale.
 const Expires string = "Expires"
 
+// FeaturePolicy HTTP header provides a mechanism to allow and deny the use of browser features in its own frame.
+const FeaturePolicy string = "Feature-Policy"
 
+// The Forwarded header contains information from the client-facing side of proxy servers that is altered or lost when a proxy is involved in the path of the request.
+const Forwarded string = "Forwarded"
