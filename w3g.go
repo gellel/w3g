@@ -302,5 +302,5 @@ const XDNSPrefetchControl string = "X-DNS-Prefetch-Control"
 // XForwardedFor HTTP header is a standard header for identifying the originating IP address of a client connecting to a web server through an HTTP proxy or a load balancer.
 const XForwardedFor string = "X-Forwarded-For"
 
-// X-Forwarded-Host HTTP header is a standard header for identifying the original host requested by the client.
+// XForwardedHost HTTP header is a standard header for identifying the original host requested by the client.
 const XForwardedHost string = "X-Forwarded-Host"
