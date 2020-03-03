@@ -220,5 +220,14 @@ const ReferrerPolicy string = "Referrer-Policy"
 // RetryAfter response HTTP header indicates how long the user agent should wait before making a follow-up request.
 const RetryAfter string = "Retry-After"
 
+// SaveData HTTP header field is a boolean which, in requests, indicates the client's preference for reduced data usage.
+const SaveData string = "Save-Data"
+
+// SecFetchDest HTTP header indicates the request's destination.
+const SecFetchDest string = "Sec-Fetch-Dest"
+
+// SecFetchMode HTTP header indicates the request's mode.
+const SecFetchMode string = "Sec-Fetch-Mode"
+
 // SetCookie HTTP response header is used to send cookies from the server to the user agent, so the user agent can send them back to the server later.
 const SetCookie string = "Set-Cookie"
