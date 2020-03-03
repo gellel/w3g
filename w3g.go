@@ -1,5 +1,10 @@
 package w3g
 
+import (
+	"fmt"
+	"strings"
+)
+
 // Accept request HTTP header advertises which content types, expressed as MIME types, the client is able to understand.
 const Accept string = "Accept"
 
@@ -313,3 +318,44 @@ const XFrameOptions string = "X-Frame-Options"
 
 // XXSSProtection response HTTP header is a feature of Internet Explorer, Chrome and Safari that stops pages from loading when they detect reflected cross-site scripting.
 const XXSSProtection string = "X-XSS-Protection"
+
+// AcceptHTTPHeader is a struct to prepare a Accept HTTP request header.
+type AcceptHTTPHeader struct {
+	MIMESubType string  `json:"mime_subtype"`
+	MIMEType    string  `json:"mime_type"`
+	Q           float32 `json:"q"`
+}
+
+// Value returns a string representation of a Accept HTTP request header value.
+func (a AcceptHTTPHeader) Value() string {
+	var mimeSubTypeLengthOK, mimeTypeLengthOK, qOK bool = (len(a.MIMEType) != 0), (len(a.MIMESubType) != 0), (a.Q != 0)
+	var mimeSubType, mimeType string = "*", "*"
+	var substrings []string = (make([]string, 2))
+	var s string
+	if mimeTypeLengthOK {
+		mimeType = a.MIMEType
+	}
+	substrings[0] = (mimeType)
+	if mimeSubTypeLengthOK {
+		mimeSubType = a.MIMESubType
+	}
+	substrings[1] = (mimeSubType)
+	s = strings.Join(substrings, "/")
+	if qOK {
+		s = fmt.Sprintf("%s;q=%1.1f", s, a.Q)
+	}
+	return s
+}
+
+// NewAcceptHeader creates a new Accept HTTP request header as a formatted HTTP header value string.
+func NewAcceptHeader(h ...AcceptHTTPHeader) string {
+	var header AcceptHTTPHeader
+	var i int
+	var substrings []string = (make([]string, len(h)))
+	var s string
+	for i, header = range h {
+		substrings[i] = (header.Value())
+	}
+	s = strings.Join(substrings, ",")
+	return s
+}
