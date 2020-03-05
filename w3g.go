@@ -337,7 +337,7 @@ type AcceptHeader struct {
 	Q           float32 `json:"q"`
 }
 
-// Value returns a string representation of a Accept HTTP request header value.
+// Value returns a string representation of a Accept HTTP header value.
 func (a AcceptHeader) Value() string {
 	var mimeSubTypeLengthOK, mimeTypeLengthOK, qOK bool = (len(a.MIMEType) != 0), (len(a.MIMESubType) != 0), (a.Q != 0)
 	var mimeSubType, mimeType string = "*", "*"
@@ -371,7 +371,7 @@ type AcceptCHHeader struct {
 	Width            bool `json:"width"`
 }
 
-// Value returns a string representation of a Accept-CH HTTP request header value.
+// Value returns a string representation of a Accept-CH HTTP header value.
 func (a AcceptCHHeader) Value() string {
 	var substrings []string = (make([]string, 0))
 	var substring string
@@ -383,7 +383,7 @@ func (a AcceptCHHeader) Value() string {
 			substrings = (append(substrings, substring))
 		}
 	}
-	s = (strings.Join(substrings, ","))
+	s = (strings.Join(substrings, ", "))
 	return s
 }
 
@@ -392,7 +392,7 @@ type AcceptCHLifetimeHeader struct {
 	Age int64 `json:"age"`
 }
 
-// Value returns a string representation of a Accept-CH-Lifetime HTTP response header value.
+// Value returns a string representation of a Accept-CH-Lifetime HTTP header value.
 func (a AcceptCHLifetimeHeader) Value() string {
 	return (fmt.Sprintf("%d", a.Age))
 }
@@ -403,7 +403,7 @@ type AcceptCharsetHeader struct {
 	Q       float32 `json:"q"`
 }
 
-// Value returns a string representation of a Accept-Charset HTTP request header value.
+// Value returns a string representation of a Accept-Charset HTTP header value.
 func (a AcceptCharsetHeader) Value() string {
 	var charsetOK, qOK bool = (len(a.Charset) != 0), (a.Q != 0)
 	var charset string = "*"
@@ -426,7 +426,7 @@ type AcceptEncodingHeader struct {
 	Q        float32 `json:"q"`
 }
 
-// Value returns a string representation of a Accept-Charset HTTP request header value.
+// Value returns a string representation of a Accept-Charset HTTP header value.
 func (a AcceptEncodingHeader) Value() string {
 	var encodingOK, qOK bool = (len(a.Encoding) != 0), (a.Q != 0)
 	var encoding string = "*"
@@ -449,7 +449,7 @@ type AcceptLanguageHeader struct {
 	Q        float32 `json:"q"`
 }
 
-// Value returns a string representation of a Accept-Language HTTP request header value.
+// Value returns a string representation of a Accept-Language HTTP header value.
 func (a AcceptLanguageHeader) Value() string {
 	var languageOK, qOK bool = (len(a.Language) != 0), (a.Q != 0)
 	var language string = "*"
@@ -466,14 +466,14 @@ func (a AcceptLanguageHeader) Value() string {
 	return s
 }
 
-// AcceptPatchHeader is a struct to prepare a Accept-Patch HTTP response header value.
+// AcceptPatchHeader is a struct to prepare a Accept-Patch HTTP header value.
 type AcceptPatchHeader struct {
 	MIMESubType string `json:"mime_subtype"`
 	MIMEType    string `json:"mime_type"`
 	Charset     string `json:"charset"`
 }
 
-// Value returns a string representation of a Accept-Patch HTTP response header value.
+// Value returns a string representation of a Accept-Patch HTTP header value.
 func (a AcceptPatchHeader) Value() string {
 	var charsetOK, mimeSubTypeLengthOK, mimeTypeLengthOK bool = (len(a.Charset) != 0), (len(a.MIMEType) != 0), (len(a.MIMESubType) != 0)
 	var mimeSubType, mimeType string = "*", "*"
@@ -494,12 +494,12 @@ func (a AcceptPatchHeader) Value() string {
 	return s
 }
 
-// AcceptRangesHeader is a struct to prepare a Accept-Ranges HTTP response header value.
+// AcceptRangesHeader is a struct to prepare a Accept-Ranges HTTP header value.
 type AcceptRangesHeader struct {
 	Bytes bool `json:"bytes"`
 }
 
-// Value returns a string representation of a Accept-Ranges HTTP response header value.
+// Value returns a string representation of a Accept-Ranges HTTP header value.
 func (a AcceptRangesHeader) Value() string {
 	if a.Bytes {
 		return "bytes"
@@ -507,37 +507,37 @@ func (a AcceptRangesHeader) Value() string {
 	return "none"
 }
 
-// AccessControlAllowCredentialsHeader is a struct to prepare a Access-Control-Allow-Credentials HTTP response header value.
+// AccessControlAllowCredentialsHeader is a struct to prepare a Access-Control-Allow-Credentials HTTP header value.
 type AccessControlAllowCredentialsHeader struct {
 	Allow bool `json:"allow"`
 }
 
-// Value returns a string representation of a Access-Control-Allow-Credentials HTTP response header value.
+// Value returns a string representation of a Access-Control-Allow-Credentials HTTP header value.
 func (a AccessControlAllowCredentialsHeader) Value() string {
 	return (fmt.Sprintf("%t", a.Allow))
 }
 
-// AccessControlAllowHeadersHeader is a struct to prepare a Access-Control-Allow-Headers HTTP response header value.
+// AccessControlAllowHeadersHeader is a struct to prepare a Access-Control-Allow-Headers HTTP header value.
 type AccessControlAllowHeadersHeader struct {
 	Headers []string `json:"headers"`
 }
 
-// Value returns a string representation of a Access-Control-Allow-Headers HTTP response header value.
+// Value returns a string representation of a Access-Control-Allow-Headers HTTP header value.
 func (a AccessControlAllowHeadersHeader) Value() string {
 	var headersOK bool = (len(a.Headers) != 0)
 	var s string = "*"
 	if headersOK {
-		s = (strings.Join(a.Headers, ","))
+		s = (strings.Join(a.Headers, ", "))
 	}
 	return s
 }
 
-// AcceptControlAllowOriginHeader is a struct to prepare a Accept-Control-Allow-Origin HTTP response header value.
+// AcceptControlAllowOriginHeader is a struct to prepare a Accept-Control-Allow-Origin HTTP header value.
 type AcceptControlAllowOriginHeader struct {
 	Origin string `json:"origin"`
 }
 
-// Value returns a string representation of a Access-Control-Allow-Origin HTTP response header value.
+// Value returns a string representation of a Access-Control-Allow-Origin HTTP header value.
 func (a AcceptControlAllowOriginHeader) Value() string {
 	var originOK bool = (len(a.Origin) != 0)
 	var s string = "*"
@@ -547,17 +547,17 @@ func (a AcceptControlAllowOriginHeader) Value() string {
 	return s
 }
 
-// AcceptControlExposeHeadersHeader is a struct to prepare a Access-Control-Expose-Headers HTTP response header value.
+// AcceptControlExposeHeadersHeader is a struct to prepare a Access-Control-Expose-Headers HTTP header value.
 type AcceptControlExposeHeadersHeader struct {
 	Headers []string `json:"headers"`
 }
 
-// Value returns a string representation of a Access-Control-Expose-Headers HTTP response header value.
+// Value returns a string representation of a Access-Control-Expose-Headers HTTP header value.
 func (a AcceptControlExposeHeadersHeader) Value() string {
 	var headersOK bool = (len(a.Headers) != 0)
 	var s string = "*"
 	if headersOK {
-		s = (strings.Join(a.Headers, ","))
+		s = (strings.Join(a.Headers, ", "))
 	}
 	return s
 }
@@ -567,32 +567,32 @@ type AccessControlMaxAgeHeader struct {
 	Age int64 `json:"age"`
 }
 
-// Value returns a string representation of a Access-Control-Max-Age HTTP response header value.
+// Value returns a string representation of a Access-Control-Max-Age HTTP header value.
 func (a AccessControlMaxAgeHeader) Value() string {
 	return (fmt.Sprintf("%d", a.Age))
 }
 
-// AcceptControlRequestHeadersHeader is a struct to prepare a Access-Control-Request-Headers HTTP response header value.
+// AcceptControlRequestHeadersHeader is a struct to prepare a Access-Control-Request-Headers HTTP header value.
 type AcceptControlRequestHeadersHeader struct {
 	Headers []string `json:"headers"`
 }
 
-// Value returns a string representation of a Access-Control-Request-Headers HTTP response header value.
+// Value returns a string representation of a Access-Control-Request-Headers HTTP header value.
 func (a AcceptControlRequestHeadersHeader) Value() string {
 	var headersOK bool = (len(a.Headers) != 0)
 	var s string = "*"
 	if headersOK {
-		s = (strings.Join(a.Headers, ","))
+		s = (strings.Join(a.Headers, ", "))
 	}
 	return s
 }
 
-// AcceptControlRequestMethodHeader is a struct to prepare a Access-Control-Request-Method HTTP response header value.
+// AcceptControlRequestMethodHeader is a struct to prepare a Access-Control-Request-Method HTTP header value.
 type AcceptControlRequestMethodHeader struct {
 	Method string `json:"method"`
 }
 
-// Value returns a string representation of a Access-Control-Request-Method HTTP response header value.
+// Value returns a string representation of a Access-Control-Request-Method HTTP header value.
 func (a AcceptControlRequestMethodHeader) Value() string {
 	var methodsOK bool = (len(a.Method) != 0)
 	if methodsOK {
@@ -606,27 +606,27 @@ type AgeHeader struct {
 	Age int64 `json:"age"`
 }
 
-// Value returns a string representation of a Age HTTP response header value.
+// Value returns a string representation of a Age HTTP header value.
 func (a AgeHeader) Value() string {
 	return (fmt.Sprintf("%d", a.Age))
 }
 
-// AllowHeader is a struct to prepare a Allow HTTP response header value.
+// AllowHeader is a struct to prepare a Allow HTTP header value.
 type AllowHeader struct {
 	Methods []string `json:"methods"`
 }
 
-// Value returns a string representation of a Allow HTTP response header value.
+// Value returns a string representation of a Allow HTTP header value.
 func (a AllowHeader) Value() string {
 	var methods []string = (make([]string, 0))
 	var methodsOK bool = (len(a.Methods) != 0)
 	if methodsOK {
 		methods = (a.Methods)
 	}
-	return strings.Join(methods, ",")
+	return strings.Join(methods, ", ")
 }
 
-// AltSvcHeader is a struct to prepare a Alt-Svc HTTP response header value.
+// AltSvcHeader is a struct to prepare a Alt-Svc HTTP header value.
 type AltSvcHeader struct {
 	AltAuthority string `json:"alt_authority"`
 	Clear        bool   `json:"clear"`
@@ -635,7 +635,7 @@ type AltSvcHeader struct {
 	ProtocolID   string `json:"protocol_id"`
 }
 
-// Value returns a string representation of a Alt-Svc HTTP response header value.
+// Value returns a string representation of a Alt-Svc HTTP header value.
 func (a AltSvcHeader) Value() string {
 	var s string = "clear"
 	if a.Clear {
@@ -651,13 +651,82 @@ func (a AltSvcHeader) Value() string {
 	return s
 }
 
-// AuthorizationHeader is a struct to prepare a Authorization HTTP request header value.
+// AuthorizationHeader is a struct to prepare a Authorization HTTP header value.
 type AuthorizationHeader struct {
 	Credentials string `json:"credentials"`
 	Type        string `json:"type"`
 }
 
-// Value returns a string representation of a Authorization HTTP request header value.
+// Value returns a string representation of a Authorization HTTP header value.
 func (a AuthorizationHeader) Value() string {
 	return (fmt.Sprintf("%s %s", a.Type, a.Credentials))
+}
+
+// CacheControlHeader is a struct to prepare a Cache-Control HTTP header value.
+type CacheControlHeader struct {
+	Immutable            bool  `json:"immutable"`
+	MaxAge               int64 `json:"max_age"`
+	MaxStale             int64 `json:"max_stale"`
+	MinFresh             int64 `json:"min_stale"`
+	MustRevalidate       bool  `json:"must_revalidate"`
+	NoCache              bool  `json:"no_cache"`
+	NoStore              bool  `json:"no_store"`
+	NoTransform          bool  `json:"no_transform"`
+	OnlyIfCached         bool  `json:"only_if_cached"`
+	Private              bool  `json:"private"`
+	ProxyRevalidate      bool  `json:"proxy_revalidate"`
+	Public               bool  `json:"public"`
+	SMaxAge              int64 `json:"s_max_age"`
+	StaleIfError         int64 `json:"stale_if_error"`
+	StaleWhileRevalidate int64 `json:"stale_while_revalidate"`
+}
+
+// Value returns a string representation of a Cache-Control HTTP header value.
+func (c CacheControlHeader) Value() string {
+	var substrings []string = (make([]string, 0))
+	var s string
+	if c.Immutable {
+		(substrings) = (append(substrings, "immutable"))
+	}
+	if c.MaxAge > -1 {
+		(substrings) = (append(substrings, fmt.Sprintf(("max-age=%d"), (c.MaxAge))))
+	}
+	if c.MaxStale > -1 {
+		(substrings) = (append(substrings, fmt.Sprintf(("max-stale=%d"), (c.MaxStale))))
+	}
+	if c.MinFresh > -1 {
+		(substrings) = (append(substrings, fmt.Sprintf(("min-fresh=%d"), c.MinFresh)))
+	}
+	if c.MustRevalidate {
+		(substrings) = (append(substrings, ("must-revalidate")))
+	}
+	if c.NoCache {
+		(substrings) = (append(substrings, ("no-cache")))
+	}
+	if c.NoStore {
+		(substrings) = (append(substrings, ("no-store")))
+	}
+	if c.NoTransform {
+		(substrings) = (append(substrings, ("no-transform")))
+	}
+	if c.Private {
+		(substrings) = (append(substrings, ("private")))
+	}
+	if c.ProxyRevalidate {
+		(substrings) = (append(substrings, ("proxy-revalidate")))
+	}
+	if c.Public {
+		(substrings) = (append(substrings, ("public")))
+	}
+	if c.SMaxAge > -1 {
+		(substrings) = (append(substrings, fmt.Sprintf(("s-maxage=%d"), c.SMaxAge)))
+	}
+	if c.StaleIfError > -1 {
+		(substrings) = (append(substrings, fmt.Sprintf(("stale-if-error=%d"), c.StaleIfError)))
+	}
+	if c.StaleWhileRevalidate > -1 {
+		(substrings) = (append(substrings, fmt.Sprintf(("stale-while-revalidate=%d"), c.StaleWhileRevalidate)))
+	}
+	(s) = (strings.Join(substrings, ", "))
+	return s
 }
