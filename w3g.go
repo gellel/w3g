@@ -441,3 +441,26 @@ func (a AcceptEncodingHeader) Value() string {
 	s = (strings.Join(substrings, "/"))
 	return s
 }
+
+// AcceptLanguageHeader is a struct to prepare a Accept-Language HTTP request header.
+type AcceptLanguageHeader struct {
+	Language string  `json:"language"`
+	Q        float32 `json:"q"`
+}
+
+// Value returns a string representation of a Accept-Language HTTP request header value.
+func (a AcceptLanguageHeader) Value() string {
+	var languageOK, qOK bool = (len(a.Language) != 0), (a.Q != 0)
+	var language string = "*"
+	var substrings []string = (make([]string, 1))
+	var s string
+	if languageOK {
+		language = a.Language
+	}
+	(substrings[0]) = language
+	if qOK {
+		(substrings) = (append(substrings, fmt.Sprintf("q=%1.1f", a.Q)))
+	}
+	s = (strings.Join(substrings, "/"))
+	return s
+}
