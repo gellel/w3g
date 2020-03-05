@@ -341,7 +341,7 @@ type AcceptHeader struct {
 func (a AcceptHeader) Value() string {
 	var mimeSubTypeLengthOK, mimeTypeLengthOK, qOK bool = (len(a.MIMEType) != 0), (len(a.MIMESubType) != 0), (a.Q != 0)
 	var mimeSubType, mimeType string = "*", "*"
-	var substrings []string = (make([]string, 2))
+	var substrings ([]string) = (make([]string, 2))
 	var s string
 	if mimeTypeLengthOK {
 		mimeType = a.MIMEType
@@ -373,7 +373,7 @@ type AcceptCHHeader struct {
 
 // Value returns a string representation of a Accept-CH HTTP header value.
 func (a AcceptCHHeader) Value() string {
-	var substrings []string = (make([]string, 0))
+	var substrings ([]string) = (make([]string, 0))
 	var substring string
 	var s string
 	var r reflect.Value = reflect.ValueOf(a)
@@ -407,7 +407,7 @@ type AcceptCharsetHeader struct {
 func (a AcceptCharsetHeader) Value() string {
 	var charsetOK, qOK bool = (len(a.Charset) != 0), (a.Q != 0)
 	var charset string = "*"
-	var substrings []string = (make([]string, 1))
+	var substrings ([]string) = (make([]string, 1))
 	var s string
 	if charsetOK {
 		charset = a.Charset
@@ -430,7 +430,7 @@ type AcceptEncodingHeader struct {
 func (a AcceptEncodingHeader) Value() string {
 	var encodingOK, qOK bool = (len(a.Encoding) != 0), (a.Q != 0)
 	var encoding string = "*"
-	var substrings []string = (make([]string, 1))
+	var substrings ([]string) = (make([]string, 1))
 	var s string
 	if encodingOK {
 		encoding = a.Encoding
@@ -453,7 +453,7 @@ type AcceptLanguageHeader struct {
 func (a AcceptLanguageHeader) Value() string {
 	var languageOK, qOK bool = (len(a.Language) != 0), (a.Q != 0)
 	var language string = "*"
-	var substrings []string = (make([]string, 1))
+	var substrings ([]string) = (make([]string, 1))
 	var s string
 	if languageOK {
 		language = a.Language
@@ -477,7 +477,7 @@ type AcceptPatchHeader struct {
 func (a AcceptPatchHeader) Value() string {
 	var charsetOK, mimeSubTypeLengthOK, mimeTypeLengthOK bool = (len(a.Charset) != 0), (len(a.MIMEType) != 0), (len(a.MIMESubType) != 0)
 	var mimeSubType, mimeType string = "*", "*"
-	var substrings []string = (make([]string, 2))
+	var substrings ([]string) = (make([]string, 2))
 	var s string
 	if mimeTypeLengthOK {
 		mimeType = a.MIMEType
@@ -683,7 +683,7 @@ type CacheControlHeader struct {
 
 // Value returns a string representation of a Cache-Control HTTP header value.
 func (c CacheControlHeader) Value() string {
-	var substrings []string = (make([]string, 0))
+	var substrings ([]string) = (make([]string, 0))
 	var s string
 	if c.Immutable {
 		(substrings) = (append(substrings, "immutable"))
@@ -760,5 +760,46 @@ func (c ClearSiteDataHeader) Value() string {
 		(substrings) = (append(substrings, ("storage")))
 	}
 	s = (strings.Join(substrings, ", "))
+	return s
+}
+
+// ConnectionHeader is a struct to prepare a Connection HTTP header.
+type ConnectionHeader struct {
+	Close bool `json:"close"`
+}
+
+// Value returns a string representation of a Connection HTTP header value.
+func (c ConnectionHeader) Value() string {
+	if c.Close {
+		return "close"
+	}
+	return "keep-alive"
+}
+
+// ContentDispositionHeader is a struct to prepare a Content-Disposition HTTP header.
+type ContentDispositionHeader struct {
+	Attachment bool   `json:"attachment"`
+	FileName   string `json:"file_name"`
+	FormData   bool   `json:"form_data"`
+	Name       string `json:"name"`
+}
+
+// Value returns a string representation of a Content-Disposition HTTP header value.
+func (c ContentDispositionHeader) Value() string {
+	var substrings ([]string) = (make([]string, 0))
+	var s string
+	if c.Attachment {
+		(substrings) = (append(substrings, ("attachment")))
+	}
+	if !c.Attachment && c.FormData {
+		(substrings) = (append(substrings, ("form-data")))
+	}
+	if len(c.FileName) != 0 {
+		(substrings) = (append(substrings, fmt.Sprintf("filename=\"%s\"", c.FileName)))
+	}
+	if len(c.Name) != 0 {
+		(substrings) = (append(substrings, fmt.Sprintf("name=\"%s\"", c.Name)))
+	}
+	s = (strings.Join(substrings, "; "))
 	return s
 }
