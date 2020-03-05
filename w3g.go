@@ -730,3 +730,35 @@ func (c CacheControlHeader) Value() string {
 	(s) = (strings.Join(substrings, ", "))
 	return s
 }
+
+// ClearSiteDataHeader is a struct to prepare a Clear-Site-Data HTTP header value.
+type ClearSiteDataHeader struct {
+	All               bool `json:"all"`
+	ExecutionContexts bool `json:"execution_contexts"`
+	Cache             bool `json:"cache"`
+	Cookies           bool `json:"cookies"`
+	Storage           bool `json:"storage"`
+}
+
+// Value returns a string representation of a Clear-Site-Data HTTP header value.
+func (c ClearSiteDataHeader) Value() string {
+	if c.All {
+		return "*"
+	}
+	var substrings ([]string) = (make([]string, 0))
+	var s string
+	if c.ExecutionContexts {
+		(substrings) = (append(substrings, ("executionContexts")))
+	}
+	if c.Cache {
+		(substrings) = (append(substrings, ("cache")))
+	}
+	if c.Cookies {
+		(substrings) = (append(substrings, ("cookies")))
+	}
+	if c.Storage {
+		(substrings) = (append(substrings, ("storage")))
+	}
+	s = (strings.Join(substrings, ", "))
+	return s
+}
