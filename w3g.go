@@ -628,11 +628,11 @@ func (a AllowHeader) Value() string {
 
 // AltSvcHeader is a struct to prepare a Alt-Svc HTTP response header value.
 type AltSvcHeader struct {
-	AltAuthority string
-	Clear        bool
-	MaxAge       int64
-	Persist      bool
-	ProtocolID   string
+	AltAuthority string `json:"alt_authority"`
+	Clear        bool   `json:"clear"`
+	MaxAge       int64  `json:"max_age"`
+	Persist      bool   `json:"persist"`
+	ProtocolID   string `json:"protocol_id"`
 }
 
 // Value returns a string representation of a Alt-Svc HTTP response header value.
@@ -649,4 +649,15 @@ func (a AltSvcHeader) Value() string {
 		s = (fmt.Sprintf(("%s;persist=1"), s))
 	}
 	return s
+}
+
+// AuthorizationHeader is a struct to prepare a Authorization HTTP request header value.
+type AuthorizationHeader struct {
+	Credentials string `json:"credentials"`
+	Type        string `json:"type"`
+}
+
+// Value returns a string representation of a Authorization HTTP request header value.
+func (a AuthorizationHeader) Value() string {
+	return (fmt.Sprintf("%s %s", a.Type, a.Credentials))
 }
