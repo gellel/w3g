@@ -329,15 +329,15 @@ const XFrameOptions string = "X-Frame-Options"
 // XXSSProtection response HTTP header is a feature of Internet Explorer, Chrome and Safari that stops pages from loading when they detect reflected cross-site scripting.
 const XXSSProtection string = "X-XSS-Protection"
 
-// AcceptHTTPHeader is a struct to prepare a Accept HTTP request header.
-type AcceptHTTPHeader struct {
+// AcceptHeader is a struct to prepare a Accept HTTP request header.
+type AcceptHeader struct {
 	MIMESubType string  `json:"mime_subtype"`
 	MIMEType    string  `json:"mime_type"`
 	Q           float32 `json:"q"`
 }
 
 // Value returns a string representation of a Accept HTTP request header value.
-func (a AcceptHTTPHeader) Value() string {
+func (a AcceptHeader) Value() string {
 	var mimeSubTypeLengthOK, mimeTypeLengthOK, qOK bool = (len(a.MIMEType) != 0), (len(a.MIMESubType) != 0), (a.Q != 0)
 	var mimeSubType, mimeType string = "*", "*"
 	var substrings []string = (make([]string, 2))
@@ -357,31 +357,8 @@ func (a AcceptHTTPHeader) Value() string {
 	return s
 }
 
-func newHTTPHeaderValue(h ...interface{ Value() string }) string {
-	var header interface{ Value() string }
-	var i int
-	var substrings []string = (make([]string, len(h)))
-	var s string
-	for i, header = range h {
-		substrings[i] = (header.Value())
-	}
-	s = strings.Join(substrings, ",")
-	return s
-}
-
-// NewAcceptHeader creates a new Accept HTTP request header as a formatted HTTP header value string.
-func NewAcceptHeader(h ...AcceptHTTPHeader) string {
-	var i int
-	var s = make([]interface{ Value() string }, len(h))
-	var v interface{ Value() string }
-	for i, v = range h {
-		(s[i]) = v
-	}
-	return (newHTTPHeaderValue(s...))
-}
-
-// AcceptCHHTTPHeader is a struct to prepare a Accept-CH HTTP response header.
-type AcceptCHHTTPHeader struct {
+// AcceptCHHeader is a struct to prepare a Accept-CH HTTP response header.
+type AcceptCHHeader struct {
 	AcceptCH         bool `json:"accept_ch"`
 	AcceptCHLifetime bool `json:"accept_ch_lifetime"`
 	ContentDPR       bool `json:"content_dpr"`
@@ -394,7 +371,7 @@ type AcceptCHHTTPHeader struct {
 }
 
 // Value returns a string representation of a Accept-CH HTTP request header value.
-func (a AcceptCHHTTPHeader) Value() string {
+func (a AcceptCHHeader) Value() string {
 	var substrings []string = (make([]string, 0))
 	var substring string
 	var s string
@@ -409,13 +386,58 @@ func (a AcceptCHHTTPHeader) Value() string {
 	return s
 }
 
-// NewAcceptCHHeader creates a new Accept-CH HTTP response header as a formatted HTTP header value string.
-func NewAcceptCHHeader(h ...AcceptCHHTTPHeader) string {
-	var i int
-	var s = make([]interface{ Value() string }, len(h))
-	var v interface{ Value() string }
-	for i, v = range h {
-		(s[i]) = v
+// AcceptCHLifetimeHeader is a struct to prepare a Accept-CH-Lifetime HTTP response header.
+type AcceptCHLifetimeHeader struct {
+	Age int64 `json:"age"`
+}
+
+// Value returns a string representation of a Accept-CH-Lifetime HTTP response header value.
+func (a AcceptCHLifetimeHeader) Value() string {
+	return (fmt.Sprintf("%d", a.Age))
+}
+
+// AcceptCharsetHeader is a struct to prepare a Accept-Charset HTTP request header.
+type AcceptCharsetHeader struct {
+	Charset string  `json:"charset"`
+	Q       float32 `json:"q"`
+}
+
+// Value returns a string representation of a Accept-Charset HTTP request header value.
+func (a AcceptCharsetHeader) Value() string {
+	var charsetOK, qOK bool = (len(a.Charset) != 0), (a.Q != 0)
+	var charset string = "*"
+	var substrings []string = (make([]string, 1))
+	var s string
+	if charsetOK {
+		charset = a.Charset
 	}
-	return (newHTTPHeaderValue(s...))
+	(substrings[0]) = charset
+	if qOK {
+		(substrings) = (append(substrings, fmt.Sprintf("q=%1.1f", a.Q)))
+	}
+	s = (strings.Join(substrings, "/"))
+	return s
+}
+
+// AcceptEncodingHeader is a struct to prepare a Accept-Encoding HTTP request header.
+type AcceptEncodingHeader struct {
+	Encoding string  `json:"encoding"`
+	Q        float32 `json:"q"`
+}
+
+// Value returns a string representation of a Accept-Charset HTTP request header value.
+func (a AcceptEncodingHeader) Value() string {
+	var encodingOK, qOK bool = (len(a.Encoding) != 0), (a.Q != 0)
+	var encoding string = "*"
+	var substrings []string = (make([]string, 1))
+	var s string
+	if encodingOK {
+		encoding = a.Encoding
+	}
+	(substrings[0]) = encoding
+	if qOK {
+		(substrings) = (append(substrings, fmt.Sprintf("q=%1.1f", a.Q)))
+	}
+	s = (strings.Join(substrings, "/"))
+	return s
 }
