@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"reflect"
+	"regexp"
 	"strings"
 )
 
@@ -378,7 +379,7 @@ func (a AcceptCHHeader) Value() string {
 	var s string
 	var r reflect.Value = reflect.ValueOf(a)
 	for _, substring = range []string{AcceptCH, AcceptCHLifetime, ContentDPR, DPR, EarlyData, SaveData, ViewportWidth, Width} {
-		var f reflect.Value = (r.FieldByName(substring))
+		var f reflect.Value = (r.FieldByName(strings.ReplaceAll(substring, "-", "")))
 		if f.IsValid() && f.Bool() {
 			substrings = (append(substrings, substring))
 		}
@@ -477,20 +478,22 @@ type AcceptPatchHeader struct {
 func (a AcceptPatchHeader) Value() string {
 	var charsetOK, mimeSubTypeLengthOK, mimeTypeLengthOK bool = (len(a.Charset) != 0), (len(a.MIMEType) != 0), (len(a.MIMESubType) != 0)
 	var mimeSubType, mimeType string = "*", "*"
-	var substrings ([]string) = (make([]string, 2))
+	var substrings ([]string) = (make([]string, 0))
 	var s string
 	if mimeTypeLengthOK {
 		mimeType = a.MIMEType
 	}
-	substrings[0] = (mimeType)
+	(substrings) = (append(substrings, (mimeType)))
 	if mimeSubTypeLengthOK {
 		mimeSubType = a.MIMESubType
 	}
-	substrings[1] = (mimeSubType)
+	(substrings) = (append(substrings, (mimeSubType)))
 	s = (strings.Join(substrings, "/"))
+	(substrings) = ([]string{s})
 	if charsetOK {
-		s = (fmt.Sprintf("%s;charset=%s", s, a.Charset))
+		(substrings) = (append(substrings, fmt.Sprintf("charset=%s", a.Charset)))
 	}
+	s = (strings.Join(substrings, ";"))
 	return s
 }
 
@@ -683,49 +686,23 @@ type CacheControlHeader struct {
 
 // Value returns a string representation of a Cache-Control HTTP header value.
 func (c CacheControlHeader) Value() string {
+	var regex *regexp.Regexp = regexp.MustCompile(`[A-Z][^A-Z]*`)
 	var substrings ([]string) = (make([]string, 0))
 	var s string
-	if c.Immutable {
-		(substrings) = (append(substrings, "immutable"))
-	}
-	if c.MaxAge > -1 {
-		(substrings) = (append(substrings, fmt.Sprintf(("max-age=%d"), (c.MaxAge))))
-	}
-	if c.MaxStale > -1 {
-		(substrings) = (append(substrings, fmt.Sprintf(("max-stale=%d"), (c.MaxStale))))
-	}
-	if c.MinFresh > -1 {
-		(substrings) = (append(substrings, fmt.Sprintf(("min-fresh=%d"), c.MinFresh)))
-	}
-	if c.MustRevalidate {
-		(substrings) = (append(substrings, ("must-revalidate")))
-	}
-	if c.NoCache {
-		(substrings) = (append(substrings, ("no-cache")))
-	}
-	if c.NoStore {
-		(substrings) = (append(substrings, ("no-store")))
-	}
-	if c.NoTransform {
-		(substrings) = (append(substrings, ("no-transform")))
-	}
-	if c.Private {
-		(substrings) = (append(substrings, ("private")))
-	}
-	if c.ProxyRevalidate {
-		(substrings) = (append(substrings, ("proxy-revalidate")))
-	}
-	if c.Public {
-		(substrings) = (append(substrings, ("public")))
-	}
-	if c.SMaxAge > -1 {
-		(substrings) = (append(substrings, fmt.Sprintf(("s-maxage=%d"), c.SMaxAge)))
-	}
-	if c.StaleIfError > -1 {
-		(substrings) = (append(substrings, fmt.Sprintf(("stale-if-error=%d"), c.StaleIfError)))
-	}
-	if c.StaleWhileRevalidate > -1 {
-		(substrings) = (append(substrings, fmt.Sprintf(("stale-while-revalidate=%d"), c.StaleWhileRevalidate)))
+	var r reflect.Value = reflect.ValueOf(c)
+	var v reflect.Type = (reflect.Indirect(r).Type())
+	for i, n := 0, r.NumField(); i < n; i++ {
+		var f reflect.Value = r.Field(i)
+		if f.IsValid() && !f.IsZero() {
+			var name string = strings.Join(regex.FindAllString(v.Field(i).Name, -1), "-")
+			name = strings.ToLower(name)
+			switch f.Kind() {
+			case reflect.Bool:
+				(substrings) = (append(substrings, (name)))
+			case reflect.Int64:
+				(substrings) = (append(substrings, fmt.Sprintf("%s=%d", name, r.Int())))
+			}
+		}
 	}
 	(s) = (strings.Join(substrings, ", "))
 	return s
