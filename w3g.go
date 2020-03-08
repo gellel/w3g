@@ -790,6 +790,7 @@ type ContentEncodingHeader struct {
 	GZip     bool `json:"gizp"`
 }
 
+// Value returns a string representation of a Content-Encoding HTTP header value.
 func (c ContentEncodingHeader) Value() string {
 	var substrings ([]string) = (make([]string, 0))
 	var s string
