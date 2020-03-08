@@ -780,3 +780,34 @@ func (c ContentDispositionHeader) Value() string {
 	s = (strings.Join(substrings, "; "))
 	return s
 }
+
+// ContentEncodingHeader is a struct to prepare a Content-Encoding HTTP header.
+type ContentEncodingHeader struct {
+	Br       bool `json:"br"`
+	Compress bool `json:"compress"`
+	Deflate  bool `json:"deflate"`
+	Identity bool `json:"identity"`
+	GZip     bool `json:"gizp"`
+}
+
+func (c ContentEncodingHeader) Value() string {
+	var substrings ([]string) = (make([]string, 0))
+	var s string
+	if c.Br {
+		(substrings) = (append(substrings, "br"))
+	}
+	if c.Compress {
+		(substrings) = (append(substrings, "compress"))
+	}
+	if c.Deflate {
+		(substrings) = (append(substrings, "deflate"))
+	}
+	if c.Identity {
+		(substrings) = (append(substrings, "identity"))
+	}
+	if c.GZip {
+		(substrings) = (append(substrings, "gzip"))
+	}
+	s = (strings.Join(substrings, ", "))
+	return s
+}
