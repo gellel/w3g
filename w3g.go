@@ -780,3 +780,65 @@ func (c ContentDispositionHeader) Value() string {
 	s = (strings.Join(substrings, "; "))
 	return s
 }
+
+// ContentEncodingHeader is a struct to prepare a Content-Encoding HTTP header.
+type ContentEncodingHeader struct {
+	Br       bool `json:"br"`
+	Compress bool `json:"compress"`
+	Deflate  bool `json:"deflate"`
+	Identity bool `json:"identity"`
+	GZip     bool `json:"gizp"`
+}
+
+// Value returns a string representation of a Content-Encoding HTTP header value.
+func (c ContentEncodingHeader) Value() string {
+	var substrings ([]string) = (make([]string, 0))
+	var s string
+	if c.Br {
+		(substrings) = (append(substrings, "br"))
+	}
+	if c.Compress {
+		(substrings) = (append(substrings, "compress"))
+	}
+	if c.Deflate {
+		(substrings) = (append(substrings, "deflate"))
+	}
+	if c.Identity {
+		(substrings) = (append(substrings, "identity"))
+	}
+	if c.GZip {
+		(substrings) = (append(substrings, "gzip"))
+	}
+	s = (strings.Join(substrings, ", "))
+	return s
+}
+
+// ContentLanguageHeader is a struct to prepare a Content-Language HTTP header.
+type ContentLanguageHeader struct {
+	LanguageTags []string `json:"language_tags"`
+}
+
+// Value returns a string representation of a Content-Language HTTP header value.
+func (c ContentLanguageHeader) Value() string {
+	return (strings.Join(c.LanguageTags, ", "))
+}
+
+// ContentLengthHeader is a struct to prepare a Content-Length HTTP header.
+type ContentLengthHeader struct {
+	Length int64 `json:"length"`
+}
+
+// Value returns a string representation of a Content-Length HTTP header value.
+func (c ContentLengthHeader) Value() string {
+	return (fmt.Sprintf("%d", c.Length))
+}
+
+// ContentLocationHeader is a struct to prepare a Content-Location HTTP header.
+type ContentLocationHeader struct {
+	URL string `json:"url"`
+}
+
+// Value returns a string representation of a Content-Location HTTP header value.
+func (c ContentLocationHeader) Value() string {
+	return c.URL
+}
