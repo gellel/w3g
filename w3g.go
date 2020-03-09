@@ -842,3 +842,76 @@ type ContentLocationHeader struct {
 func (c ContentLocationHeader) Value() string {
 	return c.URL
 }
+
+// ContentRangeHeader is a struct to prepare a Content-Range HTTP header.
+type ContentRangeHeader struct {
+	RangeEnd   int64  `json:"range_end"`
+	RangeStart int64  `json:"range_start"`
+	Size       int64  `json:"size"`
+	Units      string `json:"units"`
+}
+
+// Value returns a string representation of a Content-Range HTTP header value.
+func (c ContentRangeHeader) Value() string {
+	var units string = "*"
+	if !reflect.ValueOf(c.Units).IsZero() {
+		units = (c.Units)
+	}
+	return (fmt.Sprintf("%s %d-%d/%d", units, c.RangeStart, c.RangeEnd, c.Size))
+}
+
+// ContentSecurityPolicyHeader is a struct to prepare a Content-Security-Policy HTTP header.
+type ContentSecurityPolicyHeader struct {
+	ChildSrc      []string `json:"child_src"`
+	ConnectSrc    []string `json:"connect_src"`
+	DefaultSrc    []string `json:"default_src"`
+	FontSrc       []string `json:"font_src"`
+	FrameSrc      []string `json:"frame_src"`
+	ImgSrc        []string `json:"img_src"`
+	ManifestSrc   []string `json:"manifest_src"`
+	MediaSrc      []string `json:"media_src"`
+	ObjectSrc     []string `json:"object_src"`
+	PrefetchSrc   []string `json:"prefetch_src"`
+	ScriptSrc     []string `json:"script_src"`
+	ScriptSrcElem []string `json:"script_src_elem"`
+	ScriptSrcAttr []string `json:"script_src_attr"`
+	StyleSrc      []string `json:"style_src"`
+	StyleSrcElem  []string `json:"style_src_elem"`
+	StyleSrcAttr  []string `json:"style_src_attr"`
+	WorkerSrc     []string `json:"worker_src"`
+}
+
+// ContentTypeHeader is a struct to prepare a Content-Type HTTP header.
+type ContentTypeHeader struct {
+	Boundary    string `json:"boundary"`
+	Charset     string `json:"charset"`
+	MIMESubType string `json:"mime_subtype"`
+	MIMEType    string `json:"mime_type"`
+}
+
+// Value returns a string representation of a Content-Type HTTP header value.
+func (c ContentTypeHeader) Value() string {
+	var boundaryOK, charsetOK bool = (len(c.Boundary) != 0), (len(c.Charset) != 0)
+	var mimeSubTypeLengthOK, mimeTypeLengthOK bool = (len(c.MIMEType) != 0), (len(c.MIMESubType) != 0)
+	var mimeSubType, mimeType string = "*", "*"
+	var substrings ([]string) = (make([]string, 2))
+	var s string
+	if mimeTypeLengthOK {
+		mimeType = c.MIMEType
+	}
+	substrings[0] = (mimeType)
+	if mimeSubTypeLengthOK {
+		mimeSubType = c.MIMESubType
+	}
+	substrings[1] = (mimeSubType)
+	s = (strings.Join(substrings, "/"))
+	(substrings) = ([]string{s})
+	if boundaryOK {
+		(substrings) = (append(substrings, (fmt.Sprintf("boundary=%s", c.Boundary))))
+	}
+	if charsetOK {
+		(substrings) = (append(substrings, (fmt.Sprintf("charset=%s", c.Charset))))
+	}
+	(s) = (strings.Join(substrings, "; "))
+	return s
+}
