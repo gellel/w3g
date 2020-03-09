@@ -915,3 +915,21 @@ func (c ContentTypeHeader) Value() string {
 	(s) = (strings.Join(substrings, "; "))
 	return s
 }
+
+// CookieHeader is a struct to prepare a Cookie HTTP header.
+type CookieHeader struct {
+	Cookies []*http.Cookie `json:"cookie"`
+}
+
+// Value returns a string representation of a Cookie HTTP header value.
+func (c CookieHeader) Value() string {
+	var cookie *http.Cookie
+	var i int
+	var substrings ([]string) = (make([]string, len(c.Cookies)))
+	var s string
+	for i, cookie = range c.Cookies {
+		(substrings[i]) = (cookie.String())
+	}
+	(s) = (strings.Join(substrings, "; "))
+	return s
+}
