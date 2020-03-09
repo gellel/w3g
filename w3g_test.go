@@ -20,4 +20,6 @@ func Test(t *testing.T) {
 	fmt.Println(w3g.ContentDispositionHeader{Attachment: true, FileName: "hello.html"}.Value())
 
 	fmt.Println(w3g.ContentRangeHeader{}.Value())
+
+	fmt.Println(w3g.ContentTypeHeader{}.Value())
 }

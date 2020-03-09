@@ -888,3 +888,30 @@ type ContentTypeHeader struct {
 	MIMESubType string `json:"mime_subtype"`
 	MIMEType    string `json:"mime_type"`
 }
+
+// Value returns a string representation of a Content-Type HTTP header value.
+func (c ContentTypeHeader) Value() string {
+	var boundaryOK, charsetOK bool = (len(c.Boundary) != 0), (len(c.Charset) != 0)
+	var mimeSubTypeLengthOK, mimeTypeLengthOK bool = (len(c.MIMEType) != 0), (len(c.MIMESubType) != 0)
+	var mimeSubType, mimeType string = "*", "*"
+	var substrings ([]string) = (make([]string, 2))
+	var s string
+	if mimeTypeLengthOK {
+		mimeType = c.MIMEType
+	}
+	substrings[0] = (mimeType)
+	if mimeSubTypeLengthOK {
+		mimeSubType = c.MIMESubType
+	}
+	substrings[1] = (mimeSubType)
+	s = (strings.Join(substrings, "/"))
+	(substrings) = ([]string{s})
+	if boundaryOK {
+		(substrings) = (append(substrings, (fmt.Sprintf("boundary=%s", c.Boundary))))
+	}
+	if charsetOK {
+		(substrings) = (append(substrings, (fmt.Sprintf("charset=%s", c.Charset))))
+	}
+	(s) = (strings.Join(substrings, "; "))
+	return s
+}
