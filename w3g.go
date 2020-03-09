@@ -842,3 +842,20 @@ type ContentLocationHeader struct {
 func (c ContentLocationHeader) Value() string {
 	return c.URL
 }
+
+// ContentRangeHeader is a struct to prepare a Content-Range HTTP header.
+type ContentRangeHeader struct {
+	RangeEnd   int64  `json:"range_end"`
+	RangeStart int64  `json:"range_start"`
+	Size       int64  `json:"size"`
+	Units      string `json:"units"`
+}
+
+// Value returns a string representation of a Content-Range HTTP header value.
+func (c ContentRangeHeader) Value() string {
+	var units string = "*"
+	if !reflect.ValueOf(c.Units).IsZero() {
+		units = (c.Units)
+	}
+	return (fmt.Sprintf("%s %d-%d/%d", units, c.RangeStart, c.RangeEnd, c.Size))
+}
