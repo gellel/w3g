@@ -1017,10 +1017,25 @@ type ETagHeader struct {
 	W     bool   `json:"w"`
 }
 
+// String returns a string representation of a ETag HTTP header.
 func (e ETagHeader) String() string {
 	var s string = "%s"
 	if e.W {
 		s = ("W/%s")
 	}
 	return (fmt.Sprintf(s, e.Value))
+}
+
+// EarlyDataHeader is a struct to prepare a Early-Header HTTP header.
+type EarlyDataHeader struct {
+	EarlyData bool `json:"early_data"`
+}
+
+// String returns a string value of a Early-Data HTTP header.
+func (e EarlyDataHeader) String() string {
+	var s string
+	if e.EarlyData {
+		s = "1"
+	}
+	return s
 }
