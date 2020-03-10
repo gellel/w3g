@@ -1003,10 +1003,10 @@ func (d DeviceMemoryHeader) Value() string {
 // DigestHeader is a struct to prepare a Digest HTTP header.
 type DigestHeader struct {
 	Algorithm string `json:"algorithm"`
-	Value     string `json:"value"`
+	Encoding  string `json:"encoding"`
 }
 
 // Value returns a string representation of a Digest HTTP header.
 func (d DigestHeader) Value() string {
-	return (fmt.Sprintf("%s=%s", d.Algorithm, d.Value))
+	return (fmt.Sprintf("%s=%s", d.Algorithm, d.Encoding))
 }
