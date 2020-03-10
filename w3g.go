@@ -977,7 +977,7 @@ type DPRHeader struct {
 
 // Value returns a string representation of a DPR HTTP header.
 func (d DPRHeader) Value() string {
-	return (fmt.Sprintf("%f", d.DPR))
+	return (fmt.Sprintf("%.1f", d.DPR))
 }
 
 // DateHeader is a struct to prepare a Date HTTP header.
@@ -988,4 +988,14 @@ type DateHeader struct {
 // Value returns a string representation of a Date HTTP header.
 func (d DateHeader) Value() string {
 	return (d.Time.Format(http.TimeFormat))
+}
+
+// DeviceMemoryHeader is a struct to prepare a Device-Memory HTTP header.
+type DeviceMemoryHeader struct {
+	Memory float32 `json:"memory"`
+}
+
+// Value returns a string representation of a Device-Memory HTTP header.
+func (d DeviceMemoryHeader) Value() string {
+	return (fmt.Sprintf("%.1f", d.Memory))
 }

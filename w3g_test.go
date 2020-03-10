@@ -26,5 +26,7 @@ func Test(t *testing.T) {
 
 	fmt.Println(w3g.CookieHeader{Cookies: []*http.Cookie{&http.Cookie{Name: "hello", Value: "world"}}}.Value())
 
-	fmt.Println(w3g.DPRHeader{DPR: 4.223}.Value())
+	fmt.Println(w3g.DPRHeader{DPR: 1}.Value())
+
+	fmt.Println(w3g.DeviceMemoryHeader{Memory: 1}.Value())
 }
