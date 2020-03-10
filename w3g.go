@@ -933,3 +933,28 @@ func (c CookieHeader) Value() string {
 	(s) = (strings.Join(substrings, "; "))
 	return s
 }
+
+// CrossOriginResourcePolicyHeader is a struct to prepare a Cross-Origin-Resource-Policy HTTP header.
+type CrossOriginResourcePolicyHeader struct {
+	CrossOrigin bool `json:"cross_origin"`
+	SameOrigin  bool `json:"same_origin"`
+	SameSite    bool `json:"same_site"`
+}
+
+// Value returns a string representation of a Cross-Origin-Resource-Policy HTTP header.
+func (c CrossOriginResourcePolicyHeader) Value() string {
+	if c.CrossOrigin {
+		return "cross-origin"
+	}
+	if c.SameOrigin {
+		return "same-origin"
+	}
+	if c.SameSite {
+		return "same-site"
+	}
+	return "*"
+}
+
+type DNTHeader struct {
+	DNT bool `json:"dnt"`
+}
