@@ -2,6 +2,7 @@ package w3g_test
 
 import (
 	"fmt"
+	"net/http"
 	"testing"
 
 	"github.com/gellel/w3g"
@@ -21,5 +22,7 @@ func Test(t *testing.T) {
 
 	fmt.Println(w3g.ContentRangeHeader{}.Value())
 
-	fmt.Println(w3g.ContentTypeHeader{}.Value())
+	fmt.Println(w3g.ContentTypeHeader{Boundary: "something", Charset: "utf-8", MIMESubType: "plain", MIMEType: "text"}.Value())
+
+	fmt.Println(w3g.CookieHeader{Cookies: []*http.Cookie{&http.Cookie{Name: "hello", Value: "world"}}}.Value())
 }
