@@ -25,4 +25,6 @@ func Test(t *testing.T) {
 	fmt.Println(w3g.ContentTypeHeader{Boundary: "something", Charset: "utf-8", MIMESubType: "plain", MIMEType: "text"}.Value())
 
 	fmt.Println(w3g.CookieHeader{Cookies: []*http.Cookie{&http.Cookie{Name: "hello", Value: "world"}}}.Value())
+
+	fmt.Println(w3g.DPRHeader{DPR: 4.223}.Value())
 }

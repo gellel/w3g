@@ -6,6 +6,7 @@ import (
 	"reflect"
 	"regexp"
 	"strings"
+	"time"
 )
 
 // Accept request HTTP header advertises which content types, expressed as MIME types, the client is able to understand.
@@ -955,6 +956,36 @@ func (c CrossOriginResourcePolicyHeader) Value() string {
 	return "*"
 }
 
+// DNTHeader is a struct to prepare a DNT HTTP header.
 type DNTHeader struct {
 	DNT bool `json:"dnt"`
+}
+
+// Value returns a string representation of a DNT HTTP header.
+func (d DNTHeader) Value() string {
+	var s string = "0"
+	if d.DNT {
+		s = "1"
+	}
+	return s
+}
+
+// DPRHeader is a struct to prepare a DPR HTTP header.
+type DPRHeader struct {
+	DPR float32 `json:"dpr"`
+}
+
+// Value returns a string representation of a DPR HTTP header.
+func (d DPRHeader) Value() string {
+	return (fmt.Sprintf("%f", d.DPR))
+}
+
+// DateHeader is a struct to prepare a Date HTTP header.
+type DateHeader struct {
+	Time time.Time `json:"date"`
+}
+
+// Value returns a string representation of a Date HTTP header.
+func (d DateHeader) Value() string {
+	return (d.Time.Format(http.TimeFormat))
 }
