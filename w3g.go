@@ -1071,3 +1071,13 @@ func (e ExpectCTHeader) String() string {
 	(s) = (strings.Join(substrings, ", "))
 	return s
 }
+
+// ExpiresHeader is a struct to prepare a Expires HTTP header.
+type ExpiresHeader struct {
+	Expires time.Time
+}
+
+// String returns a string representation of a Expires HTTP header.
+func (e ExpiresHeader) String() string {
+	return (e.Expires.Format(http.TimeFormat))
+}
