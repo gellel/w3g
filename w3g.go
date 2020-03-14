@@ -1039,3 +1039,11 @@ func (e EarlyDataHeader) String() string {
 	}
 	return s
 }
+
+// ExpectHeader is a struct to prepare a Expect HTTP header.
+type ExpectHeader struct{}
+
+// String returns a string value of a Expect HTTP header.
+func (e ExpectHeader) String() string {
+	return ("100-continue")
+}
