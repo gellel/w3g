@@ -1031,11 +1031,53 @@ type EarlyDataHeader struct {
 	EarlyData bool `json:"early_data"`
 }
 
-// String returns a string value of a Early-Data HTTP header.
+// String returns a string representation of a Early-Data HTTP header.
 func (e EarlyDataHeader) String() string {
 	var s string
 	if e.EarlyData {
 		s = "1"
 	}
 	return s
+}
+
+// ExpectHeader is a struct to prepare a Expect HTTP header.
+type ExpectHeader struct{}
+
+// String returns a string representation of a Expect HTTP header.
+func (e ExpectHeader) String() string {
+	return ("100-continue")
+}
+
+// ExpectCTHeader is a a struct to prepare a Expect-CT HTTP header.
+type ExpectCTHeader struct {
+	Enforce   bool   `json:"enforce"`
+	MaxAge    int64  `json:"max_age"`
+	ReportURI string `json:"report_uri"`
+}
+
+// String returns a string representation of a Expect-CT HTTP header.
+func (e ExpectCTHeader) String() string {
+	var substrings ([]string) = (make([]string, 0))
+	var s string
+	if !reflect.ValueOf(e.MaxAge).IsZero() {
+		(substrings) = (append(substrings, fmt.Sprintf("%d", e.MaxAge)))
+	}
+	if e.Enforce {
+		(substrings) = (append(substrings, "enforce"))
+	}
+	if !reflect.ValueOf(e.ReportURI).IsZero() {
+		(substrings) = (append(substrings, fmt.Sprintf("report-uri=\"%s\"", e.ReportURI)))
+	}
+	(s) = (strings.Join(substrings, ", "))
+	return s
+}
+
+// ExpiresHeader is a struct to prepare a Expires HTTP header.
+type ExpiresHeader struct {
+	Expires time.Time
+}
+
+// String returns a string representation of a Expires HTTP header.
+func (e ExpiresHeader) String() string {
+	return (e.Expires.Format(http.TimeFormat))
 }
