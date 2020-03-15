@@ -1081,3 +1081,35 @@ type ExpiresHeader struct {
 func (e ExpiresHeader) String() string {
 	return (e.Expires.Format(http.TimeFormat))
 }
+
+// FeaturePolicyHeader is a struct to prepare a Feature-Policy HTTP header.
+type FeaturePolicyHeader struct {
+	Accelerometer               string `json:"accelerometer"`
+	AmbientLightSensor          string `json:"ambient-light-sensor"`
+	Autoplay                    string `json:"autoplay"`
+	Battery                     string `json:"battery"`
+	Camera                      string `json:"camera"`
+	DisplayCapture              string `json:"display-capture"`
+	DocumentDomain              string `json:"document-domain"`
+	EncryptedMedia              string `json:"encrypted-media"`
+	ExecutionWhileNotRendered   string `json:"execution-while-not-rendered"`
+	ExecutionWhileOutOfViewport string `json:"execution-while-out-of-viewport"`
+	Fullscreen                  string `json:"fullscreen"`
+	Geolocation                 string `json:"geolocation"`
+	Gyroscope                   string `json:"gyroscope"`
+	LayoutAnimations            string `json:"layout-animations"`
+	LegacyImageFormats          string `json:"legacy-image-formats"`
+	Magnetometer                string `json:"magnetometer"`
+	Microphone                  string `json:"microphone"`
+	Midi                        string `json:"midi"`
+	NavigationOverride          string `json:"navigation-override"`
+	OversizedImages             string `json:"oversized-images"`
+	Payment                     string `json:"payment"`
+	PictureInPicture            string `json:"picture-in-picture"`
+	PublicKeyCredentials        string `json:"publickey-credentials"`
+	SyncXHR                     string `json:"sync-xhr"`
+	USB                         string `json:"usb"`
+	VR                          string `json:"vr "`
+	WakeLock                    string `json:"wake-lock"`
+	XRSpatialTracking           string `json:"xr-spatial-tracking"`
+}
