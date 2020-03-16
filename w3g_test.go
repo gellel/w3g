@@ -2,7 +2,6 @@ package w3g_test
 
 import (
 	"fmt"
-	"net/http"
 	"testing"
 
 	"github.com/gellel/w3g"
@@ -10,7 +9,7 @@ import (
 
 func Test(t *testing.T) {
 
-	fmt.Println(w3g.AcceptHeader{MIMESubType: "gif", MIMEType: "image", Q: 0.8}.String())
+	/*fmt.Println(w3g.AcceptHeader{MIMESubType: "gif", MIMEType: "image", Q: 0.8}.String())
 
 	fmt.Println(w3g.AcceptCHHeader{AcceptCH: true, AcceptCHLifetime: true, ContentDPR: true, DeviceMemory: true}.String())
 
@@ -30,5 +29,7 @@ func Test(t *testing.T) {
 
 	fmt.Println(w3g.DeviceMemoryHeader{Memory: 1}.String())
 
-	fmt.Println(w3g.ETagHeader{Value: "1224", W: true}.String())
+	fmt.Println(w3g.ETagHeader{Value: "1224", W: true}.String())*/
+
+	fmt.Println(w3g.FeaturePolicyHeader{Accelerometer: "*", Camera: "none"}.String())
 }

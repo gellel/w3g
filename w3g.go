@@ -1113,3 +1113,25 @@ type FeaturePolicyHeader struct {
 	WakeLock                    string `json:"wake-lock"`
 	XRSpatialTracking           string `json:"xr-spatial-tracking"`
 }
+
+// String returns a string representation of a Feature-Policy HTTP header.
+func (f FeaturePolicyHeader) String() string {
+	var regex *regexp.Regexp = regexp.MustCompile(`[A-Z][^A-Z]*`)
+	var substrings ([]string) = (make([]string, 0))
+	var s string
+	var r reflect.Value = reflect.ValueOf(f)
+	var v reflect.Type = (reflect.Indirect(r).Type())
+	for i, n := 0, r.NumField(); i < n; i++ {
+		var f reflect.Value = r.Field(i)
+		if f.IsValid() && !f.IsZero() {
+			var name string = strings.Join(regex.FindAllString(v.Field(i).Name, -1), "-")
+			name = strings.ToLower(name)
+			switch f.Kind() {
+			case reflect.String:
+				(substrings) = (append(substrings, fmt.Sprintf("%s '%s'", name, f.String())))
+			}
+		}
+	}
+	(s) = (strings.Join(substrings, "; "))
+	return s
+}
