@@ -1135,3 +1135,12 @@ func (f FeaturePolicyHeader) String() string {
 	(s) = (strings.Join(substrings, "; "))
 	return s
 }
+
+// ForwardedHeader is a struct to prepare a Forwarded HTTP header.
+type ForwardedHeader struct {
+	By         string `json:"by"`
+	Identifier string `json:"identifier"`
+	For        string `json:"for"`
+	Host       string `json:"host"`
+	Proto      string `json:"proto"`
+}
