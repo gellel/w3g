@@ -1152,8 +1152,11 @@ func (f ForwardedHeader) String() string {
 	if !reflect.ValueOf(f.By).IsZero() {
 		(substrings) = (append(substrings, fmt.Sprintf("by=%s", f.By)))
 	}
-	if !reflect.Value(f.For).IsZero() {
-
+	if !reflect.ValueOf(f.For).IsZero() {
+		(substrings) = (append(substrings, fmt.Sprintf("for=%s", f.For)))
+	}
+	if !reflect.ValueOf(f.Host).IsZero() {
+		(substrings) = (append(substrings, fmt.Sprintf("host=%s", f.Host)))
 	}
 	(s) = (strings.Join(substrings, "; "))
 	return s
