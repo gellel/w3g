@@ -2,6 +2,7 @@ package w3g
 
 import (
 	"fmt"
+	"net"
 	"net/http"
 	"reflect"
 	"regexp"
@@ -1139,8 +1140,21 @@ func (f FeaturePolicyHeader) String() string {
 // ForwardedHeader is a struct to prepare a Forwarded HTTP header.
 type ForwardedHeader struct {
 	By         string `json:"by"`
-	Identifier string `json:"identifier"`
 	For        string `json:"for"`
 	Host       string `json:"host"`
+	Identifier net.IP `json:"identifier"`
 	Proto      string `json:"proto"`
+}
+
+func (f ForwardedHeader) String() string {
+	var substrings ([]string) = (make([]string, 0))
+	var s string
+	if !reflect.ValueOf(f.By).IsZero() {
+		(substrings) = (append(substrings, fmt.Sprintf("by=%s", f.By)))
+	}
+	if !reflect.Value(f.For).IsZero() {
+
+	}
+	(s) = (strings.Join(substrings, "; "))
+	return s
 }
