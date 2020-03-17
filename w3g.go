@@ -1140,7 +1140,6 @@ func (f FeaturePolicyHeader) String() string {
 // ForwardedHeader is a struct to prepare a Forwarded HTTP header.
 type ForwardedHeader struct {
 	By         string `json:"by"`
-	For        string `json:"for"`
 	Host       string `json:"host"`
 	Identifier net.IP `json:"identifier"`
 	Proto      string `json:"proto"`
@@ -1152,8 +1151,12 @@ func (f ForwardedHeader) String() string {
 	if !reflect.ValueOf(f.By).IsZero() {
 		(substrings) = (append(substrings, fmt.Sprintf("by=%s", f.By)))
 	}
-	if !reflect.ValueOf(f.For).IsZero() {
-		(substrings) = (append(substrings, fmt.Sprintf("for=%s", f.For)))
+	if f.Identifier != nil {
+		if f.Identifier.To4() != nil {
+			(substrings) = (append(substrings, fmt.Sprintf("for=%s", f.Identifier.String())))
+		} else if f.Identifier.To16() != nil {
+			(substrings) = (append(substrings, fmt.Sprintf("for=\"[%s]\"", f.Identifier.String())))
+		}
 	}
 	if !reflect.ValueOf(f.Host).IsZero() {
 		(substrings) = (append(substrings, fmt.Sprintf("host=%s", f.Host)))

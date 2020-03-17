@@ -2,6 +2,7 @@ package w3g_test
 
 import (
 	"fmt"
+	"net"
 	"testing"
 
 	"github.com/gellel/w3g"
@@ -32,4 +33,6 @@ func Test(t *testing.T) {
 	fmt.Println(w3g.ETagHeader{Value: "1224", W: true}.String())*/
 
 	fmt.Println(w3g.FeaturePolicyHeader{Accelerometer: "*", Camera: "none"}.String())
+
+	fmt.Println(w3g.ForwardedHeader{Identifier: net.ParseIP("2001:db8:cafe::17")}.String())
 }
