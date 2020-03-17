@@ -1085,33 +1085,33 @@ func (e ExpiresHeader) String() string {
 // FeaturePolicyHeader is a struct to prepare a Feature-Policy HTTP header.
 type FeaturePolicyHeader struct {
 	Accelerometer               string `json:"accelerometer"`
-	AmbientLightSensor          string `json:"ambient-light-sensor"`
+	AmbientLightSensor          string `json:"ambient_light_sensor"`
 	Autoplay                    string `json:"autoplay"`
 	Battery                     string `json:"battery"`
 	Camera                      string `json:"camera"`
-	DisplayCapture              string `json:"display-capture"`
-	DocumentDomain              string `json:"document-domain"`
-	EncryptedMedia              string `json:"encrypted-media"`
-	ExecutionWhileNotRendered   string `json:"execution-while-not-rendered"`
-	ExecutionWhileOutOfViewport string `json:"execution-while-out-of-viewport"`
+	DisplayCapture              string `json:"display_capture"`
+	DocumentDomain              string `json:"document_domain"`
+	EncryptedMedia              string `json:"encrypted_media"`
+	ExecutionWhileNotRendered   string `json:"execution_while_not_rendered"`
+	ExecutionWhileOutOfViewport string `json:"execution_while_out_of_viewport"`
 	Fullscreen                  string `json:"fullscreen"`
 	Geolocation                 string `json:"geolocation"`
 	Gyroscope                   string `json:"gyroscope"`
-	LayoutAnimations            string `json:"layout-animations"`
-	LegacyImageFormats          string `json:"legacy-image-formats"`
+	LayoutAnimations            string `json:"layout_animations"`
+	LegacyImageFormats          string `json:"legacy_image_formats"`
 	Magnetometer                string `json:"magnetometer"`
 	Microphone                  string `json:"microphone"`
 	Midi                        string `json:"midi"`
-	NavigationOverride          string `json:"navigation-override"`
-	OversizedImages             string `json:"oversized-images"`
+	NavigationOverride          string `json:"navigation_override"`
+	OversizedImages             string `json:"oversized_images"`
 	Payment                     string `json:"payment"`
-	PictureInPicture            string `json:"picture-in-picture"`
-	PublicKeyCredentials        string `json:"publickey-credentials"`
-	SyncXHR                     string `json:"sync-xhr"`
+	PictureInPicture            string `json:"picture_in_picture"`
+	PublicKeyCredentials        string `json:"publickey_credentials"`
+	SyncXHR                     string `json:"sync_xhr"`
 	USB                         string `json:"usb"`
-	VR                          string `json:"vr "`
-	WakeLock                    string `json:"wake-lock"`
-	XRSpatialTracking           string `json:"xr-spatial-tracking"`
+	VR                          string `json:"vr"`
+	WakeLock                    string `json:"wake_lock"`
+	XRSpatialTracking           string `json:"xr_spatial_tracking"`
 }
 
 // String returns a string representation of a Feature-Policy HTTP header.
