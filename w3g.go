@@ -2,6 +2,7 @@ package w3g
 
 import (
 	"fmt"
+	"net"
 	"net/http"
 	"reflect"
 	"regexp"
@@ -1080,4 +1081,86 @@ type ExpiresHeader struct {
 // String returns a string representation of a Expires HTTP header.
 func (e ExpiresHeader) String() string {
 	return (e.Expires.Format(http.TimeFormat))
+}
+
+// FeaturePolicyHeader is a struct to prepare a Feature-Policy HTTP header.
+type FeaturePolicyHeader struct {
+	Accelerometer               string `json:"accelerometer"`
+	AmbientLightSensor          string `json:"ambient_light_sensor"`
+	Autoplay                    string `json:"autoplay"`
+	Battery                     string `json:"battery"`
+	Camera                      string `json:"camera"`
+	DisplayCapture              string `json:"display_capture"`
+	DocumentDomain              string `json:"document_domain"`
+	EncryptedMedia              string `json:"encrypted_media"`
+	ExecutionWhileNotRendered   string `json:"execution_while_not_rendered"`
+	ExecutionWhileOutOfViewport string `json:"execution_while_out_of_viewport"`
+	Fullscreen                  string `json:"fullscreen"`
+	Geolocation                 string `json:"geolocation"`
+	Gyroscope                   string `json:"gyroscope"`
+	LayoutAnimations            string `json:"layout_animations"`
+	LegacyImageFormats          string `json:"legacy_image_formats"`
+	Magnetometer                string `json:"magnetometer"`
+	Microphone                  string `json:"microphone"`
+	Midi                        string `json:"midi"`
+	NavigationOverride          string `json:"navigation_override"`
+	OversizedImages             string `json:"oversized_images"`
+	Payment                     string `json:"payment"`
+	PictureInPicture            string `json:"picture_in_picture"`
+	PublicKeyCredentials        string `json:"publickey_credentials"`
+	SyncXHR                     string `json:"sync_xhr"`
+	USB                         string `json:"usb"`
+	VR                          string `json:"vr"`
+	WakeLock                    string `json:"wake_lock"`
+	XRSpatialTracking           string `json:"xr_spatial_tracking"`
+}
+
+// String returns a string representation of a Feature-Policy HTTP header.
+func (f FeaturePolicyHeader) String() string {
+	var regex *regexp.Regexp = regexp.MustCompile(`[A-Z][^A-Z]*`)
+	var substrings ([]string) = (make([]string, 0))
+	var s string
+	var r reflect.Value = reflect.ValueOf(f)
+	var v reflect.Type = (reflect.Indirect(r).Type())
+	for i, n := 0, r.NumField(); i < n; i++ {
+		var f reflect.Value = r.Field(i)
+		if f.IsValid() && !f.IsZero() {
+			var name string = strings.Join(regex.FindAllString(v.Field(i).Name, -1), "-")
+			name = strings.ToLower(name)
+			switch f.Kind() {
+			case reflect.String:
+				(substrings) = (append(substrings, fmt.Sprintf("%s '%s'", name, f.String())))
+			}
+		}
+	}
+	(s) = (strings.Join(substrings, "; "))
+	return s
+}
+
+// ForwardedHeader is a struct to prepare a Forwarded HTTP header.
+type ForwardedHeader struct {
+	By         string `json:"by"`
+	Host       string `json:"host"`
+	Identifier net.IP `json:"identifier"`
+	Proto      string `json:"proto"`
+}
+
+func (f ForwardedHeader) String() string {
+	var substrings ([]string) = (make([]string, 0))
+	var s string
+	if !reflect.ValueOf(f.By).IsZero() {
+		(substrings) = (append(substrings, fmt.Sprintf("by=%s", f.By)))
+	}
+	if f.Identifier != nil {
+		if f.Identifier.To4() != nil {
+			(substrings) = (append(substrings, fmt.Sprintf("for=%s", f.Identifier.String())))
+		} else if f.Identifier.To16() != nil {
+			(substrings) = (append(substrings, fmt.Sprintf("for=\"[%s]\"", f.Identifier.String())))
+		}
+	}
+	if !reflect.ValueOf(f.Host).IsZero() {
+		(substrings) = (append(substrings, fmt.Sprintf("host=%s", f.Host)))
+	}
+	(s) = (strings.Join(substrings, "; "))
+	return s
 }
