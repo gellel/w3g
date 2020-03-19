@@ -1176,4 +1176,22 @@ func (f FromHeader) String() string {
 	return (f.Email.String())
 }
 
-// Host is a struct to prepare a Host HTTP header.
+// HostHeader is a struct to prepare a Host HTTP header.
+type HostHeader struct {
+	Host string `json:"host"`
+	Port string `json:"port"`
+}
+
+// String returns a string representation of a Host HTTP header.
+func (h HostHeader) String() string {
+	var substrings ([]string) = (make([]string, 0))
+	var s string
+	if !reflect.ValueOf(h.Host).IsZero() {
+		(substrings) = (append(substrings, h.Host))
+	}
+	if !reflect.ValueOf(h.Port).IsZero() {
+		(substrings) = (append(substrings, h.Port))
+	}
+	(s) = (strings.Join(substrings, ":"))
+	return s
+}
