@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net"
 	"net/http"
+	"net/mail"
 	"reflect"
 	"regexp"
 	"strings"
@@ -1164,3 +1165,15 @@ func (f ForwardedHeader) String() string {
 	(s) = (strings.Join(substrings, "; "))
 	return s
 }
+
+// FromHeader is a struct to prepare a From HTTP header.
+type FromHeader struct {
+	Email mail.Address `json:"email"`
+}
+
+// String returns a string representation of a From HTTP header.
+func (f FromHeader) String() string {
+	return (f.Email.String())
+}
+
+// Host is a struct to prepare a Host HTTP header.
