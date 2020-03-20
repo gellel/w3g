@@ -1195,3 +1195,16 @@ func (h HostHeader) String() string {
 	(s) = (strings.Join(substrings, ":"))
 	return s
 }
+
+// IfMatchHeader is a struct to prepare a If-Match HTTP header.
+type IfMatchHeader struct {
+	Value string `json:"string"`
+}
+
+// String returns a string representation of a If-Match HTTP header.
+func (i IfMatchHeader) String() string {
+	if reflect.ValueOf(i.Value).IsZero() {
+		return "*"
+	}
+	return i.Value
+}
