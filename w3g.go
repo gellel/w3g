@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net"
 	"net/http"
+	"net/mail"
 	"reflect"
 	"regexp"
 	"strings"
@@ -1163,4 +1164,70 @@ func (f ForwardedHeader) String() string {
 	}
 	(s) = (strings.Join(substrings, "; "))
 	return s
+}
+
+// FromHeader is a struct to prepare a From HTTP header.
+type FromHeader struct {
+	Email mail.Address `json:"email"`
+}
+
+// String returns a string representation of a From HTTP header.
+func (f FromHeader) String() string {
+	return (f.Email.String())
+}
+
+// HostHeader is a struct to prepare a Host HTTP header.
+type HostHeader struct {
+	Host string `json:"host"`
+	Port string `json:"port"`
+}
+
+// String returns a string representation of a Host HTTP header.
+func (h HostHeader) String() string {
+	var substrings ([]string) = (make([]string, 0))
+	var s string
+	if !reflect.ValueOf(h.Host).IsZero() {
+		(substrings) = (append(substrings, h.Host))
+	}
+	if !reflect.ValueOf(h.Port).IsZero() {
+		(substrings) = (append(substrings, h.Port))
+	}
+	(s) = (strings.Join(substrings, ":"))
+	return s
+}
+
+// IfMatchHeader is a struct to prepare a If-Match HTTP header.
+type IfMatchHeader struct {
+	Value string `json:"value"`
+}
+
+// String returns a string representation of a If-Match HTTP header.
+func (i IfMatchHeader) String() string {
+	if reflect.ValueOf(i.Value).IsZero() {
+		return "*"
+	}
+	return i.Value
+}
+
+// IfModifiedSinceHeader is a struct to prepare a If-Modified-Since HTTP header.
+type IfModifiedSinceHeader struct {
+	Time time.Time `json:"time"`
+}
+
+// String returns a string representation of a If-Modified-Since HTTP header.
+func (i IfModifiedSinceHeader) String() string {
+	return (i.Time.Format(http.TimeFormat))
+}
+
+// IfNoneMatchHeader is a struct to prepare a If-None-Match HTTP header.
+type IfNoneMatchHeader struct {
+	Value string `json:"value"`
+}
+
+// String returns a string representation of a If-None-Match HTTP header.
+func (i IfNoneMatchHeader) String() string {
+	if reflect.ValueOf(i.Value).IsZero() {
+		return "*"
+	}
+	return i.Value
 }
