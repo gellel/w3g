@@ -1218,3 +1218,16 @@ type IfModifiedSinceHeader struct {
 func (i IfModifiedSinceHeader) String() string {
 	return (i.Time.Format(http.TimeFormat))
 }
+
+// IfNoneMatchHeader is a struct to prepare a If-None-Match HTTP header.
+type IfNoneMatchHeader struct {
+	Value string `json:"value"`
+}
+
+// String returns a string representation of a If-None-Match HTTP header.
+func (i IfNoneMatchHeader) String() string {
+	if reflect.ValueOf(i.Value).IsZero() {
+		return "*"
+	}
+	return i.Value
+}
