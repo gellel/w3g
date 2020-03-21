@@ -1198,7 +1198,7 @@ func (h HostHeader) String() string {
 
 // IfMatchHeader is a struct to prepare a If-Match HTTP header.
 type IfMatchHeader struct {
-	Value string `json:"string"`
+	Value string `json:"value"`
 }
 
 // String returns a string representation of a If-Match HTTP header.
@@ -1207,4 +1207,14 @@ func (i IfMatchHeader) String() string {
 		return "*"
 	}
 	return i.Value
+}
+
+// IfModifiedSinceHeader is a struct to prepare a If-Modified-Since HTTP header.
+type IfModifiedSinceHeader struct {
+	Time time.Time `json:"time"`
+}
+
+// String returns a string representation of a If-Modified-Since HTTP header.
+func (i IfModifiedSinceHeader) String() string {
+	return (i.Time.Format(http.TimeFormat))
 }

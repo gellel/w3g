@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net"
 	"testing"
+	"time"
 
 	"github.com/gellel/w3g"
 )
@@ -35,4 +36,6 @@ func Test(t *testing.T) {
 	fmt.Println(w3g.FeaturePolicyHeader{Accelerometer: "*", Camera: "none"}.String())
 
 	fmt.Println(w3g.ForwardedHeader{Identifier: net.ParseIP("2001:db8:cafe::17")}.String())
+
+	fmt.Println(w3g.IfModifiedSinceHeader{time.Now()}.String())
 }
