@@ -1249,3 +1249,13 @@ func (i IfRangeHeader) String() string {
 	}
 	return s
 }
+
+// IfUnmodifiedSinceHeader is a struct to prepare a If-Unmodified-Since HTTP header.
+type IfUnmodifiedSinceHeader struct {
+	Time time.Time `json:"time"`
+}
+
+// String return a string representation of a If-Unmodified-Since HTTP header.
+func (i IfUnmodifiedSinceHeader) String() string {
+	return (i.Time.Format(http.TimeFormat))
+}
