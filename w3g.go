@@ -1231,3 +1231,31 @@ func (i IfNoneMatchHeader) String() string {
 	}
 	return i.Value
 }
+
+// IfRangeHeader is a struct to prepare a If-Range HTTP header.
+type IfRangeHeader struct {
+	ETag string    `json:"etag"`
+	Time time.Time `json:"time"`
+}
+
+// String returns a string representation of a If-Range HTTP header.
+func (i IfRangeHeader) String() string {
+	var s string
+	if !reflect.ValueOf(i.ETag).IsZero() {
+		return i.ETag
+	}
+	if !reflect.ValueOf(i.Time).IsZero() {
+		return i.Time.Format(http.TimeFormat)
+	}
+	return s
+}
+
+// IfUnmodifiedSinceHeader is a struct to prepare a If-Unmodified-Since HTTP header.
+type IfUnmodifiedSinceHeader struct {
+	Time time.Time `json:"time"`
+}
+
+// String return a string representation of a If-Unmodified-Since HTTP header.
+func (i IfUnmodifiedSinceHeader) String() string {
+	return (i.Time.Format(http.TimeFormat))
+}
