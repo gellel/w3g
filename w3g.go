@@ -1259,3 +1259,23 @@ type IfUnmodifiedSinceHeader struct {
 func (i IfUnmodifiedSinceHeader) String() string {
 	return (i.Time.Format(http.TimeFormat))
 }
+
+// KeepAliveHeader is a struct to prepare a Keep-Alive HTTP header.
+type KeepAliveHeader struct {
+	Max     int `json:"max"`
+	Timeout int `json:"timeout"`
+}
+
+// String returns a string representation of a Keep-Alive HTTP header.
+func (k KeepAliveHeader) String() string {
+	var substrings ([]string) = (make([]string, 0))
+	var s string
+	if !reflect.ValueOf(k.Max).IsZero() {
+		(substrings) = (append(substrings, fmt.Sprintf("max=%d", k.Max)))
+	}
+	if !reflect.ValueOf(k.Timeout).IsZero() {
+		(substrings) = (append(substrings, fmt.Sprintf("timeout=%d", k.Timeout)))
+	}
+	(s) = (strings.Join(substrings, ", "))
+	return s
+}
