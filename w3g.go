@@ -5,6 +5,7 @@ import (
 	"net"
 	"net/http"
 	"net/mail"
+	"net/url"
 	"reflect"
 	"regexp"
 	"strings"
@@ -1258,4 +1259,54 @@ type IfUnmodifiedSinceHeader struct {
 // String return a string representation of a If-Unmodified-Since HTTP header.
 func (i IfUnmodifiedSinceHeader) String() string {
 	return (i.Time.Format(http.TimeFormat))
+}
+
+// KeepAliveHeader is a struct to prepare a Keep-Alive HTTP header.
+type KeepAliveHeader struct {
+	Max     int `json:"max"`
+	Timeout int `json:"timeout"`
+}
+
+// String returns a string representation of a Keep-Alive HTTP header.
+func (k KeepAliveHeader) String() string {
+	var substrings ([]string) = (make([]string, 0))
+	var s string
+	if !reflect.ValueOf(k.Max).IsZero() {
+		(substrings) = (append(substrings, fmt.Sprintf("max=%d", k.Max)))
+	}
+	if !reflect.ValueOf(k.Timeout).IsZero() {
+		(substrings) = (append(substrings, fmt.Sprintf("timeout=%d", k.Timeout)))
+	}
+	(s) = (strings.Join(substrings, ", "))
+	return s
+}
+
+// LargeAllocationHeader is a struct to prepare a Large-Allocation HTTP header.
+type LargeAllocationHeader struct {
+	Megabytes int64 `json:"metabytes"`
+}
+
+// String returns a string representation of a Large-Allocation HTTP header.
+func (l LargeAllocationHeader) String() string {
+	return (fmt.Sprintf("%d", l.Megabytes))
+}
+
+// LastModifiedHeader is a struct to prepare a Last-Modified HTTP header.
+type LastModifiedHeader struct {
+	Time time.Time `json:"time"`
+}
+
+// String returns a string representation of a Last-Modified HTTP header.
+func (l LastModifiedHeader) String() string {
+	return (l.Time.Format(http.TimeFormat))
+}
+
+// LinkHeader is a struct to prepare a Link HTTP header.
+type LinkHeader struct {
+	URL url.URL `json:"url"`
+}
+
+// String returns a string representation of a Link HTTP header.
+func (l LinkHeader) String() string {
+	return (l.URL.String())
 }
