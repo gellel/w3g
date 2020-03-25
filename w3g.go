@@ -5,6 +5,7 @@ import (
 	"net"
 	"net/http"
 	"net/mail"
+	"net/url"
 	"reflect"
 	"regexp"
 	"strings"
@@ -1298,4 +1299,14 @@ type LastModifiedHeader struct {
 // String returns a string representation of a Last-Modified HTTP header.
 func (l LastModifiedHeader) String() string {
 	return (l.Time.Format(http.TimeFormat))
+}
+
+// LinkHeader is a struct to prepare a Link HTTP header.
+type LinkHeader struct {
+	URL url.URL `json:"url"`
+}
+
+// String returns a string representation of a Link HTTP header.
+func (l LinkHeader) String() string {
+	return (l.URL.String())
 }
