@@ -1289,3 +1289,13 @@ type LargeAllocationHeader struct {
 func (l LargeAllocationHeader) String() string {
 	return (fmt.Sprintf("%d", l.Megabytes))
 }
+
+// LastModifiedHeader is a struct to prepare a Last-Modified HTTP header.
+type LastModifiedHeader struct {
+	Time time.Time `json:"time"`
+}
+
+// String returns a string representation of a Last-Modified HTTP header.
+func (l LastModifiedHeader) String() string {
+	return (l.Time.Format(http.TimeFormat))
+}
