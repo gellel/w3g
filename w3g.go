@@ -1279,3 +1279,13 @@ func (k KeepAliveHeader) String() string {
 	(s) = (strings.Join(substrings, ", "))
 	return s
 }
+
+// LargeAllocationHeader is a struct to prepare a Large-Allocation HTTP header.
+type LargeAllocationHeader struct {
+	Megabytes int64 `json:"metabytes"`
+}
+
+// String returns a string representation of a Large-Allocation HTTP header.
+func (l LargeAllocationHeader) String() string {
+	return (fmt.Sprintf("%d", l.Megabytes))
+}
