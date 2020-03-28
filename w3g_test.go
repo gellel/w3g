@@ -3,6 +3,7 @@ package w3g_test
 import (
 	"fmt"
 	"net"
+	"net/url"
 	"testing"
 	"time"
 
@@ -38,4 +39,8 @@ func Test(t *testing.T) {
 	fmt.Println(w3g.ForwardedHeader{Identifier: net.ParseIP("2001:db8:cafe::17")}.String())
 
 	fmt.Println(w3g.IfModifiedSinceHeader{time.Now()}.String())
+
+	var u, _ = url.Parse("https://www.google.com/my/path/to/something")
+
+	fmt.Println(w3g.LocationHeader{*u}.String())
 }

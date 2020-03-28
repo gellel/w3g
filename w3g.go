@@ -1310,3 +1310,13 @@ type LinkHeader struct {
 func (l LinkHeader) String() string {
 	return (l.URL.String())
 }
+
+// LocationHeader is a struct to prepare a Location HTTP header.
+type LocationHeader struct {
+	URL url.URL `json:"url"`
+}
+
+// String returns a string representation of a Location HTTP header.
+func (l LocationHeader) String() string {
+	return (l.URL.Path)
+}
