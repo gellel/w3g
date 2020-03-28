@@ -1320,3 +1320,13 @@ type LocationHeader struct {
 func (l LocationHeader) String() string {
 	return (l.URL.Path)
 }
+
+// OriginHeader is a struct to prepare a Origin HTTP header.
+type OriginHeader struct {
+	URL url.URL `json:"url"`
+}
+
+// String returns a string representation of a Origin HTTP header.
+func (o OriginHeader) String() string {
+	return (o.URL.String())
+}
