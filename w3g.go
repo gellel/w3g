@@ -1330,3 +1330,11 @@ type OriginHeader struct {
 func (o OriginHeader) String() string {
 	return (o.URL.String())
 }
+
+// PragmaHeader is a struct to prepare a Pragma HTTP header.
+type PragmaHeader struct{}
+
+// String returns a string representation of a Pragma HTTP header.
+func (p PragmaHeader) String() string {
+	return "no-cache"
+}
