@@ -1320,3 +1320,88 @@ type LocationHeader struct {
 func (l LocationHeader) String() string {
 	return (l.URL.Path)
 }
+
+// OriginHeader is a struct to prepare a Origin HTTP header.
+type OriginHeader struct {
+	URL url.URL `json:"url"`
+}
+
+// String returns a string representation of a Origin HTTP header.
+func (o OriginHeader) String() string {
+	return (o.URL.String())
+}
+
+// PragmaHeader is a struct to prepare a Pragma HTTP header.
+type PragmaHeader struct{}
+
+// String returns a string representation of a Pragma HTTP header.
+func (p PragmaHeader) String() string {
+	return "no-cache"
+}
+
+// ProxyAuthenticateHeader is a struct to prepare a Proxy-Authenticate HTTP header.
+type ProxyAuthenticateHeader struct {
+	Realm string `json:"realm"`
+	Type  string `json:"string"`
+}
+
+// String returns a string representation of a Proxy-Authenticate HTTP header.
+func (p ProxyAuthenticateHeader) String() string {
+	var substrings ([]string) = (make([]string, 0))
+	var s string
+	if !reflect.ValueOf(p.Type).IsZero() {
+		(substrings) = (append(substrings, p.Type))
+	}
+	if !reflect.ValueOf(p.Realm).IsZero() {
+		(substrings) = (append(substrings, fmt.Sprintf("realm=%s", p.Realm)))
+	}
+	(s) = (strings.Join(substrings, " "))
+	return s
+}
+
+// ProxyAuthorizationHeader is a struct to prepare a Proxy-Authorization HTTP header.
+type ProxyAuthorizationHeader struct {
+	Credentials string `json:"credentials"`
+	Type        string `json:"type"`
+}
+
+// String returns a string representation of a Proxy-Authorization HTTP header.
+func (p ProxyAuthorizationHeader) String() string {
+	var substrings ([]string) = (make([]string, 0))
+	var s string
+	if !reflect.ValueOf(p.Type).IsZero() {
+		(substrings) = (append(substrings, p.Type))
+	}
+	if !reflect.ValueOf(p.Credentials).IsZero() {
+		(substrings) = (append(substrings, p.Credentials))
+	}
+	(s) = (strings.Join(substrings, " "))
+	return s
+}
+
+// PublicKeyPinsHeader is a struct to prepare a Public-Key-Pins HTTP header.
+type PublicKeyPinsHeader struct {
+	IncludeSubDomains bool    `json:"include_subdomains"`
+	MaxAge            int64   `json:"max_age"`
+	PinSHA256         string  `json:"pin_sha256"`
+	ReportURI         url.URL `json:"report_uri"`
+}
+
+func (p PublicKeyPinsHeader) String() string {
+	var substrings ([]string) = (make([]string, 0))
+	var s string
+	if p.IncludeSubDomains {
+		(substrings) = (append(substrings, "includeSubDomains"))
+	}
+	if !reflect.ValueOf(p.MaxAge).IsZero() {
+		(substrings) = (append(substrings, fmt.Sprintf("max-age=%d", p.MaxAge)))
+	}
+	if !reflect.ValueOf(p.PinSHA256).IsZero() {
+		(substrings) = (append(substrings, fmt.Sprintf("pin-sha256=\"%s\"", p.PinSHA256)))
+	}
+	if !reflect.ValueOf(p.ReportURI).IsZero() {
+		(substrings) = (append(substrings, fmt.Sprintf("report-uri=\"%s\"", p.ReportURI.String())))
+	}
+	(s) = (strings.Join(substrings, "; "))
+	return s
+}
