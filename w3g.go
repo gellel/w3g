@@ -1338,3 +1338,43 @@ type PragmaHeader struct{}
 func (p PragmaHeader) String() string {
 	return "no-cache"
 }
+
+// ProxyAuthenticateHeader is a struct to prepare a Proxy-Authenticate HTTP header.
+type ProxyAuthenticateHeader struct {
+	Realm string `json:"realm"`
+	Type  string `json:"string"`
+}
+
+// String returns a string representation of a Proxy-Authenticate HTTP header.
+func (p ProxyAuthenticateHeader) String() string {
+	var substrings ([]string) = (make([]string, 0))
+	var s string
+	if !reflect.ValueOf(p.Type).IsZero() {
+		(substrings) = (append(substrings, p.Type))
+	}
+	if !reflect.ValueOf(p.Realm).IsZero() {
+		(substrings) = (append(substrings, fmt.Sprintf("realm=%s", p.Realm)))
+	}
+	(s) = (strings.Join(substrings, " "))
+	return s
+}
+
+// ProxyAuthorizationHeader is a struct to prepare a Proxy-Authorization HTTP header.
+type ProxyAuthorizationHeader struct {
+	Credentials string `json:"credentials"`
+	Type        string `json:"type"`
+}
+
+// String returns a string representation of a Proxy-Authorization HTTP header.
+func (p ProxyAuthorizationHeader) String() string {
+	var substrings ([]string) = (make([]string, 0))
+	var s string
+	if !reflect.ValueOf(p.Type).IsZero() {
+		(substrings) = (append(substrings, p.Type))
+	}
+	if !reflect.ValueOf(p.Credentials).IsZero() {
+		(substrings) = (append(substrings, p.Credentials))
+	}
+	(s) = (strings.Join(substrings, " "))
+	return s
+}
