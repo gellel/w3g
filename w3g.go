@@ -1378,3 +1378,11 @@ func (p ProxyAuthorizationHeader) String() string {
 	(s) = (strings.Join(substrings, " "))
 	return s
 }
+
+// PublicKeyPinsHeader is a struct to prepare a Public-Key-Pins HTTP header.
+type PublicKeyPinsHeader struct {
+	IncludeSubDomains bool   `json:"include_subdomains"`
+	MaxAge            int64  `json:"max_age"`
+	PinSHA256         string `json:"pin_sha256"`
+	ReportURI         string `json:"report_uri"`
+}
