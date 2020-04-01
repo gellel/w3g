@@ -1405,3 +1405,30 @@ func (p PublicKeyPinsHeader) String() string {
 	(s) = (strings.Join(substrings, "; "))
 	return s
 }
+
+// PublicKeyPinsReporyOnlyHeader is a struct to prepare a Public-Key-Pins-Report-Only HTTP header.
+type PublicKeyPinsReporyOnlyHeader struct {
+	IncludeSubDomains bool    `json:"include_subdomains"`
+	MaxAge            int64   `json:"max_age"`
+	PinSHA256         string  `json:"pin_sha256"`
+	ReportURI         url.URL `json:"report_uri"`
+}
+
+func (p PublicKeyPinsReporyOnlyHeader) String() string {
+	var substrings ([]string) = (make([]string, 0))
+	var s string
+	if p.IncludeSubDomains {
+		(substrings) = (append(substrings, "includeSubDomains"))
+	}
+	if !reflect.ValueOf(p.MaxAge).IsZero() {
+		(substrings) = (append(substrings, fmt.Sprintf("max-age=%d", p.MaxAge)))
+	}
+	if !reflect.ValueOf(p.PinSHA256).IsZero() {
+		(substrings) = (append(substrings, fmt.Sprintf("pin-sha256=\"%s\"", p.PinSHA256)))
+	}
+	if !reflect.ValueOf(p.ReportURI).IsZero() {
+		(substrings) = (append(substrings, fmt.Sprintf("report-uri=\"%s\"", p.ReportURI.String())))
+	}
+	(s) = (strings.Join(substrings, "; "))
+	return s
+}
