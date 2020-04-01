@@ -1432,3 +1432,11 @@ func (p PublicKeyPinsReporyOnlyHeader) String() string {
 	(s) = (strings.Join(substrings, "; "))
 	return s
 }
+
+// RangeHeader is a struct to prepare a Range HTTP header.
+type RangeHeader struct {
+	RangeEnd     int64  `json:"range_end"`
+	RangeStart   int64  `json:"range_start"`
+	SuffixLength int64  `json:"suffix_length"`
+	Unit         string `json:"unit"`
+}
