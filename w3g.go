@@ -1440,3 +1440,26 @@ type RangeHeader struct {
 	SuffixLength int64  `json:"suffix_length"`
 	Unit         string `json:"unit"`
 }
+
+func (r RangeHeader) String() string {
+	var rangeStartOK, rangeEndOK, suffixLengthOK, unitOK = !reflect.ValueOf(r.RangeEnd).IsZero(), !reflect.ValueOf(r.RangeStart).IsZero(), !reflect.ValueOf(r.SuffixLength).IsZero(), !reflect.ValueOf(r.Unit).IsZero()
+	var substrings ([]string) = (make([]string, 0))
+	var s string
+	if unitOK {
+		(substrings) = (append(substrings, r.Unit))
+	}
+	if rangeEndOK || rangeStartOK {
+		var ss ([]string) = (make([]string, 0))
+		if rangeStartOK {
+			substrings = append(ss, fmt.Sprintf("%d", r.RangeStart))
+		}
+		if rangeEndOK {
+			substrings = append(ss, fmt.Sprintf("%d", r.RangeEnd))
+		}
+		(substrings) = (append(substrings, strings.Join(ss, "-")))
+	} else if suffixLengthOK {
+		(substrings) = (append(substrings, fmt.Sprintf("-%d", r.SuffixLength)))
+	}
+	(s) = (strings.Join(substrings, ""))
+	return s
+}
