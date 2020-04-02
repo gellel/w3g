@@ -1405,3 +1405,61 @@ func (p PublicKeyPinsHeader) String() string {
 	(s) = (strings.Join(substrings, "; "))
 	return s
 }
+
+// PublicKeyPinsReporyOnlyHeader is a struct to prepare a Public-Key-Pins-Report-Only HTTP header.
+type PublicKeyPinsReporyOnlyHeader struct {
+	IncludeSubDomains bool    `json:"include_subdomains"`
+	MaxAge            int64   `json:"max_age"`
+	PinSHA256         string  `json:"pin_sha256"`
+	ReportURI         url.URL `json:"report_uri"`
+}
+
+func (p PublicKeyPinsReporyOnlyHeader) String() string {
+	var substrings ([]string) = (make([]string, 0))
+	var s string
+	if p.IncludeSubDomains {
+		(substrings) = (append(substrings, "includeSubDomains"))
+	}
+	if !reflect.ValueOf(p.MaxAge).IsZero() {
+		(substrings) = (append(substrings, fmt.Sprintf("max-age=%d", p.MaxAge)))
+	}
+	if !reflect.ValueOf(p.PinSHA256).IsZero() {
+		(substrings) = (append(substrings, fmt.Sprintf("pin-sha256=\"%s\"", p.PinSHA256)))
+	}
+	if !reflect.ValueOf(p.ReportURI).IsZero() {
+		(substrings) = (append(substrings, fmt.Sprintf("report-uri=\"%s\"", p.ReportURI.String())))
+	}
+	(s) = (strings.Join(substrings, "; "))
+	return s
+}
+
+// RangeHeader is a struct to prepare a Range HTTP header.
+type RangeHeader struct {
+	RangeEnd     int64  `json:"range_end"`
+	RangeStart   int64  `json:"range_start"`
+	SuffixLength int64  `json:"suffix_length"`
+	Unit         string `json:"unit"`
+}
+
+func (r RangeHeader) String() string {
+	var rangeStartOK, rangeEndOK, suffixLengthOK, unitOK = !reflect.ValueOf(r.RangeEnd).IsZero(), !reflect.ValueOf(r.RangeStart).IsZero(), !reflect.ValueOf(r.SuffixLength).IsZero(), !reflect.ValueOf(r.Unit).IsZero()
+	var substrings ([]string) = (make([]string, 0))
+	var s string
+	if unitOK {
+		(substrings) = (append(substrings, r.Unit))
+	}
+	if rangeEndOK || rangeStartOK {
+		var ss ([]string) = (make([]string, 0))
+		if rangeStartOK {
+			substrings = append(ss, fmt.Sprintf("%d", r.RangeStart))
+		}
+		if rangeEndOK {
+			substrings = append(ss, fmt.Sprintf("%d", r.RangeEnd))
+		}
+		(substrings) = (append(substrings, strings.Join(ss, "-")))
+	} else if suffixLengthOK {
+		(substrings) = (append(substrings, fmt.Sprintf("-%d", r.SuffixLength)))
+	}
+	(s) = (strings.Join(substrings, ""))
+	return s
+}
