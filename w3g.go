@@ -1463,3 +1463,23 @@ func (r RangeHeader) String() string {
 	(s) = (strings.Join(substrings, ""))
 	return s
 }
+
+// RefererHeader is a struct to prepare a Referer HTTP header.
+type RefererHeader struct {
+	URL url.URL
+}
+
+// String returns a string representation of a Referer HTTP header.
+func (r RefererHeader) String() string {
+	return (r.URL.String())
+}
+
+// ReferrerPolicyHeader is a struct to prepare a Referrer Policy HTTP header.
+type ReferrerPolicyHeader struct {
+	NoReferrer              bool `json:"no_referrer"`
+	NoReferrerWhenDowngrade bool `json:"no_referrer_when_downgrade"`
+	Origin                  bool `json:"origin"`
+	OriginWhenCrossOrigin   bool `json:"origin_when_cross_origin"`
+	SameOrigin              bool `json:"same_origin"`
+	StrictOrigin            bool `json:"strict_origin"`
+}
