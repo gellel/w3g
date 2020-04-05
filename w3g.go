@@ -1476,10 +1476,33 @@ func (r RefererHeader) String() string {
 
 // ReferrerPolicyHeader is a struct to prepare a Referrer Policy HTTP header.
 type ReferrerPolicyHeader struct {
-	NoReferrer              bool `json:"no_referrer"`
-	NoReferrerWhenDowngrade bool `json:"no_referrer_when_downgrade"`
-	Origin                  bool `json:"origin"`
-	OriginWhenCrossOrigin   bool `json:"origin_when_cross_origin"`
-	SameOrigin              bool `json:"same_origin"`
-	StrictOrigin            bool `json:"strict_origin"`
+	NoReferrer                  bool `json:"no_referrer"`
+	NoReferrerWhenDowngrade     bool `json:"no_referrer_when_downgrade"`
+	Origin                      bool `json:"origin"`
+	OriginWhenCrossOrigin       bool `json:"origin_when_cross_origin"`
+	SameOrigin                  bool `json:"same_origin"`
+	StrictOrigin                bool `json:"strict_origin"`
+	StrictOriginWhenCrossOrigin bool `json:"strict_origin_when_cross_origin"`
+}
+
+// String returns a string representation of a Referrer-Policy HTTP header.
+func (r ReferrerPolicyHeader) String() string {
+	var regex *regexp.Regexp = regexp.MustCompile(`[A-Z][^A-Z]*`)
+	var substrings ([]string) = (make([]string, 0))
+	var s string
+	var x reflect.Value = reflect.ValueOf(r)
+	var v reflect.Type = (reflect.Indirect(x).Type())
+	for i, n := 0, x.NumField(); i < n; i++ {
+		var f reflect.Value = x.Field(i)
+		if f.IsValid() && !f.IsZero() {
+			var name string = strings.Join(regex.FindAllString(v.Field(i).Name, -1), "-")
+			name = strings.ToLower(name)
+			switch f.Kind() {
+			case reflect.Bool:
+				(substrings) = (append(substrings, fmt.Sprintf("%s", name)))
+			}
+		}
+	}
+	(s) = (strings.Join(substrings, ", "))
+	return s
 }
