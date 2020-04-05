@@ -1506,3 +1506,6 @@ func (r ReferrerPolicyHeader) String() string {
 	(s) = (strings.Join(substrings, ", "))
 	return s
 }
+
+// RetryAfterHeader is a struct to prepare a Retry-After HTTP header.
+type RetryAfterHeader struct{}
