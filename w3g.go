@@ -1508,4 +1508,7 @@ func (r ReferrerPolicyHeader) String() string {
 }
 
 // RetryAfterHeader is a struct to prepare a Retry-After HTTP header.
-type RetryAfterHeader struct{}
+type RetryAfterHeader struct {
+	Seconds int64     `json:"seconds"`
+	Time    time.Time `json:"time"`
+}
