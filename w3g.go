@@ -1525,3 +1525,11 @@ func (r RetryAfterHeader) String() string {
 type SaveDataHeader struct {
 	On bool `json:"on"`
 }
+
+// String is a struct to prepare a Save-Data HTTP header.
+func (s SaveDataHeader) String() string {
+	if s.On {
+		return "on"
+	}
+	return "off"
+}
