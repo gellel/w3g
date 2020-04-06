@@ -1512,3 +1512,16 @@ type RetryAfterHeader struct {
 	Seconds int64     `json:"seconds"`
 	Time    time.Time `json:"time"`
 }
+
+// String returns a string representation of a Retry-After HTTP header.
+func (r RetryAfterHeader) String() string {
+	if !reflect.ValueOf(r.Time).IsZero() {
+		return (r.Time.Format(http.TimeFormat))
+	}
+	return (fmt.Sprintf("%d", r.Seconds))
+}
+
+// SaveDataHeader is a struct to prepare a Save-Data HTTP header.
+type SaveDataHeader struct {
+	On bool `json:"on"`
+}
