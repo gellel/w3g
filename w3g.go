@@ -1533,3 +1533,49 @@ func (s SaveDataHeader) String() string {
 	}
 	return "off"
 }
+
+// SecFetchDestHeader is a struct to prepare a Sec-Fetch-Dest HTTP header.
+type SecFetchDestHeader struct {
+	Audio          bool `json:"audio"`
+	Audioworklet   bool `json:"audioworklet"`
+	Document       bool `json:"document"`
+	Embed          bool `json:"embed"`
+	Empty          bool `json:"empty"`
+	Font           bool `json:"font"`
+	Image          bool `json:"image"`
+	Manifest       bool `json:"manifest"`
+	NestedDocument bool `json:"nested_document"`
+	Object         bool `json:"object"`
+	Paintworklet   bool `json:"paintworklet"`
+	Report         bool `json:"report"`
+	Script         bool `json:"script"`
+	Serviceworker  bool `json:"serviceworker"`
+	Sharedworker   bool `json:"sharedworker"`
+	Style          bool `json:"style"`
+	Track          bool `json:"track"`
+	Video          bool `json:"video"`
+	Worker         bool `json:"worker"`
+	XSLT           bool `json:"xslt"`
+}
+
+// String returns a string representation of a Referrer-Policy HTTP header.
+func (s SecFetchDestHeader) String() string {
+	var regex *regexp.Regexp = regexp.MustCompile(`[A-Z][^A-Z]*`)
+	var substrings ([]string) = (make([]string, 0))
+	var ss string
+	var x reflect.Value = reflect.ValueOf(s)
+	var v reflect.Type = (reflect.Indirect(x).Type())
+	for i, n := 0, x.NumField(); i < n; i++ {
+		var f reflect.Value = x.Field(i)
+		if f.IsValid() && !f.IsZero() {
+			var name string = strings.Join(regex.FindAllString(v.Field(i).Name, -1), "-")
+			name = strings.ToLower(name)
+			switch f.Kind() {
+			case reflect.Bool:
+				(substrings) = (append(substrings, fmt.Sprintf("%s", name)))
+			}
+		}
+	}
+	(ss) = (strings.Join(substrings, ", "))
+	return ss
+}
