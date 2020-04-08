@@ -1555,7 +1555,7 @@ type SecFetchDestHeader struct {
 	Track          bool `json:"track"`
 	Video          bool `json:"video"`
 	Worker         bool `json:"worker"`
-	XSLT           bool `json:"xslt"`
+	Xslt           bool `json:"xslt"`
 }
 
 // String returns a string representation of a Referrer-Policy HTTP header.
