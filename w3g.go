@@ -1463,3 +1463,73 @@ func (r RangeHeader) String() string {
 	(s) = (strings.Join(substrings, ""))
 	return s
 }
+
+// RefererHeader is a struct to prepare a Referer HTTP header.
+type RefererHeader struct {
+	URL url.URL
+}
+
+// String returns a string representation of a Referer HTTP header.
+func (r RefererHeader) String() string {
+	return (r.URL.String())
+}
+
+// ReferrerPolicyHeader is a struct to prepare a Referrer Policy HTTP header.
+type ReferrerPolicyHeader struct {
+	NoReferrer                  bool `json:"no_referrer"`
+	NoReferrerWhenDowngrade     bool `json:"no_referrer_when_downgrade"`
+	Origin                      bool `json:"origin"`
+	OriginWhenCrossOrigin       bool `json:"origin_when_cross_origin"`
+	SameOrigin                  bool `json:"same_origin"`
+	StrictOrigin                bool `json:"strict_origin"`
+	StrictOriginWhenCrossOrigin bool `json:"strict_origin_when_cross_origin"`
+}
+
+// String returns a string representation of a Referrer-Policy HTTP header.
+func (r ReferrerPolicyHeader) String() string {
+	var regex *regexp.Regexp = regexp.MustCompile(`[A-Z][^A-Z]*`)
+	var substrings ([]string) = (make([]string, 0))
+	var s string
+	var x reflect.Value = reflect.ValueOf(r)
+	var v reflect.Type = (reflect.Indirect(x).Type())
+	for i, n := 0, x.NumField(); i < n; i++ {
+		var f reflect.Value = x.Field(i)
+		if f.IsValid() && !f.IsZero() {
+			var name string = strings.Join(regex.FindAllString(v.Field(i).Name, -1), "-")
+			name = strings.ToLower(name)
+			switch f.Kind() {
+			case reflect.Bool:
+				(substrings) = (append(substrings, fmt.Sprintf("%s", name)))
+			}
+		}
+	}
+	(s) = (strings.Join(substrings, ", "))
+	return s
+}
+
+// RetryAfterHeader is a struct to prepare a Retry-After HTTP header.
+type RetryAfterHeader struct {
+	Seconds int64     `json:"seconds"`
+	Time    time.Time `json:"time"`
+}
+
+// String returns a string representation of a Retry-After HTTP header.
+func (r RetryAfterHeader) String() string {
+	if !reflect.ValueOf(r.Time).IsZero() {
+		return (r.Time.Format(http.TimeFormat))
+	}
+	return (fmt.Sprintf("%d", r.Seconds))
+}
+
+// SaveDataHeader is a struct to prepare a Save-Data HTTP header.
+type SaveDataHeader struct {
+	On bool `json:"on"`
+}
+
+// String is a struct to prepare a Save-Data HTTP header.
+func (s SaveDataHeader) String() string {
+	if s.On {
+		return "on"
+	}
+	return "off"
+}
