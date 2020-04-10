@@ -1586,4 +1586,5 @@ type SecFetchModeHeader struct {
 	Navigate       bool `json:"navigate"`
 	NestedNavigate bool `json:"nested_navigate"`
 	NoCors         bool `json:"no_cors"`
+	SameOrigin     bool `json:"same_origin"`
 }
