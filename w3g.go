@@ -1579,3 +1579,11 @@ func (s SecFetchDestHeader) String() string {
 	(ss) = (strings.Join(substrings, ", "))
 	return ss
 }
+
+// SecFetchModeHeader is a struct to preparea Sec-Fetch-Mode HTTP header.
+type SecFetchModeHeader struct {
+	Cors           bool `json:"cors"`
+	Navigate       bool `json:"navigate"`
+	NestedNavigate bool `json:"nested_navigate"`
+	NoCors         bool `json:"no_cors"`
+}
