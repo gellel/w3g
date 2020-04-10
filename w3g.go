@@ -1558,7 +1558,7 @@ type SecFetchDestHeader struct {
 	Xslt           bool `json:"xslt"`
 }
 
-// String returns a string representation of a Referrer-Policy HTTP header.
+// String returns a string representation of a Sec-Fetch-Dest HTTP header.
 func (s SecFetchDestHeader) String() string {
 	var regex *regexp.Regexp = regexp.MustCompile(`[A-Z][^A-Z]*`)
 	var substrings ([]string) = (make([]string, 0))
@@ -1587,4 +1587,27 @@ type SecFetchModeHeader struct {
 	NestedNavigate bool `json:"nested_navigate"`
 	NoCors         bool `json:"no_cors"`
 	SameOrigin     bool `json:"same_origin"`
+	WebSocket      bool `json:"websocket"`
+}
+
+// String returns a string representation of a Sec-Fetch-Mode HTTP header.
+func (s SecFetchModeHeader) String() string {
+	var regex *regexp.Regexp = regexp.MustCompile(`[A-Z][^A-Z]*`)
+	var substrings ([]string) = (make([]string, 0))
+	var ss string
+	var x reflect.Value = reflect.ValueOf(s)
+	var v reflect.Type = (reflect.Indirect(x).Type())
+	for i, n := 0, x.NumField(); i < n; i++ {
+		var f reflect.Value = x.Field(i)
+		if f.IsValid() && !f.IsZero() {
+			var name string = strings.Join(regex.FindAllString(v.Field(i).Name, -1), "-")
+			name = strings.ToLower(name)
+			switch f.Kind() {
+			case reflect.Bool:
+				(substrings) = (append(substrings, fmt.Sprintf("%s", name)))
+			}
+		}
+	}
+	(ss) = (strings.Join(substrings, ", "))
+	return ss
 }
