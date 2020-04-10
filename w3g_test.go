@@ -43,4 +43,6 @@ func Test(t *testing.T) {
 	var u, _ = url.Parse("https://www.google.com/my/path/to/something")
 
 	fmt.Println(w3g.LocationHeader{*u}.String())
+
+	fmt.Println(w3g.SecFetchDestHeader{Xslt: true}.String())
 }
