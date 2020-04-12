@@ -1613,4 +1613,9 @@ func (s SecFetchModeHeader) String() string {
 }
 
 // SecFetchSiteHeader is a struct to prepare a Sec-Fetch-Site HTTP header.
-type SecFetchSiteHeader struct{}
+type SecFetchSiteHeader struct {
+	CrossSite  bool `json:"cross_site"`
+	None       bool `json:"none"`
+	SameOrigin bool `json:"same_origin"`
+	SameSite   bool `json:"same_site"`
+}
