@@ -1619,3 +1619,25 @@ type SecFetchSiteHeader struct {
 	SameOrigin bool `json:"same_origin"`
 	SameSite   bool `json:"same_site"`
 }
+
+// String returns a string representation of a Sec-Fetch-Site HTTP header.
+func (s SecFetchSiteHeader) String() string {
+	var regex *regexp.Regexp = regexp.MustCompile(`[A-Z][^A-Z]*`)
+	var substrings ([]string) = (make([]string, 0))
+	var ss string
+	var x reflect.Value = reflect.ValueOf(s)
+	var v reflect.Type = (reflect.Indirect(x).Type())
+	for i, n := 0, x.NumField(); i < n; i++ {
+		var f reflect.Value = x.Field(i)
+		if f.IsValid() && !f.IsZero() {
+			var name string = strings.Join(regex.FindAllString(v.Field(i).Name, -1), "-")
+			name = strings.ToLower(name)
+			switch f.Kind() {
+			case reflect.Bool:
+				(substrings) = (append(substrings, fmt.Sprintf("%s", name)))
+			}
+		}
+	}
+	(ss) = (strings.Join(substrings, ", "))
+	return ss
+}
