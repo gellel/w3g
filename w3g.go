@@ -1641,3 +1641,6 @@ func (s SecFetchSiteHeader) String() string {
 	(ss) = (strings.Join(substrings, ", "))
 	return ss
 }
+
+// SecFetchUserHeader is a struct to prepare a Sec-Fetch-User HTTP header.
+type SecFetchUserHeader struct{}
