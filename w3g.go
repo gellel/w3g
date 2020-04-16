@@ -1654,3 +1654,13 @@ func (s SecFetchUserHeader) String() string {
 	}
 	return "?0"
 }
+
+// SecWebSocketAcceptHeader is a struct to prepare Sec-Web-Socket-Accept HTTP header.
+type SecWebSocketAcceptHeader struct {
+	HashedKey string `json:"hashed_key"`
+}
+
+// String returns a string representation of a Sec-Web-Socket-Accept HTTP header.
+func (s SecWebSocketAcceptHeader) String() string {
+	return (s.HashedKey)
+}
