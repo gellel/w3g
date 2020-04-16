@@ -1643,4 +1643,11 @@ func (s SecFetchSiteHeader) String() string {
 }
 
 // SecFetchUserHeader is a struct to prepare a Sec-Fetch-User HTTP header.
-type SecFetchUserHeader struct{}
+type SecFetchUserHeader struct {
+	Activated bool `json:"activated"`
+}
+
+// String returns a string representation of a Sec-Fetch-User HTTP header.
+func (s SecFetchUserHeader) String() string {
+	return (fmt.Sprintf("%t", s.Activated))
+}
