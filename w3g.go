@@ -1611,3 +1611,56 @@ func (s SecFetchModeHeader) String() string {
 	(ss) = (strings.Join(substrings, ", "))
 	return ss
 }
+
+// SecFetchSiteHeader is a struct to prepare a Sec-Fetch-Site HTTP header.
+type SecFetchSiteHeader struct {
+	CrossSite  bool `json:"cross_site"`
+	None       bool `json:"none"`
+	SameOrigin bool `json:"same_origin"`
+	SameSite   bool `json:"same_site"`
+}
+
+// String returns a string representation of a Sec-Fetch-Site HTTP header.
+func (s SecFetchSiteHeader) String() string {
+	var regex *regexp.Regexp = regexp.MustCompile(`[A-Z][^A-Z]*`)
+	var substrings ([]string) = (make([]string, 0))
+	var ss string
+	var x reflect.Value = reflect.ValueOf(s)
+	var v reflect.Type = (reflect.Indirect(x).Type())
+	for i, n := 0, x.NumField(); i < n; i++ {
+		var f reflect.Value = x.Field(i)
+		if f.IsValid() && !f.IsZero() {
+			var name string = strings.Join(regex.FindAllString(v.Field(i).Name, -1), "-")
+			name = strings.ToLower(name)
+			switch f.Kind() {
+			case reflect.Bool:
+				(substrings) = (append(substrings, fmt.Sprintf("%s", name)))
+			}
+		}
+	}
+	(ss) = (strings.Join(substrings, ", "))
+	return ss
+}
+
+// SecFetchUserHeader is a struct to prepare a Sec-Fetch-User HTTP header.
+type SecFetchUserHeader struct {
+	Activated bool `json:"activated"`
+}
+
+// String returns a string representation of a Sec-Fetch-User HTTP header.
+func (s SecFetchUserHeader) String() string {
+	if s.Activated {
+		return "?1"
+	}
+	return "?0"
+}
+
+// SecWebSocketAcceptHeader is a struct to prepare Sec-Web-Socket-Accept HTTP header.
+type SecWebSocketAcceptHeader struct {
+	HashedKey string `json:"hashed_key"`
+}
+
+// String returns a string representation of a Sec-Web-Socket-Accept HTTP header.
+func (s SecWebSocketAcceptHeader) String() string {
+	return (s.HashedKey)
+}
