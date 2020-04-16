@@ -1649,5 +1649,8 @@ type SecFetchUserHeader struct {
 
 // String returns a string representation of a Sec-Fetch-User HTTP header.
 func (s SecFetchUserHeader) String() string {
-	return (fmt.Sprintf("%t", s.Activated))
+	if s.Activated {
+		return "?1"
+	}
+	return "?0"
 }
