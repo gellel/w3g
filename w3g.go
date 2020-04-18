@@ -1666,4 +1666,11 @@ func (s SecWebSocketAcceptHeader) String() string {
 }
 
 // ServerHeader is a struct to prepare a Server HTTP header.
-type ServerHeader struct{}
+type ServerHeader struct {
+	Server string `json:"server"`
+}
+
+// String returns a string representation of a Server HTTP header.
+func (s ServerHeader) String() string {
+	return (s.Server)
+}
