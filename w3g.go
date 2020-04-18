@@ -1664,3 +1664,6 @@ type SecWebSocketAcceptHeader struct {
 func (s SecWebSocketAcceptHeader) String() string {
 	return (s.HashedKey)
 }
+
+// ServerHeader is a struct to prepare a Server HTTP header.
+type ServerHeader struct{}
