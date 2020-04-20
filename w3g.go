@@ -1681,3 +1681,8 @@ type ServerTimingHeader struct {
 	CPU         bool `json:"cpu"`
 	MissedCache bool `json:"missed_cache"`
 }
+
+// SetCookieHeader is a struct to prepare a Set-Cookie HTTP header.
+type SetCookieHeader struct {
+	Cookie http.Cookie `json:"cookie"`
+}
