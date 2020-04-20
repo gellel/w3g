@@ -1674,3 +1674,10 @@ type ServerHeader struct {
 func (s ServerHeader) String() string {
 	return (s.Server)
 }
+
+// ServerTimingHeader is a struct to prepare a Server-Timing HTTP header.
+type ServerTimingHeader struct {
+	Cache       bool `json:"cache"`
+	CPU         bool `json:"cpu"`
+	MissedCache bool `json:"missed_cache"`
+}
