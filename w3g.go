@@ -1691,3 +1691,8 @@ type SetCookieHeader struct {
 func (s SetCookieHeader) String() string {
 	return s.Cookie.String()
 }
+
+// SetCookie2Header is a struct to prepare a Set-Cookie2 HTTP header.
+type SetCookie2Header struct {
+	Cookie http.Cookie
+}
