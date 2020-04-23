@@ -1686,3 +1686,8 @@ type ServerTimingHeader struct {
 type SetCookieHeader struct {
 	Cookie http.Cookie `json:"cookie"`
 }
+
+// String returns a strings representation of a Set-Cookie HTTP header.
+func (s SetCookieHeader) String() string {
+	return s.Cookie.String()
+}
