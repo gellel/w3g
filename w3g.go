@@ -1706,3 +1706,8 @@ func (s SetCookie2Header) String() string {
 type SourceMapHeader struct {
 	URL url.URL `json:"url"`
 }
+
+// String returns a string representation of a Source-Map HTTP header.
+func (s SourceMapHeader) String() string {
+	return (s.URL.String())
+}
