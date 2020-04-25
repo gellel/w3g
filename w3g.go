@@ -1701,3 +1701,6 @@ type SetCookie2Header struct {
 func (s SetCookie2Header) String() string {
 	return s.Cookie.String()
 }
+
+// SourceMapHeader is a struct to prepare a Source-Map HTTP header.
+type SourceMapHeader struct{}
