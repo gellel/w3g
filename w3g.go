@@ -1664,3 +1664,50 @@ type SecWebSocketAcceptHeader struct {
 func (s SecWebSocketAcceptHeader) String() string {
 	return (s.HashedKey)
 }
+
+// ServerHeader is a struct to prepare a Server HTTP header.
+type ServerHeader struct {
+	Server string `json:"server"`
+}
+
+// String returns a string representation of a Server HTTP header.
+func (s ServerHeader) String() string {
+	return (s.Server)
+}
+
+// ServerTimingHeader is a struct to prepare a Server-Timing HTTP header.
+type ServerTimingHeader struct {
+	Cache       bool `json:"cache"`
+	CPU         bool `json:"cpu"`
+	MissedCache bool `json:"missed_cache"`
+}
+
+// SetCookieHeader is a struct to prepare a Set-Cookie HTTP header.
+type SetCookieHeader struct {
+	Cookie http.Cookie `json:"cookie"`
+}
+
+// String returns a strings representation of a Set-Cookie HTTP header.
+func (s SetCookieHeader) String() string {
+	return s.Cookie.String()
+}
+
+// SetCookie2Header is a struct to prepare a Set-Cookie-2 HTTP header.
+type SetCookie2Header struct {
+	Cookie http.Cookie `json:"cookie"`
+}
+
+// String reutrns a string representation of a Set-Cookie-2 HTTP header.
+func (s SetCookie2Header) String() string {
+	return s.Cookie.String()
+}
+
+// SourceMapHeader is a struct to prepare a Source-Map HTTP header.
+type SourceMapHeader struct {
+	URL url.URL `json:"url"`
+}
+
+// String returns a string representation of a Source-Map HTTP header.
+func (s SourceMapHeader) String() string {
+	return (s.URL.String())
+}
