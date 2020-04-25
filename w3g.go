@@ -1694,7 +1694,7 @@ func (s SetCookieHeader) String() string {
 
 // SetCookie2Header is a struct to prepare a Set-Cookie-2 HTTP header.
 type SetCookie2Header struct {
-	Cookie http.Cookie
+	Cookie http.Cookie `json:"cookie"`
 }
 
 // String reutrns a string representation of a Set-Cookie-2 HTTP header.
@@ -1703,4 +1703,6 @@ func (s SetCookie2Header) String() string {
 }
 
 // SourceMapHeader is a struct to prepare a Source-Map HTTP header.
-type SourceMapHeader struct{}
+type SourceMapHeader struct {
+	URL url.URL `json:"url"`
+}
