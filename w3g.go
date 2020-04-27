@@ -1714,5 +1714,7 @@ func (s SourceMapHeader) String() string {
 
 // StrictTransportSecurityHeader is a struct to prepare
 type StrictTransportSecurityHeader struct {
-	MaxAge int64 `json:"max_age"`
+	IncludeSubDomains bool  `json:"include_subdomains"`
+	MaxAge            int64 `json:"max_age"`
+	Preload           bool  `json:"preload"`
 }
