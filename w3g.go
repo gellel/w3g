@@ -1711,3 +1711,8 @@ type SourceMapHeader struct {
 func (s SourceMapHeader) String() string {
 	return (s.URL.String())
 }
+
+// StrictTransportSecurityHeader is a struct to prepare
+type StrictTransportSecurityHeader struct {
+	MaxAge int64 `json:"max_age"`
+}
