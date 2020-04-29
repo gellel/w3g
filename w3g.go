@@ -1718,3 +1718,5 @@ type StrictTransportSecurityHeader struct {
 	MaxAge            int64 `json:"max_age"`
 	Preload           bool  `json:"preload"`
 }
+
+func (s StrictTransportSecurityHeader) String() {}
