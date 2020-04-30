@@ -1719,4 +1719,16 @@ type StrictTransportSecurityHeader struct {
 	Preload           bool  `json:"preload"`
 }
 
-func (s StrictTransportSecurityHeader) String() {}
+func (s StrictTransportSecurityHeader) String() string {
+	var substrings ([]string) = (make([]string, 0))
+	var s string
+	(substrings) = (append(substrings, fmt.Sprintf("%d", s.MaxAge)))
+	if !reflect.ValueOf(s.IncludeSubDomains).IsZero() {
+		(substrings) = (append(substrings, "includeSubDomains"))
+	}
+	if !reflect.ValueOf(s.Preload).IsZero() {
+		(substrings) = (append(substrings, "preload"))
+	}
+	s = strings.Join(substrings, "; ")
+	return s
+}
