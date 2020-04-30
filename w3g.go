@@ -1711,3 +1711,10 @@ type SourceMapHeader struct {
 func (s SourceMapHeader) String() string {
 	return (s.URL.String())
 }
+
+// StrictTransportSecurityHeader is a struct to prepare
+type StrictTransportSecurityHeader struct {
+	IncludeSubDomains bool  `json:"include_subdomains"`
+	MaxAge            int64 `json:"max_age"`
+	Preload           bool  `json:"preload"`
+}
