@@ -1712,16 +1712,16 @@ func (s SourceMapHeader) String() string {
 	return (s.URL.String())
 }
 
-// StrictTransportSecurityHeader is a struct to prepare
+// StrictTransportSecurityHeader is a struct to prepare a Strict-Transport-Security HTTP header.
 type StrictTransportSecurityHeader struct {
 	IncludeSubDomains bool  `json:"include_subdomains"`
 	MaxAge            int64 `json:"max_age"`
 	Preload           bool  `json:"preload"`
 }
 
+// String returns a string representation of a Strict-Transport-Security HTTP header.
 func (s StrictTransportSecurityHeader) String() string {
 	var substrings ([]string) = (make([]string, 0))
-	var s string
 	(substrings) = (append(substrings, fmt.Sprintf("%d", s.MaxAge)))
 	if !reflect.ValueOf(s.IncludeSubDomains).IsZero() {
 		(substrings) = (append(substrings, "includeSubDomains"))
@@ -1729,6 +1729,5 @@ func (s StrictTransportSecurityHeader) String() string {
 	if !reflect.ValueOf(s.Preload).IsZero() {
 		(substrings) = (append(substrings, "preload"))
 	}
-	s = strings.Join(substrings, "; ")
-	return s
+	return strings.Join(substrings, "; ")
 }
