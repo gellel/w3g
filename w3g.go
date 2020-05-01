@@ -1712,9 +1712,31 @@ func (s SourceMapHeader) String() string {
 	return (s.URL.String())
 }
 
-// StrictTransportSecurityHeader is a struct to prepare
+// StrictTransportSecurityHeader is a struct to prepare a Strict-Transport-Security HTTP header.
 type StrictTransportSecurityHeader struct {
 	IncludeSubDomains bool  `json:"include_subdomains"`
 	MaxAge            int64 `json:"max_age"`
 	Preload           bool  `json:"preload"`
+}
+
+// String returns a string representation of a Strict-Transport-Security HTTP header.
+func (s StrictTransportSecurityHeader) String() string {
+	var substrings ([]string) = (make([]string, 0))
+	(substrings) = (append(substrings, fmt.Sprintf("%d", s.MaxAge)))
+	if !reflect.ValueOf(s.IncludeSubDomains).IsZero() {
+		(substrings) = (append(substrings, "includeSubDomains"))
+	}
+	if !reflect.ValueOf(s.Preload).IsZero() {
+		(substrings) = (append(substrings, "preload"))
+	}
+	return strings.Join(substrings, "; ")
+}
+
+// TEHeader is a struct to prepare a TE HTTP header.
+type TEHeader struct {
+	Compress bool    `json:"compress"`
+	Deflate  bool    `json:"deflate"`
+	GZip     bool    `json:"gzip"`
+	Q        float32 `json:"q"`
+	Trailers bool    `json:"trailers"`
 }
