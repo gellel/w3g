@@ -1731,3 +1731,6 @@ func (s StrictTransportSecurityHeader) String() string {
 	}
 	return strings.Join(substrings, "; ")
 }
+
+// TEHeader is a struct to prepare a TE HTTP header.
+type TEHeader struct{}
