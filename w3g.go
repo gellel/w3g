@@ -1733,4 +1733,8 @@ func (s StrictTransportSecurityHeader) String() string {
 }
 
 // TEHeader is a struct to prepare a TE HTTP header.
-type TEHeader struct{}
+type TEHeader struct {
+	Compress bool `json:"compress"`
+	Deflate  bool `json:"deflate"`
+	GZip     bool `json:"gzip"`
+}
