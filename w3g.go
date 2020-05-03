@@ -1740,3 +1740,27 @@ type TEHeader struct {
 	Q        float32 `json:"q"`
 	Trailers bool    `json:"trailers"`
 }
+
+// String returns a string representation of TE HTTP header.
+func (t TEHeader) String() string {
+	var qOK bool = !reflect.ValueOf(t.Q).IsZero()
+	var s string
+	if t.Compress {
+		s = "compress"
+	} else if t.Deflate {
+		s = "deflate"
+	} else if t.GZip {
+		s = "gzip"
+	} else if t.Trailers {
+		s = "trailers"
+	}
+	if qOK {
+		s = fmt.Sprintf("%s;%.2f", s, t.Q)
+	}
+	return s
+}
+
+// TimingAllowOriginHeader is a struct to prepar a Timing-Allow-Origin HTTP header.
+type TimingAllowOriginHeader struct {
+	Origins []url.URL `json:"origins"`
+}
