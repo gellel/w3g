@@ -1761,4 +1761,6 @@ func (t TEHeader) String() string {
 }
 
 // TimingAllowOriginHeader is a struct to prepar a Timing-Allow-Origin HTTP header.
-type TimingAllowOriginHeader struct{}
+type TimingAllowOriginHeader struct {
+	Origins []url.URL `json:"origins"`
+}
