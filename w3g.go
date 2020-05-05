@@ -1764,3 +1764,13 @@ func (t TEHeader) String() string {
 type TimingAllowOriginHeader struct {
 	Origins []url.URL `json:"origins"`
 }
+
+func (t TimingAllowOriginHeader) String() string {
+	var substrings ([]string) = (make([]string, 0))
+	var s string
+	for _, u := range t.Origins {
+		substrings = append(substrings, u.String())
+	}
+	s = strings.Join(substrings, ", ")
+	return s
+}
