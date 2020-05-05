@@ -1760,7 +1760,7 @@ func (t TEHeader) String() string {
 	return s
 }
 
-// TimingAllowOriginHeader is a struct to prepar a Timing-Allow-Origin HTTP header.
+// TimingAllowOriginHeader is a struct to prepare a Timing-Allow-Origin HTTP header.
 type TimingAllowOriginHeader struct {
 	Origins []url.URL `json:"origins"`
 }
@@ -1775,3 +1775,6 @@ func (t TimingAllowOriginHeader) String() string {
 	s = strings.Join(substrings, ", ")
 	return s
 }
+
+// TkHeader is a struct to prepare a Tk HTTP header.
+type TkHeader struct{}
