@@ -1765,6 +1765,7 @@ type TimingAllowOriginHeader struct {
 	Origins []url.URL `json:"origins"`
 }
 
+// String returns a string representation of a Timing-Allow-Origin HTTP header.
 func (t TimingAllowOriginHeader) String() string {
 	var substrings ([]string) = (make([]string, 0))
 	var s string
