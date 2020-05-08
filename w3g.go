@@ -317,6 +317,9 @@ const Width string = "Width"
 // XContentTypeOptions response HTTP header is a marker used by the server to indicate that the MIME types advertised in the Content-Type headers should not be changed.
 const XContentTypeOptions string = " X-Content-Type-Options"
 
+// XCorrelationID correlates HTTP requests between a client and server.
+const XCorrelationID string = "X-Correlation-ID"
+
 // XDNSPrefetchControl response HTTP header controls DNS prefetching.
 const XDNSPrefetchControl string = "X-DNS-Prefetch-Control"
 
@@ -332,6 +335,7 @@ const XForwardedProto string = "X-Forwarded-Proto"
 // XFrameOptions response HTTP header can be used to indicate whether or not a browser should be allowed to render a page in a <frame>, <iframe>, <embed> or <object>.
 const XFrameOptions string = "X-Frame-Options"
 
+// XRequestID correlates HTTP requests between a client and server.
 const XRequestID string = "X-Request-ID"
 
 // XRequestedWith  HTTP header is a request header used to indicate whether the HTTP request was an AJAX request.
