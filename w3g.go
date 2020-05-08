@@ -332,6 +332,8 @@ const XForwardedProto string = "X-Forwarded-Proto"
 // XFrameOptions response HTTP header can be used to indicate whether or not a browser should be allowed to render a page in a <frame>, <iframe>, <embed> or <object>.
 const XFrameOptions string = "X-Frame-Options"
 
+const XRequestedWith string = "X-Requested-With"
+
 // XXSSProtection response HTTP header is a feature of Internet Explorer, Chrome and Safari that stops pages from loading when they detect reflected cross-site scripting.
 const XXSSProtection string = "X-XSS-Protection"
 
@@ -1760,7 +1762,21 @@ func (t TEHeader) String() string {
 	return s
 }
 
-// TimingAllowOriginHeader is a struct to prepar a Timing-Allow-Origin HTTP header.
+// TimingAllowOriginHeader is a struct to prepare a Timing-Allow-Origin HTTP header.
 type TimingAllowOriginHeader struct {
 	Origins []url.URL `json:"origins"`
 }
+
+// String returns a string representation of a Timing-Allow-Origin HTTP header.
+func (t TimingAllowOriginHeader) String() string {
+	var substrings ([]string) = (make([]string, 0))
+	var s string
+	for _, u := range t.Origins {
+		substrings = append(substrings, u.String())
+	}
+	s = strings.Join(substrings, ", ")
+	return s
+}
+
+// TkHeader is a struct to prepare a Tk HTTP header.
+type TkHeader struct{}
