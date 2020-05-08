@@ -332,6 +332,8 @@ const XForwardedProto string = "X-Forwarded-Proto"
 // XFrameOptions response HTTP header can be used to indicate whether or not a browser should be allowed to render a page in a <frame>, <iframe>, <embed> or <object>.
 const XFrameOptions string = "X-Frame-Options"
 
+const XRequestID string = "X-Request-ID"
+
 // XRequestedWith  HTTP header is a request header used to indicate whether the HTTP request was an AJAX request.
 const XRequestedWith string = "X-Requested-With"
 
