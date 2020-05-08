@@ -320,6 +320,8 @@ const XContentTypeOptions string = " X-Content-Type-Options"
 // XCorrelationID correlates HTTP requests between a client and server.
 const XCorrelationID string = "X-Correlation-ID"
 
+const XCSRFToken string = "X-CSRF-Token"
+
 // XDNSPrefetchControl response HTTP header controls DNS prefetching.
 const XDNSPrefetchControl string = "X-DNS-Prefetch-Control"
 
