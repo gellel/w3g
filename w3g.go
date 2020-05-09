@@ -175,6 +175,8 @@ const From string = "From"
 // Host HTTP request header specifies the domain name of the server (for virtual hosting), and (optionally) the TCP port number on which the server is listening.
 const Host string = "Host"
 
+const HTTP2Settings string = "HTTP2-Settings"
+
 // IfMatch HTTP request header makes the request conditional.
 const IfMatch string = "If-Match"
 
