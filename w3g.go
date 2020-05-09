@@ -175,6 +175,8 @@ const From string = "From"
 // Host HTTP request header specifies the domain name of the server (for virtual hosting), and (optionally) the TCP port number on which the server is listening.
 const Host string = "Host"
 
+const HTTP2Settings string = "HTTP2-Settings"
+
 // IfMatch HTTP request header makes the request conditional.
 const IfMatch string = "If-Match"
 
@@ -317,6 +319,11 @@ const Width string = "Width"
 // XContentTypeOptions response HTTP header is a marker used by the server to indicate that the MIME types advertised in the Content-Type headers should not be changed.
 const XContentTypeOptions string = " X-Content-Type-Options"
 
+// XCorrelationID correlates HTTP requests between a client and server.
+const XCorrelationID string = "X-Correlation-ID"
+
+const XCSRFToken string = "X-CSRF-Token"
+
 // XDNSPrefetchControl response HTTP header controls DNS prefetching.
 const XDNSPrefetchControl string = "X-DNS-Prefetch-Control"
 
@@ -332,7 +339,15 @@ const XForwardedProto string = "X-Forwarded-Proto"
 // XFrameOptions response HTTP header can be used to indicate whether or not a browser should be allowed to render a page in a <frame>, <iframe>, <embed> or <object>.
 const XFrameOptions string = "X-Frame-Options"
 
+const XRealIP string = "X-Real-Ip"
+
+// XRequestID correlates HTTP requests between a client and server.
+const XRequestID string = "X-Request-ID"
+
+// XRequestedWith  HTTP header is a request header used to indicate whether the HTTP request was an AJAX request.
 const XRequestedWith string = "X-Requested-With"
+
+const XUIDH string = "X-UIDH"
 
 // XXSSProtection response HTTP header is a feature of Internet Explorer, Chrome and Safari that stops pages from loading when they detect reflected cross-site scripting.
 const XXSSProtection string = "X-XSS-Protection"
