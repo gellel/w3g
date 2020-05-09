@@ -345,6 +345,8 @@ const XRequestID string = "X-Request-ID"
 // XRequestedWith  HTTP header is a request header used to indicate whether the HTTP request was an AJAX request.
 const XRequestedWith string = "X-Requested-With"
 
+const XUIDH string = "X-UIDH"
+
 // XXSSProtection response HTTP header is a feature of Internet Explorer, Chrome and Safari that stops pages from loading when they detect reflected cross-site scripting.
 const XXSSProtection string = "X-XSS-Protection"
 
