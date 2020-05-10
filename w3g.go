@@ -208,6 +208,8 @@ const Link string = "Link"
 // Location response HTTP header indicates the URL to redirect a page to.
 const Location string = "Location"
 
+const MaxForwards string = "Max-Forwards"
+
 // Origin request HTTP header indicates where a fetch originates from.
 const Origin string = "Origin"
 
