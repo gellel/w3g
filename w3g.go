@@ -110,6 +110,8 @@ const ContentLength string = "Content-Length"
 // ContentLocation header indicates an alternate location for the returned data.
 const ContentLocation string = "Content-Location"
 
+const ContentMD5 string = "Content-MD5"
+
 // ContentRange response HTTP header indicates where in a full body message a partial message belongs.
 const ContentRange string = "Content-Range"
 
