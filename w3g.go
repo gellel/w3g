@@ -213,6 +213,8 @@ const MaxForwards string = "Max-Forwards"
 // Origin request HTTP header indicates where a fetch originates from.
 const Origin string = "Origin"
 
+const P3P string = "P3P"
+
 // Pragma HTTP header is an implementation-specific header that is used for backwards compatibility with HTTP/1.0.
 const Pragma string = "Pragma"
 
