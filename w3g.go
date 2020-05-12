@@ -132,6 +132,7 @@ const Cookie2 string = "Cookie2"
 // CrossOriginResourcePolicy HTTP response header conveys a desire that the browser blocks no-cors cross-origin/cross-site requests to the given resource.
 const CrossOriginResourcePolicy string = "Cross-Origin-Resource-Policy"
 
+// DeltaBase HTTP response header specifies the delta-encoding entity tag of the response.
 const DeltaBase string = "Delta-Base"
 
 // DNT HTTP request header indicates the user's tracking preference.
