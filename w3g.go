@@ -132,6 +132,8 @@ const Cookie2 string = "Cookie2"
 // CrossOriginResourcePolicy HTTP response header conveys a desire that the browser blocks no-cors cross-origin/cross-site requests to the given resource.
 const CrossOriginResourcePolicy string = "Cross-Origin-Resource-Policy"
 
+const DeltaBase string = "Delta-Base"
+
 // DNT HTTP request header indicates the user's tracking preference.
 const DNT string = "DNT"
 
