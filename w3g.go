@@ -110,6 +110,8 @@ const ContentLength string = "Content-Length"
 // ContentLocation header indicates an alternate location for the returned data.
 const ContentLocation string = "Content-Location"
 
+const ContentMD5 string = "Content-MD5"
+
 // ContentRange response HTTP header indicates where in a full body message a partial message belongs.
 const ContentRange string = "Content-Range"
 
@@ -131,6 +133,9 @@ const Cookie2 string = "Cookie2"
 
 // CrossOriginResourcePolicy HTTP response header conveys a desire that the browser blocks no-cors cross-origin/cross-site requests to the given resource.
 const CrossOriginResourcePolicy string = "Cross-Origin-Resource-Policy"
+
+// DeltaBase HTTP response header specifies the delta-encoding entity tag of the response.
+const DeltaBase string = "Delta-Base"
 
 // DNT HTTP request header indicates the user's tracking preference.
 const DNT string = "DNT"
@@ -175,6 +180,7 @@ const From string = "From"
 // Host HTTP request header specifies the domain name of the server (for virtual hosting), and (optionally) the TCP port number on which the server is listening.
 const Host string = "Host"
 
+// HTTP2Settings HTTP request header specifies that a request upgrades from HTTP/1.1 to HTTP/2.
 const HTTP2Settings string = "HTTP2-Settings"
 
 // IfMatch HTTP request header makes the request conditional.
@@ -192,6 +198,8 @@ const IfRange string = "If-Range"
 // IfUnmodifiedSince request HTTP header makes the request conditional.
 const IfUnmodifiedSince string = "If-Unmodified-Since"
 
+const IM string = "IM"
+
 // KeepAlive HTTP header allows the sender to hint about how the connection may be used to set a timeout and a maximum amount of requests.
 const KeepAlive string = "Keep-Alive"
 
@@ -207,8 +215,12 @@ const Link string = "Link"
 // Location response HTTP header indicates the URL to redirect a page to.
 const Location string = "Location"
 
+const MaxForwards string = "Max-Forwards"
+
 // Origin request HTTP header indicates where a fetch originates from.
 const Origin string = "Origin"
+
+const P3P string = "P3P"
 
 // Pragma HTTP header is an implementation-specific header that is used for backwards compatibility with HTTP/1.0.
 const Pragma string = "Pragma"
