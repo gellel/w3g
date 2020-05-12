@@ -246,6 +246,8 @@ const Referer string = "Referer"
 // ReferrerPolicy HTTP header controls how much referrer information should be included with requests.
 const ReferrerPolicy string = "Referrer-Policy"
 
+const Refresh string = "Refresh"
+
 // RetryAfter response HTTP header indicates how long the user agent should wait before making a follow-up request.
 const RetryAfter string = "Retry-After"
 
