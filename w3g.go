@@ -286,6 +286,8 @@ const SetCookie2 string = "Set-Cookie2"
 // the reconstructed original in the debugger.
 const SourceMap string = "SourceMap"
 
+const Status string = "Status"
+
 // StrictTransportSecurity response HTTP header lets a web site tell browsers that it should only be accessed using HTTPS, instead of using HTTP.
 const StrictTransportSecurity string = "Strict-Transport-Security"
 
