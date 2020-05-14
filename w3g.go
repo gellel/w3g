@@ -246,6 +246,9 @@ const Referer string = "Referer"
 // ReferrerPolicy HTTP header controls how much referrer information should be included with requests.
 const ReferrerPolicy string = "Referrer-Policy"
 
+// Refresh response HTTP header controls when a new resource has been created and the time until redirection.
+const Refresh string = "Refresh"
+
 // RetryAfter response HTTP header indicates how long the user agent should wait before making a follow-up request.
 const RetryAfter string = "Retry-After"
 
@@ -282,6 +285,8 @@ const SetCookie2 string = "Set-Cookie2"
 // SourceMap HTTP response header links generated code to a source map, enabling the browser to reconstruct the original source and present
 // the reconstructed original in the debugger.
 const SourceMap string = "SourceMap"
+
+const Status string = "Status"
 
 // StrictTransportSecurity response HTTP header lets a web site tell browsers that it should only be accessed using HTTPS, instead of using HTTP.
 const StrictTransportSecurity string = "Strict-Transport-Security"
