@@ -356,6 +356,7 @@ const XForwardedProto string = "X-Forwarded-Proto"
 // XFrameOptions response HTTP header can be used to indicate whether or not a browser should be allowed to render a page in a <frame>, <iframe>, <embed> or <object>.
 const XFrameOptions string = "X-Frame-Options"
 
+// XRealIP request HTTP header is the IP address of the origin client.
 const XRealIP string = "X-Real-Ip"
 
 // XRequestID correlates HTTP requests between a client and server.
