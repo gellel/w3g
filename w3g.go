@@ -93,6 +93,10 @@ const CloudfrontIsDesktopViewer string = "Cloudfront-Is-Desktop-Viewer"
 
 const CloudfrontIsMobileViewer string = "Cloudfront-Is-Mobile-Viewer"
 
+const CloudfrontIsSmartTvViewer string = "Cloudfront-Is-Smarttv-Viewer"
+
+const CloudfrontIsTabletViewer string = "Cloudfront-Is-Tablet-Viewer"
+
 const CloudfrontViewerCountry string = "Cloudfront-Viewer-Country"
 
 // Connection HTTP header controls whether or not the network connection stays open after the current transaction finishes.
