@@ -87,6 +87,9 @@ const CacheControl string = "Cache-Control"
 // ClearSiteData HTTP header clears browsing data (cookies, storage, cache) associated with the requesting website
 const ClearSiteData string = "Clear-Site-Data"
 
+const CloudfrontForwardedProto string = "Cloudfront-Forwarded-Proto"
+const CloudfrontViewerCountry string = "Cloudfront-Viewer-Country"
+
 // Connection HTTP header controls whether or not the network connection stays open after the current transaction finishes.
 const Connection string = "Connection"
 
