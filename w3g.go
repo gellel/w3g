@@ -87,6 +87,18 @@ const CacheControl string = "Cache-Control"
 // ClearSiteData HTTP header clears browsing data (cookies, storage, cache) associated with the requesting website
 const ClearSiteData string = "Clear-Site-Data"
 
+const CloudfrontForwardedProto string = "Cloudfront-Forwarded-Proto"
+
+const CloudfrontIsDesktopViewer string = "Cloudfront-Is-Desktop-Viewer"
+
+const CloudfrontIsMobileViewer string = "Cloudfront-Is-Mobile-Viewer"
+
+const CloudfrontIsSmartTvViewer string = "Cloudfront-Is-Smarttv-Viewer"
+
+const CloudfrontIsTabletViewer string = "Cloudfront-Is-Tablet-Viewer"
+
+const CloudfrontViewerCountry string = "Cloudfront-Viewer-Country"
+
 // Connection HTTP header controls whether or not the network connection stays open after the current transaction finishes.
 const Connection string = "Connection"
 
@@ -1813,3 +1825,8 @@ func (t TimingAllowOriginHeader) String() string {
 
 // TkHeader is a struct to prepare a Tk HTTP header.
 type TkHeader struct{}
+
+// XRealIPHeader is a struct to prepare a X-Real-IP HTTP header.
+type XRealIPHeader struct {
+	IP net.IP `json:"ip"`
+}
