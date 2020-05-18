@@ -88,6 +88,7 @@ const CacheControl string = "Cache-Control"
 const ClearSiteData string = "Clear-Site-Data"
 
 const CloudfrontForwardedProto string = "Cloudfront-Forwarded-Proto"
+const CloudfrontIsDesktopViewer string = "Cloudfront-Is-Desktop-Viewer"
 const CloudfrontViewerCountry string = "Cloudfront-Viewer-Country"
 
 // Connection HTTP header controls whether or not the network connection stays open after the current transaction finishes.
