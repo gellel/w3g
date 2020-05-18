@@ -1813,3 +1813,8 @@ func (t TimingAllowOriginHeader) String() string {
 
 // TkHeader is a struct to prepare a Tk HTTP header.
 type TkHeader struct{}
+
+// XRealIPHeader is a struct to prepare a X-Real-IP HTTP header.
+type XRealIPHeader struct {
+	IP net.IP `json:"ip"`
+}
