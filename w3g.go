@@ -90,8 +90,10 @@ const ClearSiteData string = "Clear-Site-Data"
 // CloudfrontForwardedProto HTTP request header is the AWS Cloudfront origin protocol that the request was forwarded from.
 const CloudfrontForwardedProto string = "Cloudfront-Forwarded-Proto"
 
+// CloudfrontIsDesktopViewer HTTP request header is the AWS Cloudfront header that identifies that the requesting client is a desktop device.
 const CloudfrontIsDesktopViewer string = "Cloudfront-Is-Desktop-Viewer"
 
+// CloudfrontIsMobileViewer HTTP request header is the AWS Cloudfront header that identifies that the requesting client is a mobile device.
 const CloudfrontIsMobileViewer string = "Cloudfront-Is-Mobile-Viewer"
 
 const CloudfrontIsSmartTvViewer string = "Cloudfront-Is-Smarttv-Viewer"
