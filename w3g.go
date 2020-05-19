@@ -87,6 +87,7 @@ const CacheControl string = "Cache-Control"
 // ClearSiteData HTTP header clears browsing data (cookies, storage, cache) associated with the requesting website
 const ClearSiteData string = "Clear-Site-Data"
 
+// CloudfrontForwardedProto HTTP request header is the AWS Cloudfront origin protocol that the request was forwarded from.
 const CloudfrontForwardedProto string = "Cloudfront-Forwarded-Proto"
 
 const CloudfrontIsDesktopViewer string = "Cloudfront-Is-Desktop-Viewer"
