@@ -96,6 +96,7 @@ const CloudfrontIsDesktopViewer string = "Cloudfront-Is-Desktop-Viewer"
 // CloudfrontIsMobileViewer HTTP request header is the AWS Cloudfront header that identifies that the requesting client is a mobile device.
 const CloudfrontIsMobileViewer string = "Cloudfront-Is-Mobile-Viewer"
 
+// CloudfrontIsSmartTvViewer HTTP request header is the AWS Cloudfront header that identifies that the requesting client is a smart tv.
 const CloudfrontIsSmartTvViewer string = "Cloudfront-Is-Smarttv-Viewer"
 
 const CloudfrontIsTabletViewer string = "Cloudfront-Is-Tablet-Viewer"
