@@ -102,6 +102,7 @@ const CloudfrontIsSmartTvViewer string = "Cloudfront-Is-Smarttv-Viewer"
 // CloudfrontIsTabletViewer HTTP request header is the AWS Cloudfront header that identifies that the requesting client is a tablet device.
 const CloudfrontIsTabletViewer string = "Cloudfront-Is-Tablet-Viewer"
 
+// CloudfrontViewerCountry HTTP request headr is the AWS Cloudfront header that identifies the requesting clients country of origin.
 const CloudfrontViewerCountry string = "Cloudfront-Viewer-Country"
 
 // Connection HTTP header controls whether or not the network connection stays open after the current transaction finishes.
