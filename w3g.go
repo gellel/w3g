@@ -1830,7 +1830,18 @@ func (t TimingAllowOriginHeader) String() string {
 }
 
 // TkHeader is a struct to prepare a Tk HTTP header.
-type TkHeader struct{}
+type TkHeader struct{
+	// Tk: !  (under construction)
+	UnderConstruction bool `json:"under_construction"`
+// Tk: ?  (dynamic)
+// Tk: G  (gateway or multiple parties)
+// Tk: N  (not tracking)
+// Tk: T  (tracking)
+// Tk: C  (tracking with consent)
+// Tk: P  (potential consent)
+// Tk: D  (disregarding DNT)
+// Tk: U 
+}
 
 // XRealIPHeader is a struct to prepare a X-Real-IP HTTP header.
 type XRealIPHeader struct {
