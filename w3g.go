@@ -1834,12 +1834,33 @@ type TkHeader struct {
 	DisregardingDoNotTrack bool `json:"disregarding_do_not_track"`
 	Dynamic                bool `json:"dynamic"`
 	Gateway                bool `json:"gateway"`
-	PotentialConsent       bool `json:"potential_consent"`
 	NotTracking            bool `json:"not_tracking"`
+	PotentialConsent       bool `json:"potential_consent"`
 	Tracking               bool `json:"tracking"`
 	TrackingWithConsent    bool `json:"tracking_with_consent"`
-	Updated                bool `json:"updated"`
 	UnderConstruction      bool `json:"under_construction"`
+	Updated                bool `json:"updated"`
+}
+
+func (t TkHeader) String() string {
+	if t.DisregardingDoNotTrack {
+		return "D"
+	} else if t.Dynamic {
+		return "?"
+	} else if t.Gateway {
+		return "G"
+	} else if t.NotTracking {
+		return "N"
+	} else if t.PotentialConsent {
+		return "P"
+	} else if t.Tracking {
+		return "T"
+	} else if t.TrackingWithConsent {
+		return "C"
+	} else if t.Updated {
+		return "U"
+	}
+	return "!"
 }
 
 // XRealIPHeader is a struct to prepare a X-Real-IP HTTP header.
