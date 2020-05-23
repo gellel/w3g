@@ -1836,12 +1836,15 @@ type TkHeader struct{
 	Dynamic bool `json:"dynamic"`
 	// Tk: G  (gateway or multiple parties)
 	Gateway bool `json:"gateway"`
+	// Tk: P  (potential consent)
+	PotentialConsent bool `json:"potential_consent"`
 	// Tk: N  (not tracking)
 	NotTracking bool `json:"not_tracking"`
 	// Tk: T  (tracking)
+	Tracking bool `json:"tracking"`
 	// Tk: C  (tracking with consent)
 	TrackingWithConsent bool `json:"tracking_with_consent"`
-	// Tk: P  (potential consent)
+	
 	// Tk: D  (disregarding DNT)
 	// Tk: U 
 	// Tk: !  (under construction)
