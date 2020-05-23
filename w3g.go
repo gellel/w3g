@@ -1830,25 +1830,16 @@ func (t TimingAllowOriginHeader) String() string {
 }
 
 // TkHeader is a struct to prepare a Tk HTTP header.
-type TkHeader struct{
-	
-	// Tk: ?  (dynamic)
-	Dynamic bool `json:"dynamic"`
-	// Tk: G  (gateway or multiple parties)
-	Gateway bool `json:"gateway"`
-	// Tk: P  (potential consent)
-	PotentialConsent bool `json:"potential_consent"`
-	// Tk: N  (not tracking)
-	NotTracking bool `json:"not_tracking"`
-	// Tk: T  (tracking)
-	Tracking bool `json:"tracking"`
-	// Tk: C  (tracking with consent)
-	TrackingWithConsent bool `json:"tracking_with_consent"`
-	
-	// Tk: D  (disregarding DNT)
-	// Tk: U 
-	// Tk: !  (under construction)
-	UnderConstruction bool `json:"under_construction"`
+type TkHeader struct {
+	DisregardingDoNotTrack bool `json:"disregarding_do_not_track"`
+	Dynamic                bool `json:"dynamic"`
+	Gateway                bool `json:"gateway"`
+	PotentialConsent       bool `json:"potential_consent"`
+	NotTracking            bool `json:"not_tracking"`
+	Tracking               bool `json:"tracking"`
+	TrackingWithConsent    bool `json:"tracking_with_consent"`
+	Updated                bool `json:"updated"`
+	UnderConstruction      bool `json:"under_construction"`
 }
 
 // XRealIPHeader is a struct to prepare a X-Real-IP HTTP header.
