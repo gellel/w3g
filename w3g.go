@@ -1835,6 +1835,7 @@ type TkHeader struct{
 	// Tk: ?  (dynamic)
 	Dynamic bool `json:"dynamic"`
 	// Tk: G  (gateway or multiple parties)
+	Gateway bool `json:"gateway"`
 	// Tk: N  (not tracking)
 	// Tk: T  (tracking)
 	// Tk: C  (tracking with consent)
