@@ -128,6 +128,7 @@ const ContentLength string = "Content-Length"
 // ContentLocation header indicates an alternate location for the returned data.
 const ContentLocation string = "Content-Location"
 
+// ContentMD5 HTTP header indicates the MD5 hash value of the HTTP request.
 const ContentMD5 string = "Content-MD5"
 
 // ContentRange response HTTP header indicates where in a full body message a partial message belongs.
@@ -1866,4 +1867,8 @@ func (t TkHeader) String() string {
 // XRealIPHeader is a struct to prepare a X-Real-IP HTTP header.
 type XRealIPHeader struct {
 	IP net.IP `json:"ip"`
+}
+
+func (x XRealIPHeader) String() string {
+	return x.IP.String()
 }
