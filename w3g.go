@@ -87,16 +87,22 @@ const CacheControl string = "Cache-Control"
 // ClearSiteData HTTP header clears browsing data (cookies, storage, cache) associated with the requesting website
 const ClearSiteData string = "Clear-Site-Data"
 
+// CloudfrontForwardedProto HTTP request header is the AWS Cloudfront origin protocol that the request was forwarded from.
 const CloudfrontForwardedProto string = "Cloudfront-Forwarded-Proto"
 
+// CloudfrontIsDesktopViewer HTTP request header is the AWS Cloudfront header that identifies that the requesting client is a desktop device.
 const CloudfrontIsDesktopViewer string = "Cloudfront-Is-Desktop-Viewer"
 
+// CloudfrontIsMobileViewer HTTP request header is the AWS Cloudfront header that identifies that the requesting client is a mobile device.
 const CloudfrontIsMobileViewer string = "Cloudfront-Is-Mobile-Viewer"
 
+// CloudfrontIsSmartTvViewer HTTP request header is the AWS Cloudfront header that identifies that the requesting client is a smart tv.
 const CloudfrontIsSmartTvViewer string = "Cloudfront-Is-Smarttv-Viewer"
 
+// CloudfrontIsTabletViewer HTTP request header is the AWS Cloudfront header that identifies that the requesting client is a tablet device.
 const CloudfrontIsTabletViewer string = "Cloudfront-Is-Tablet-Viewer"
 
+// CloudfrontViewerCountry HTTP request headr is the AWS Cloudfront header that identifies the requesting clients country of origin.
 const CloudfrontViewerCountry string = "Cloudfront-Viewer-Country"
 
 // Connection HTTP header controls whether or not the network connection stays open after the current transaction finishes.
@@ -1824,7 +1830,38 @@ func (t TimingAllowOriginHeader) String() string {
 }
 
 // TkHeader is a struct to prepare a Tk HTTP header.
-type TkHeader struct{}
+type TkHeader struct {
+	DisregardingDoNotTrack bool `json:"disregarding_do_not_track"`
+	Dynamic                bool `json:"dynamic"`
+	Gateway                bool `json:"gateway"`
+	NotTracking            bool `json:"not_tracking"`
+	PotentialConsent       bool `json:"potential_consent"`
+	Tracking               bool `json:"tracking"`
+	TrackingWithConsent    bool `json:"tracking_with_consent"`
+	UnderConstruction      bool `json:"under_construction"`
+	Updated                bool `json:"updated"`
+}
+
+func (t TkHeader) String() string {
+	if t.DisregardingDoNotTrack {
+		return "D"
+	} else if t.Dynamic {
+		return "?"
+	} else if t.Gateway {
+		return "G"
+	} else if t.NotTracking {
+		return "N"
+	} else if t.PotentialConsent {
+		return "P"
+	} else if t.Tracking {
+		return "T"
+	} else if t.TrackingWithConsent {
+		return "C"
+	} else if t.Updated {
+		return "U"
+	}
+	return "!"
+}
 
 // XRealIPHeader is a struct to prepare a X-Real-IP HTTP header.
 type XRealIPHeader struct {
