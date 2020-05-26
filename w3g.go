@@ -901,6 +901,10 @@ func (c ContentLocationHeader) String() string {
 	return c.URL
 }
 
+type ContentMD5Header struct {
+	MD5 string `json:"md5"`
+}
+
 // ContentRangeHeader is a struct to prepare a Content-Range HTTP header.
 type ContentRangeHeader struct {
 	RangeEnd   int64  `json:"range_end"`
