@@ -901,6 +901,7 @@ func (c ContentLocationHeader) String() string {
 	return c.URL
 }
 
+// ContentMD5Header is a struct to prepare a Content-MD5 HTTP header.
 type ContentMD5Header struct {
 	MD5 string `json:"md5"`
 }
