@@ -1848,6 +1848,7 @@ type TkHeader struct {
 	Updated                bool `json:"updated"`
 }
 
+// String returns a string representation of a Tk HTTP header.
 func (t TkHeader) String() string {
 	if t.DisregardingDoNotTrack {
 		return "D"
