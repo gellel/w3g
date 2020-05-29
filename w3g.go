@@ -1870,6 +1870,10 @@ func (t TkHeader) String() string {
 	return "!"
 }
 
+type TrailerHeader struct {
+	Headers []string `json:"headers"`
+}
+
 // XRealIPHeader is a struct to prepare a X-Real-IP HTTP header.
 type XRealIPHeader struct {
 	IP net.IP `json:"ip"`
