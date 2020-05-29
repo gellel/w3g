@@ -1870,6 +1870,7 @@ func (t TkHeader) String() string {
 	return "!"
 }
 
+// TrailerHeader is a struct to prepare a Trailer HTTP header.
 type TrailerHeader struct {
 	Headers []string `json:"headers"`
 }
