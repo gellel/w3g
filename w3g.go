@@ -1875,6 +1875,7 @@ type TrailerHeader struct {
 	Headers []string `json:"headers"`
 }
 
+// String returns a string representation of a Trailer HTTP header.
 func (t TrailerHeader) String() string {
 	return strings.Join(t.Headers, ",")
 }
