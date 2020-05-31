@@ -1875,6 +1875,10 @@ type TrailerHeader struct {
 	Headers []string `json:"headers"`
 }
 
+func (t TrailerHeader) String() string {
+	return strings.Join(t.Headers, ",")
+}
+
 // XRealIPHeader is a struct to prepare a X-Real-Ip HTTP header.
 type XRealIPHeader struct {
 	IP net.IP `json:"ip"`
