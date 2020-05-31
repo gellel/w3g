@@ -1848,6 +1848,7 @@ type TkHeader struct {
 	Updated                bool `json:"updated"`
 }
 
+// String returns a string representation of a Tk HTTP header.
 func (t TkHeader) String() string {
 	if t.DisregardingDoNotTrack {
 		return "D"
@@ -1869,11 +1870,22 @@ func (t TkHeader) String() string {
 	return "!"
 }
 
-// XRealIPHeader is a struct to prepare a X-Real-IP HTTP header.
+// TrailerHeader is a struct to prepare a Trailer HTTP header.
+type TrailerHeader struct {
+	Headers []string `json:"headers"`
+}
+
+// String returns a string representation of a Trailer HTTP header.
+func (t TrailerHeader) String() string {
+	return strings.Join(t.Headers, ",")
+}
+
+// XRealIPHeader is a struct to prepare a X-Real-Ip HTTP header.
 type XRealIPHeader struct {
 	IP net.IP `json:"ip"`
 }
 
+// String returns a string representation of a X-Real-Ip HTTP header.
 func (x XRealIPHeader) String() string {
 	return x.IP.String()
 }
