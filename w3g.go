@@ -1880,6 +1880,7 @@ type XRealIPHeader struct {
 	IP net.IP `json:"ip"`
 }
 
+// String returns a string representation of a X-Real-Ip HTTP header.
 func (x XRealIPHeader) String() string {
 	return x.IP.String()
 }
