@@ -1886,6 +1886,7 @@ type TransferEncodingHeader struct {
 	Chunked  bool `json:"chunked"`
 	Compress bool `json:"compress"`
 	Deflate  bool `json:"delate"`
+	GZip     bool `json:"gzip"`
 }
 
 // XRealIPHeader is a struct to prepare a X-Real-Ip HTTP header.
