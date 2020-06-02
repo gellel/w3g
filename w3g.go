@@ -1883,7 +1883,8 @@ func (t TrailerHeader) String() string {
 type TransferHeader struct{}
 
 type TransferEncodingHeader struct {
-	Chunked bool `json:"chunked"`
+	Chunked  bool `json:"chunked"`
+	Compress bool `json:"compress"`
 }
 
 // XRealIPHeader is a struct to prepare a X-Real-Ip HTTP header.
