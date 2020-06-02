@@ -1880,6 +1880,16 @@ func (t TrailerHeader) String() string {
 	return strings.Join(t.Headers, ",")
 }
 
+type TransferHeader struct{}
+
+type TransferEncodingHeader struct {
+	Chunked  bool `json:"chunked"`
+	Compress bool `json:"compress"`
+	Deflate  bool `json:"delate"`
+	GZip     bool `json:"gzip"`
+	Identity bool `json:"identity"`
+}
+
 // XRealIPHeader is a struct to prepare a X-Real-Ip HTTP header.
 type XRealIPHeader struct {
 	IP net.IP `json:"ip"`
