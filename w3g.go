@@ -1891,6 +1891,7 @@ type TransferEncodingHeader struct {
 	Identity bool `json:"identity"`
 }
 
+// String returns a string representation of a Transfer-Encoding HTTP header.
 func (t TransferEncodingHeader) String() string {
 	var substrings ([]string) = (make([]string, 0))
 	if t.Chunked {
