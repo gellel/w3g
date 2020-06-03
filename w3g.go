@@ -1902,6 +1902,9 @@ func (t TransferEncodingHeader) String() string {
 	if t.Deflate {
 		substrings = append(substrings, "deflate")
 	}
+	if t.GZip {
+		substrings = append(substrings, "gzip")
+	}
 	return strings.Join(substrings, ", ")
 }
 
