@@ -1891,6 +1891,20 @@ type TransferEncodingHeader struct {
 	Identity bool `json:"identity"`
 }
 
+func (t TransferEncodingHeader) String() string {
+	var substrings ([]string) = (make([]string, 0))
+	if t.Chunked {
+		substrings = append(substrings, "chunked")
+	}
+	if t.Compress {
+		substrings = append(substrings, "compress")
+	}
+	if t.Deflate {
+		substrings = append(substrings, "deflate")
+	}
+	return strings.Join(substrings, ", ")
+}
+
 // XRealIPHeader is a struct to prepare a X-Real-Ip HTTP header.
 type XRealIPHeader struct {
 	IP net.IP `json:"ip"`
