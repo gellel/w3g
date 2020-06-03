@@ -1882,6 +1882,7 @@ func (t TrailerHeader) String() string {
 
 type TransferHeader struct{}
 
+// TransferEncodingHeader is a struct to prepare a Transfer-Encoding HTTP header.
 type TransferEncodingHeader struct {
 	Chunked  bool `json:"chunked"`
 	Compress bool `json:"compress"`
