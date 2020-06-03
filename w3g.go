@@ -1905,6 +1905,9 @@ func (t TransferEncodingHeader) String() string {
 	if t.GZip {
 		substrings = append(substrings, "gzip")
 	}
+	if t.Identity {
+		substrings = append(substrings, "identity")
+	}
 	return strings.Join(substrings, ", ")
 }
 
