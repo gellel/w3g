@@ -1880,6 +1880,7 @@ func (t TrailerHeader) String() string {
 	return strings.Join(t.Headers, ",")
 }
 
+// TransferHeader is a struct to prepare a Transfer HTTP header.
 type TransferHeader struct{}
 
 // TransferEncodingHeader is a struct to prepare a Transfer-Encoding HTTP header.
