@@ -1918,6 +1918,13 @@ type UpgradeInsecureRequestsHeader struct {
 	Upgrade bool `json:"upgrade"`
 }
 
+func (u UpgradeInsecureRequestsHeader) String() string {
+	if u.Upgrade {
+		return "1"
+	}
+	return "0"
+}
+
 // XRealIPHeader is a struct to prepare a X-Real-Ip HTTP header.
 type XRealIPHeader struct {
 	IP net.IP `json:"ip"`
