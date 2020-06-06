@@ -1913,6 +1913,8 @@ func (t TransferEncodingHeader) String() string {
 	return strings.Join(substrings, ", ")
 }
 
+type UpgradeInsecureRequestsHeader struct{}
+
 // XRealIPHeader is a struct to prepare a X-Real-Ip HTTP header.
 type XRealIPHeader struct {
 	IP net.IP `json:"ip"`
