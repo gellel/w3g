@@ -1914,7 +1914,9 @@ func (t TransferEncodingHeader) String() string {
 }
 
 // UpgradeInsecureRequestsHeader is a struct to prepare a Upgrade-Insecure-Request HTTP header.
-type UpgradeInsecureRequestsHeader struct{}
+type UpgradeInsecureRequestsHeader struct {
+	Upgrade bool `json:"upgrade"`
+}
 
 // XRealIPHeader is a struct to prepare a X-Real-Ip HTTP header.
 type XRealIPHeader struct {
