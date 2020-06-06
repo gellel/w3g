@@ -1913,6 +1913,7 @@ func (t TransferEncodingHeader) String() string {
 	return strings.Join(substrings, ", ")
 }
 
+// UpgradeInsecureRequestsHeader is a struct to prepare a Upgrade-Insecure-Request HTTP header.
 type UpgradeInsecureRequestsHeader struct{}
 
 // XRealIPHeader is a struct to prepare a X-Real-Ip HTTP header.
