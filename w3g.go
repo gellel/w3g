@@ -1918,7 +1918,7 @@ type UpgradeInsecureRequestsHeader struct {
 	Upgrade bool `json:"upgrade"`
 }
 
-// String returns a string representation of a Upgrade-Insecure-Request HTTP headere.
+// String returns a string representation of a Upgrade-Insecure-Request HTTP header.
 func (u UpgradeInsecureRequestsHeader) String() string {
 	if u.Upgrade {
 		return "1"
