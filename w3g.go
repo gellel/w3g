@@ -1926,6 +1926,8 @@ func (u UpgradeInsecureRequestsHeader) String() string {
 	return "0"
 }
 
+type UserAgentHeader struct{}
+
 // XRealIPHeader is a struct to prepare a X-Real-Ip HTTP header.
 type XRealIPHeader struct {
 	IP net.IP `json:"ip"`
