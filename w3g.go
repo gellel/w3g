@@ -1880,8 +1880,10 @@ func (t TrailerHeader) String() string {
 	return strings.Join(t.Headers, ",")
 }
 
+// TransferHeader is a struct to prepare a Transfer HTTP header.
 type TransferHeader struct{}
 
+// TransferEncodingHeader is a struct to prepare a Transfer-Encoding HTTP header.
 type TransferEncodingHeader struct {
 	Chunked  bool `json:"chunked"`
 	Compress bool `json:"compress"`
@@ -1889,6 +1891,43 @@ type TransferEncodingHeader struct {
 	GZip     bool `json:"gzip"`
 	Identity bool `json:"identity"`
 }
+
+// String returns a string representation of a Transfer-Encoding HTTP header.
+func (t TransferEncodingHeader) String() string {
+	var substrings ([]string) = (make([]string, 0))
+	if t.Chunked {
+		substrings = append(substrings, "chunked")
+	}
+	if t.Compress {
+		substrings = append(substrings, "compress")
+	}
+	if t.Deflate {
+		substrings = append(substrings, "deflate")
+	}
+	if t.GZip {
+		substrings = append(substrings, "gzip")
+	}
+	if t.Identity {
+		substrings = append(substrings, "identity")
+	}
+	return strings.Join(substrings, ", ")
+}
+
+// UpgradeInsecureRequestsHeader is a struct to prepare a Upgrade-Insecure-Request HTTP header.
+type UpgradeInsecureRequestsHeader struct {
+	Upgrade bool `json:"upgrade"`
+}
+
+// String returns a string representation of a Upgrade-Insecure-Request HTTP header.
+func (u UpgradeInsecureRequestsHeader) String() string {
+	if u.Upgrade {
+		return "1"
+	}
+	return "0"
+}
+
+// UserAgentHeader is a struct to prepare a User-Agent HTTP header.
+type UserAgentHeader struct{}
 
 // XRealIPHeader is a struct to prepare a X-Real-Ip HTTP header.
 type XRealIPHeader struct {
