@@ -1937,7 +1937,9 @@ func (u UserAgentHeader) String() string {
 }
 
 // VaryHeader is a struct to prepare a Vary HTTP header.
-type VaryHeader struct{}
+type VaryHeader struct {
+	Headers []string `json:"headers"`
+}
 
 // XRealIPHeader is a struct to prepare a X-Real-Ip HTTP header.
 type XRealIPHeader struct {
