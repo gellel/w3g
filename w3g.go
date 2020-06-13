@@ -1941,6 +1941,7 @@ type VaryHeader struct {
 	Headers []string `json:"headers"`
 }
 
+// String returns a string representation of a Vary HTTP header.
 func (v VaryHeader) String() string {
 	return strings.Join(v.Headers, ", ")
 }
