@@ -1931,6 +1931,10 @@ type UserAgentHeader struct {
 	UserAgent string `json:"user_agent"`
 }
 
+func (u UserAgentHeader) String() string {
+	return u.UserAgent
+}
+
 // XRealIPHeader is a struct to prepare a X-Real-Ip HTTP header.
 type XRealIPHeader struct {
 	IP net.IP `json:"ip"`
