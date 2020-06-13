@@ -1931,9 +1931,12 @@ type UserAgentHeader struct {
 	UserAgent string `json:"user_agent"`
 }
 
+// String returns a string representation of a User-Agent HTTP header.
 func (u UserAgentHeader) String() string {
 	return u.UserAgent
 }
+
+type VaryHeader struct{}
 
 // XRealIPHeader is a struct to prepare a X-Real-Ip HTTP header.
 type XRealIPHeader struct {
