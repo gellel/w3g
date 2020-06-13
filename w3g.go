@@ -1941,6 +1941,10 @@ type VaryHeader struct {
 	Headers []string `json:"headers"`
 }
 
+func (v VaryHeader) String() string {
+	return strings.Join(v.Headers, ", ")
+}
+
 // XRealIPHeader is a struct to prepare a X-Real-Ip HTTP header.
 type XRealIPHeader struct {
 	IP net.IP `json:"ip"`
