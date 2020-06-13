@@ -1927,7 +1927,9 @@ func (u UpgradeInsecureRequestsHeader) String() string {
 }
 
 // UserAgentHeader is a struct to prepare a User-Agent HTTP header.
-type UserAgentHeader struct{}
+type UserAgentHeader struct {
+	UserAgent string `json:"user_agent"`
+}
 
 // XRealIPHeader is a struct to prepare a X-Real-Ip HTTP header.
 type XRealIPHeader struct {
