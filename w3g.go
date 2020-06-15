@@ -1948,7 +1948,8 @@ func (v VaryHeader) String() string {
 
 // ViaHeader is a struct to prepare a Via HTTP header.
 type ViaHeader struct {
-	ProtocolName string
+	ProtocolName    string
+	ProtocolVersion string
 }
 
 // XRealIPHeader is a struct to prepare a X-Real-Ip HTTP header.
