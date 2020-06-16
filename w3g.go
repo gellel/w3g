@@ -1951,7 +1951,7 @@ type ViaHeader struct {
 	ProtocolName    string `json:"protocol_name"`
 	ProtocolVersion string `json:"protocol_version"`
 	Host            string `json:"host"`
-	Port            string
+	Port            string `json:"port"`
 	Pseudonym       string
 }
 
