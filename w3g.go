@@ -1948,9 +1948,9 @@ func (v VaryHeader) String() string {
 
 // ViaHeader is a struct to prepare a Via HTTP header.
 type ViaHeader struct {
-	ProtocolName    string
-	ProtocolVersion string
-	Host            string
+	ProtocolName    string `json:"protocol_name"`
+	ProtocolVersion string `json:"protocol_version"`
+	Host            string `json:"host"`
 	Port            string
 	Pseudonym       string
 }
