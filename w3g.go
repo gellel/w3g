@@ -1927,7 +1927,33 @@ func (u UpgradeInsecureRequestsHeader) String() string {
 }
 
 // UserAgentHeader is a struct to prepare a User-Agent HTTP header.
-type UserAgentHeader struct{}
+type UserAgentHeader struct {
+	UserAgent string `json:"user_agent"`
+}
+
+// String returns a string representation of a User-Agent HTTP header.
+func (u UserAgentHeader) String() string {
+	return u.UserAgent
+}
+
+// VaryHeader is a struct to prepare a Vary HTTP header.
+type VaryHeader struct {
+	Headers []string `json:"headers"`
+}
+
+// String returns a string representation of a Vary HTTP header.
+func (v VaryHeader) String() string {
+	return strings.Join(v.Headers, ", ")
+}
+
+// ViaHeader is a struct to prepare a Via HTTP header.
+type ViaHeader struct {
+	ProtocolName    string `json:"protocol_name"`
+	ProtocolVersion string `json:"protocol_version"`
+	Host            string `json:"host"`
+	Port            string `json:"port"`
+	Pseudonym       string
+}
 
 // XRealIPHeader is a struct to prepare a X-Real-Ip HTTP header.
 type XRealIPHeader struct {
