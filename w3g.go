@@ -1955,6 +1955,7 @@ type ViaHeader struct {
 	Pseudonym       string `json:"pseudonym"`
 }
 
+// String returns a string representation of a Via HTTP header.
 func (v ViaHeader) String() string {
 	var substrings = (make([]string, 0))
 	if !reflect.ValueOf(v.ProtocolName).IsZero() {
