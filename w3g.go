@@ -1957,7 +1957,7 @@ type ViaHeader struct {
 
 func (v ViaHeader) String() string {
 	var substrings = (make([]string, 0))
-	if !reflect.ValueOf(v.ProtocolName) {
+	if !reflect.ValueOf(v.ProtocolName).IsZero() {
 		substrings = append(substrings, v.ProtocolName)
 	}
 	if !reflect.ValueOf(v.ProtocolVersion) {
