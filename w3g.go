@@ -1952,7 +1952,7 @@ type ViaHeader struct {
 	ProtocolVersion string `json:"protocol_version"`
 	Host            string `json:"host"`
 	Port            string `json:"port"`
-	Pseudonym       string
+	Pseudonym       string `json:"pseudonym"`
 }
 
 // XRealIPHeader is a struct to prepare a X-Real-Ip HTTP header.
