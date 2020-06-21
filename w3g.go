@@ -1956,9 +1956,22 @@ type ViaHeader struct {
 }
 
 func (v ViaHeader) String() string {
-	var substring = (make([]string, 0))
+	var substrings = (make([]string, 0))
 	if !reflect.ValueOf(v.ProtocolName) {
 		substrings = append(substrings, v.ProtocolName)
+	}
+	if !reflect.ValueOf(v.ProtocolVersion) {
+		substrings = append(substrings, v.ProtocolVersion)
+	}
+	if !reflect.ValueOf(v.Host) || !reflect.ValueOf(v.Port) {
+		var s = (make([]string, 0)) 
+		if !reflect.ValueOf(v.Host) {
+			s = append(s, v.Host)
+		}
+		if !reflect.ValueOf(v.Port) {
+			s =append(s, v.Port)
+		}
+		substrings = append(substrings, strings.Join(s, ":"))
 	}
 	return strings.Join(substrings, " ")
 }
