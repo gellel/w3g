@@ -1958,7 +1958,7 @@ type ViaHeader struct {
 func (v ViaHeader) String() string {
 	var substring = (make([]string, 0))
 	if !reflect.ValueOf(v.ProtocolName) {
-		
+		substrings = append(substrings, v.ProtocolName)
 	}
 	return strings.Join(substrings, " ")
 }
