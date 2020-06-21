@@ -1952,7 +1952,32 @@ type ViaHeader struct {
 	ProtocolVersion string `json:"protocol_version"`
 	Host            string `json:"host"`
 	Port            string `json:"port"`
-	Pseudonym       string
+	Pseudonym       string `json:"pseudonym"`
+}
+
+// String returns a string representation of a Via HTTP header.
+func (v ViaHeader) String() string {
+	var substrings = (make([]string, 0))
+	if !reflect.ValueOf(v.ProtocolName).IsZero() {
+		substrings = append(substrings, v.ProtocolName)
+	}
+	if !reflect.ValueOf(v.ProtocolVersion).IsZero() {
+		substrings = append(substrings, v.ProtocolVersion)
+	}
+	if !reflect.ValueOf(v.Host).IsZero() || !reflect.ValueOf(v.Port).IsZero() {
+		var s = (make([]string, 0))
+		if !reflect.ValueOf(v.Host).IsZero() {
+			s = append(s, v.Host)
+		}
+		if !reflect.ValueOf(v.Port).IsZero() {
+			s = append(s, v.Port)
+		}
+		substrings = append(substrings, strings.Join(s, ":"))
+	}
+	if !reflect.ValueOf(v.Pseudonym).IsZero() {
+		substrings = append(substrings, v.Pseudonym)
+	}
+	return strings.Join(substrings, " ")
 }
 
 // XRealIPHeader is a struct to prepare a X-Real-Ip HTTP header.
