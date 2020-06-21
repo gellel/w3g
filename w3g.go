@@ -1957,6 +1957,10 @@ type ViaHeader struct {
 
 func (v ViaHeader) String() string {
 	var substring = (make([]string, 0))
+	if !reflect.ValueOf(v.ProtocolName) {
+		
+	}
+	return strings.Join(substrings, " ")
 }
 
 // XRealIPHeader is a struct to prepare a X-Real-Ip HTTP header.
