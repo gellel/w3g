@@ -1955,6 +1955,10 @@ type ViaHeader struct {
 	Pseudonym       string `json:"pseudonym"`
 }
 
+func (v ViaHeader) String() string {
+	var substring = (make([]string, 0))
+}
+
 // XRealIPHeader is a struct to prepare a X-Real-Ip HTTP header.
 type XRealIPHeader struct {
 	IP net.IP `json:"ip"`
