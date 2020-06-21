@@ -1973,6 +1973,9 @@ func (v ViaHeader) String() string {
 		}
 		substrings = append(substrings, strings.Join(s, ":"))
 	}
+	if !reflect.ValueOf(v.Pseudonym).IsZero() {
+		substrings = append(substrings, v.Pseudonym)
+	}
 	return strings.Join(substrings, " ")
 }
 
