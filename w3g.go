@@ -1960,10 +1960,10 @@ func (v ViaHeader) String() string {
 	if !reflect.ValueOf(v.ProtocolName).IsZero() {
 		substrings = append(substrings, v.ProtocolName)
 	}
-	if !reflect.ValueOf(v.ProtocolVersion) {
+	if !reflect.ValueOf(v.ProtocolVersion).IsZero() {
 		substrings = append(substrings, v.ProtocolVersion)
 	}
-	if !reflect.ValueOf(v.Host) || !reflect.ValueOf(v.Port) {
+	if !reflect.ValueOf(v.Host).IsZero() || !reflect.ValueOf(v.Port).IsZero() {
 		var s = (make([]string, 0)) 
 		if !reflect.ValueOf(v.Host) {
 			s = append(s, v.Host)
