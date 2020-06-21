@@ -1965,12 +1965,12 @@ func (v ViaHeader) String() string {
 		substrings = append(substrings, v.ProtocolVersion)
 	}
 	if !reflect.ValueOf(v.Host).IsZero() || !reflect.ValueOf(v.Port).IsZero() {
-		var s = (make([]string, 0)) 
-		if !reflect.ValueOf(v.Host) {
+		var s = (make([]string, 0))
+		if !reflect.ValueOf(v.Host).IsZero() {
 			s = append(s, v.Host)
 		}
-		if !reflect.ValueOf(v.Port) {
-			s =append(s, v.Port)
+		if !reflect.ValueOf(v.Port).IsZero() {
+			s = append(s, v.Port)
 		}
 		substrings = append(substrings, strings.Join(s, ":"))
 	}
