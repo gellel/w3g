@@ -1980,6 +1980,7 @@ func (v ViaHeader) String() string {
 	return strings.Join(substrings, " ")
 }
 
+/// WWWWAuthenticateHeader is a struct to preparea WWW-Authenticate HTTP header.
 type WWWAuthenticateHeader struct {
 	Charset string
 	Realm   string
