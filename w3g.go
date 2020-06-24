@@ -1983,6 +1983,7 @@ func (v ViaHeader) String() string {
 type WWWAuthenticateHeader struct{
 	Charset string
 	Realm string 
+	Type string 
 }
 
 // XRealIPHeader is a struct to prepare a X-Real-Ip HTTP header.
