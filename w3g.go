@@ -1987,6 +1987,11 @@ type WWWAuthenticateHeader struct {
 	Type    string `json:"type"`
 }
 
+func (w WWWAuthenticateHeader) String() string {
+	var substrings = (make([]string, 0))
+	return strings.Join(substrings, ", ")
+}
+
 // XRealIPHeader is a struct to prepare a X-Real-Ip HTTP header.
 type XRealIPHeader struct {
 	IP net.IP `json:"ip"`
