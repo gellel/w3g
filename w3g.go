@@ -1982,7 +1982,7 @@ func (v ViaHeader) String() string {
 
 // WWWAuthenticateHeader is a struct to preparea WWW-Authenticate HTTP header.
 type WWWAuthenticateHeader struct {
-	Charset string
+	Charset string `json:"charset"`
 	Realm   string
 	Type    string
 }
