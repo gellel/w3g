@@ -1980,6 +1980,8 @@ func (v ViaHeader) String() string {
 	return strings.Join(substrings, " ")
 }
 
+type WWWAuthenticateHeader struct{}
+
 // XRealIPHeader is a struct to prepare a X-Real-Ip HTTP header.
 type XRealIPHeader struct {
 	IP net.IP `json:"ip"`
