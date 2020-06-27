@@ -1989,6 +1989,9 @@ type WWWAuthenticateHeader struct {
 
 func (w WWWAuthenticateHeader) String() string {
 	var substrings = (make([]string, 0))
+	if !reflect.ValueOf(w.Type).IsZero() {
+		substrings = append(substrings, w.Type)
+	}
 	return strings.Join(substrings, ", ")
 }
 
