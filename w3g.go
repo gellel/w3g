@@ -1987,6 +1987,7 @@ type WWWAuthenticateHeader struct {
 	Type    string `json:"type"`
 }
 
+// String returns a string representation of a WWW-Authenticate HTTP header.
 func (w WWWAuthenticateHeader) String() string {
 	var substrings = (make([]string, 0))
 	if !reflect.ValueOf(w.Type).IsZero() {
