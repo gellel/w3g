@@ -1995,6 +1995,9 @@ func (w WWWAuthenticateHeader) String() string {
 	if !reflect.ValueOf(w.Realm).IsZero() {
 		substrings = append(substrings, fmt.Sprintf("realm=\"%s\"", w.Realm))
 	}
+	if !reflect.ValueOf(w.Charset).IsZero() {
+		substrings = append(substrings, fmt.Sprintf("charset=\"%s\"", w.Charset))
+	}
 	return strings.Join(substrings, ", ")
 }
 
